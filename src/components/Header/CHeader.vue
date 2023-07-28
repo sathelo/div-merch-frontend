@@ -1,14 +1,20 @@
 <template>
   <header class="header">
-    <img src="/images/header/logo.svg" alt="logo" class="header__logo" />
-    <CMenu />
-    <CActions />
+    <a class="header-logo" href="#" target="_self">
+      <img
+        class="header-logo__image"
+        src="/logos/div-merch.svg"
+        alt="div.merch"
+      />
+    </a>
+    <CHeaderMenu />
+    <CHeaderActions />
   </header>
 </template>
 
 <script setup lang="ts">
-import CMenu from "./CMenu.vue";
-import CActions from "./CActions.vue";
+import CHeaderMenu from "./CHeaderMenu.vue";
+import CHeaderActions from "./CHeaderActions.vue";
 </script>
 
 <style lang="less" scoped>

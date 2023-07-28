@@ -12,7 +12,7 @@ import CMain from "@/components/Main/CMain.vue";
 import CFooter from "@/components/Footer/CFooter.vue";
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .home {
   display: flex;
   flex-direction: column;

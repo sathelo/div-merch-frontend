@@ -18,4 +18,5 @@ npm run dev
 - [Vue3](https://vuejs.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Less](https://lesscss.org/)
-- [Ant Design Vue](https://antdv.com/)
+- [Vue Router](https://v3.router.vuejs.org/)
+- [Element Plus](https://element-plus.org/)

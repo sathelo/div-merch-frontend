@@ -1,8 +1,15 @@
 <template>
   <header class="header">
-    <img src="/images/header/logo.svg" alt="logo" class="header__logo" />
+    <a class="header-logo" href="#" target="_self">
+      <img
+        class="header-logo__image"
+        src="/images/header/logo.svg"
+        alt="logo"
+      />
+    </a>
     <CMenu />
     <CActions />
+    <ElMessage />
   </header>
 </template>
 

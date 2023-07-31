@@ -19,8 +19,11 @@ import { breadcrumbs } from "@/data/main";
 <style lang="less" scoped>
 .main {
   .content(40px, 32px, @grey-gradation--white);
-  .flex-properties();
   width: 100%;
   height: 100%;
+
+  &__wrapper {
+    .flex-properties(flex, initial, space-between);
+  }
 }
 </style>

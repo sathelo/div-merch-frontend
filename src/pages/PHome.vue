@@ -1,5 +1,5 @@
 <template>
-  <page class="home">
+  <page class="home-page">
     <CHeader />
     <CMain />
     <CFooter />
@@ -13,7 +13,7 @@ import CFooter from "@/components/Footer/CFooter.vue";
 </script>
 
 <style lang="less" scoped>
-.home {
+.home-page {
   display: flex;
   flex-direction: column;
   width: 100%;

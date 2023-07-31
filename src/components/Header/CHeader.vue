@@ -1,11 +1,7 @@
 <template>
   <header class="header">
     <a class="header-logo" href="#" target="_self">
-      <img
-        class="header-logo__image"
-        src="/logos/div-merch.svg"
-        alt="div.merch"
-      />
+      <img class="header-logo__image" :src="logoDivMerchUrl" alt="div.merch" />
     </a>
     <CHeaderMenu />
     <CHeaderActions />
@@ -15,6 +11,7 @@
 <script setup lang="ts">
 import CHeaderMenu from "./CHeaderMenu.vue";
 import CHeaderActions from "./CHeaderActions.vue";
+import logoDivMerchUrl from "/logos/div-merch.svg";
 </script>
 
 <style lang="less" scoped>

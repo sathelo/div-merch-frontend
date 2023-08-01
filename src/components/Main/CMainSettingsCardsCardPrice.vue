@@ -4,20 +4,23 @@
 
     <div class="main-settings-cards-card-price-info">
       <div class="main-settings-cards-card-price-info__from">
-        От {{ prices.start[0] }}
+        От {{ prices[0] }}
       </div>
       <div class="main-settings-cards-card-price-info__before">
-        До {{ prices.end[1] }}
+        До {{ prices[1] }}
       </div>
     </div>
 
-    <ElSlider v-model="prices" range />
+    <ElSlider
+      :prices="prices"
+      @change="updatePrices($event as number[])"
+      range
+    />
   </section>
 </template>
 
 <script setup lang="ts">
 import { ElSlider } from "element-plus";
-import { computed } from "vue";
 
 interface IProps {
   title: string;
@@ -25,15 +28,11 @@ interface IProps {
 }
 
 interface IEmits {
-  updatePrices: (prices: number[]) => void;
+  (e: "updatePrices", prices: number[]): void;
 }
 
 defineProps<IProps>();
 const emits = defineEmits<IEmits>();
-
-const prices = computed(() => {
-  updatePrices([2, 3]);
-});
 
 function updatePrices(newPrices: number[]): void {
   emits("updatePrices", newPrices);

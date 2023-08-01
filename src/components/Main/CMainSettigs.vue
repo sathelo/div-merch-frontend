@@ -31,7 +31,7 @@ const prices = computed({
   },
 
   set(newPrices) {
-    updatePrices(newPrices);
+    defaultPrices.value = newPrices;
   },
 });
 

@@ -4,7 +4,7 @@ type Nav = {
   target: HTMLLinkElement["target"];
 };
 
-type Menu = {
+export type Menu = {
   home: Nav;
   collections: Nav;
   allGoods: Nav;

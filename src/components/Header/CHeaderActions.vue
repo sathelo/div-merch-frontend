@@ -19,7 +19,13 @@
 </template>
 
 <script setup lang="ts">
-import { actions } from "@/data/actions";
+import { type Actions } from "@/data/actions";
+
+interface IProps {
+  actions: Actions;
+}
+
+defineProps<IProps>();
 </script>
 
 <style lang="less" scoped>

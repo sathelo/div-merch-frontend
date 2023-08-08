@@ -4,10 +4,11 @@ type Action = {
   target: HTMLLinkElement["target"];
 };
 
-type Actions = {
+export type Actions = {
+  favorite: Action;
   search: Action;
-  shop: Action;
   user: Action;
+  shop: Action;
 };
 
 const defaultAction: Action = {
@@ -17,16 +18,20 @@ const defaultAction: Action = {
 };
 
 export const actions: Actions = {
+  favorite: {
+    ...defaultAction,
+    iconUrl: "/icons/heart.svg",
+  },
   search: {
     ...defaultAction,
     iconUrl: "/icons/search.svg",
   },
-  shop: {
-    ...defaultAction,
-    iconUrl: "/icons/shop.svg",
-  },
   user: {
     ...defaultAction,
     iconUrl: "/icons/user.svg",
+  },
+  shop: {
+    ...defaultAction,
+    iconUrl: "/icons/shop.svg",
   },
 };

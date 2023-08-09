@@ -1,10 +1,10 @@
 type Nav = {
   name: string;
-  href: HTMLLinkElement["href"];
-  target: HTMLLinkElement["target"];
+  href?: HTMLLinkElement["href"];
+  target?: HTMLLinkElement["target"];
 };
 
-type Menu = {
+export type Menu = {
   home: Nav;
   collections: Nav;
   allGoods: Nav;

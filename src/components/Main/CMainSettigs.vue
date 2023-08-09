@@ -1,57 +1,55 @@
 <template>
   <section class="main-settings">
     <div class="main-settings-cards">
-      <div class="main-settings-cards-card">
-        <div class="main-settings-cards-card__title">Цена</div>
-        <ElSlider v-model="ranged" show-stops range />
-      </div>
-
-      <div class="main-settings-cards-card">
-        <div class="main-settings-cards-card__title">Пол</div>
-        <el-checkbox-group v-model="checkedFloor" :max="1">
-          <ElCheckbox label="Мужской" />
-          <ElCheckbox label="Женский" />
-        </el-checkbox-group>
-      </div>
-
-      <div class="main-settings-cards-card">
-        <div class="main-settings-cards-card__title">Категория</div>
-        <el-checkbox-group v-model="checkedСategories">
-          <ElCheckbox label="Анораки" />
-          <ElCheckbox label="Свитшоты" />
-          <ElCheckbox label="Брюки" />
-          <ElCheckbox label="Носки" />
-          <ElCheckbox label="Ветровки" />
-          <ElCheckbox label="Браслеты" />
-          <ElCheckbox label="Брелоки" />
-        </el-checkbox-group>
-      </div>
-
-      <div class="main-settings-cards-card">
-        <div class="main-settings-cards-card__title">Размер</div>
-      </div>
-
-      <div class="main-settings-cards-card">
-        <div class="main-settings-cards-card__title">Цвет</div>
-      </div>
+      <CMainSettingsCardsCardPrice
+        title="Цена"
+        :prices="prices"
+        @updatePrices="updatePrices"
+        class="main-settings-cards-card"
+      />
+      <CMainSettingsCardsCardFloor class="main-settings-cards-card" />
+      <CMainSettingsCardsCardCategory class="main-settings-cards-card" />
+      <CMainSettingsCardsCardSize class="main-settings-cards-card" />
+      <CMainSettingsCardsCardColor class="main-settings-cards-card" />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { ElSlider, ElCheckbox } from "element-plus";
+import { computed, ref } from "vue";
+import CMainSettingsCardsCardPrice from "@/components/Main/CMainSettingsCardsCardPrice.vue";
+import CMainSettingsCardsCardFloor from "@/components/Main/CMainSettingsCardsCardFloor.vue";
+import CMainSettingsCardsCardCategory from "@/components/Main/CMainSettingsCardsCardCategory.vue";
+import CMainSettingsCardsCardSize from "@/components/Main/CMainSettingsCardsCardSize.vue";
+import CMainSettingsCardsCardColor from "@/components/Main/CMainSettingsCardsCardColor.vue";
 
-//block1
-const ranged = ref([0, 30]);
-//block2
-const checkedFloor = ref([]);
-//block3
-const checkedСategories = ref([]);
-//block4
-const checkedSize = ref([]);
-//block5
-const checkedColor = ref([]);
+const defaultPrices = ref([0, 30]);
+
+const prices = computed({
+  get() {
+    return defaultPrices.value;
+  },
+
+  set(newPrices) {
+    defaultPrices.value = newPrices;
+  },
+});
+
+function updatePrices(newPrices: number[]): void {
+  prices.value = newPrices;
+}
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.main-settings {
+  width: 100%;
+  max-width: 276px;
+
+  &-cards {
+    &-card {
+      .content(32px, 24px, initial);
+      border: 1px solid @grey-gradation--100;
+    }
+  }
+}
+</style>

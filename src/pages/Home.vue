@@ -1,22 +1,17 @@
 <template>
-  <page class="home">
-    <CHeader />
+  <page class="home-page">
     <CMain />
     <CFooter />
   </page>
 </template>
 
 <script setup lang="ts">
-import CHeader from "@/components/Header/CHeader.vue";
 import CMain from "@/components/Main/CMain.vue";
 import CFooter from "@/components/Footer/CFooter.vue";
 </script>
 
 <style lang="less" scoped>
-.home {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+.home-page {
+  .page();
 }
 </style>

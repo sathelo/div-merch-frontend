@@ -1,19 +1,19 @@
 <template>
-  <section class="footer-info">
-    <div class="footer-info-blocks">
+  <section class="info">
+    <div class="info-blocks">
       <div
-        class="footer-info-blocks-block"
+        class="info-blocks__block block"
         v-for="({ title, items }, _keyItems, itemsIndex) in footer"
         :key="itemsIndex"
       >
-        <div class="footer-info-blocks-block__title">{{ title }}</div>
-        <div class="footer-info-blocks-block__wrapper">
+        <div class="block__title">{{ title }}</div>
+        <div class="block__wrapper">
           <a
-            class="footer-info-blocks-block__text"
+            class="block__text"
             v-for="(item, itemIndex) in items"
             :key="itemIndex"
-            :href="item.href ?? item.href"
-            :target="item.target ?? item.target"
+            :href="item.href ? item.href : '#'"
+            :target="item.target ? item.target : '_self'"
           >
             {{ item.text }}
           </a>
@@ -34,14 +34,14 @@ defineProps<IProps>();
 </script>
 
 <style lang="less" scoped>
-.footer-info {
+.info {
   width: 100%;
   margin-bottom: 32px;
 
   &-blocks {
     .flex-properties(flex, initial, space-between);
 
-    &-block {
+    .block {
       &__title {
         color: @grey-gradation--300;
         /* desktop/tag S */

@@ -6,7 +6,13 @@
       :key="itemIndex"
     >
       <li class="menu-nav__item item">
-        <a class="item__text" :href="href" :target="target">{{ name }}</a>
+        <a
+          class="item__text"
+          :href="href ? href : '#'"
+          :target="target ? target : '_self'"
+        >
+          {{ name }}
+        </a>
       </li>
     </ul>
   </nav>

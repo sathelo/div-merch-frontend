@@ -1,18 +1,14 @@
 <template>
-  <section class="footer-meta">
+  <section class="meta">
     <img
       :src="copyrightDivMerchUrl"
       alt="div-merch-copyright"
-      class="footer-meta__copyright"
+      class="meta__copyright"
     />
-    <div class="footer-meta__wrapper">
-      <img
-        :src="logoMastercardUrl"
-        alt="mastercard"
-        class="footer-meta__logo"
-      />
-      <img :src="logoMirUrl" alt="mir" class="footer-meta__logo" />
-      <img :src="logoVisaUrl" alt="visa" class="footer-meta__logo" />
+    <div class="meta__wrapper">
+      <img :src="logoMastercardUrl" alt="mastercard" class="meta__logo" />
+      <img :src="logoMirUrl" alt="mir" class="meta__logo" />
+      <img :src="logoVisaUrl" alt="visa" class="meta__logo" />
     </div>
   </section>
 </template>
@@ -25,7 +21,7 @@ import logoVisaUrl from "/logos/visa.svg";
 </script>
 
 <style lang="less" scoped>
-.footer-meta {
+.meta {
   .flex-properties(flex, initial, space-between);
 
   &__wrapper {

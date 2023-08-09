@@ -1,7 +1,7 @@
 type Nav = {
   name: string;
-  href: HTMLLinkElement["href"];
-  target: HTMLLinkElement["target"];
+  href?: HTMLLinkElement["href"];
+  target?: HTMLLinkElement["target"];
 };
 
 export type Menu = {

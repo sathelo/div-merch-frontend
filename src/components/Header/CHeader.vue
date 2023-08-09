@@ -21,6 +21,6 @@ import { actions } from "@/data/actions";
 <style lang="less" scoped>
 .header {
   .content(24px 40px);
-  .flex-properties(flex, initial, space-between);
+  .flex-properties(flex, center, space-between);
 }
 </style>

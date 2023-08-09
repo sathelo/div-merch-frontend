@@ -12,7 +12,7 @@ export type Actions = {
 };
 
 const defaultAction: Action = {
-  iconUrl: "/icons/default.svg",
+  iconUrl: "",
   href: "#",
   target: "_self",
 };
@@ -32,6 +32,6 @@ export const actions: Actions = {
   },
   shop: {
     ...defaultAction,
-    iconUrl: "/icons/shop.svg",
+    iconUrl: "/icons/basket.svg",
   },
 };

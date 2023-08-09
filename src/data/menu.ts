@@ -12,7 +12,7 @@ export type Menu = {
 };
 
 const defaultNav: Nav = {
-  name: "default",
+  name: "",
   href: "#",
   target: "_self",
 };

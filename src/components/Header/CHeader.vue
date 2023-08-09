@@ -22,5 +22,9 @@ import { actions } from "@/data/actions";
 .header {
   .content(24px 40px);
   .flex-properties(flex, center, space-between);
+
+  &__logo {
+    user-select: none;
+  }
 }
 </style>

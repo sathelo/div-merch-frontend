@@ -1,17 +1,13 @@
 <template>
   <page class="home-page">
-    <CMain />
-    <CFooter />
+    <Main class="home-page__main" />
+    <Footer />
   </page>
 </template>
 
 <script setup lang="ts">
-import CMain from "@/components/Main/CMain.vue";
-import CFooter from "@/components/Footer/CFooter.vue";
+import Main from "@/components/Main/CMain.vue";
+import Footer from "@/components/Footer/CFooter.vue";
 </script>
 
-<style lang="less" scoped>
-.home-page {
-  .page();
-}
-</style>
+<style lang="less" scoped></style>

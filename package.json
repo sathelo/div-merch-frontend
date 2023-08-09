@@ -9,8 +9,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/vue": "^2.0.0",
     "element-plus": "^2.3.8",
     "less": "^4.1.3",
+    "swiper": "^10.1.0",
     "vue": "^3.3.4",
     "vue-router": "^4.2.4"
   },

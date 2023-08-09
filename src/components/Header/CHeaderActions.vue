@@ -39,6 +39,10 @@ defineProps<IProps>();
   .btn {
     .content(16px 18px, 224px, @grey-gradation--white);
     .flex-properties(flex, center, center);
+
+    &__ico {
+      user-select: none;
+    }
   }
 }
 </style>

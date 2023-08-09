@@ -70,6 +70,8 @@ defineProps<IProps>();
         font-style: normal;
         font-weight: 400;
         line-height: 12px;
+
+        user-select: none;
       }
     }
   }

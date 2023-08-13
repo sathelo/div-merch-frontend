@@ -3,8 +3,8 @@
     <a class="header__logo logo" href="#" target="_self">
       <img class="logo__image" :src="logoDivMerchUrl" alt="div.merch" />
     </a>
-    <CHeaderMenu :menu="menu" />
-    <CHeaderActions :actions="actions" />
+    <CHeaderMenu class="header__menu" :menu="menu" />
+    <CHeaderActions class="header__actions" :actions="actions" />
   </header>
 </template>
 
@@ -14,8 +14,7 @@ import CHeaderActions from "./CHeaderActions.vue";
 
 import logoDivMerchUrl from "/logos/div-merch.svg";
 
-import { menu } from "@/data/menu";
-import { actions } from "@/data/actions";
+import { menu, actions } from "@/data/menu";
 </script>
 
 <style lang="less" scoped>

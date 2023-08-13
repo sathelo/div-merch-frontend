@@ -38,14 +38,8 @@ defineProps<IProps>();
 
   .item {
     &__text {
+      .text-m;
       color: @grey-gradation--black;
-
-      /* desktop/tag M */
-      font-family: Inter;
-      font-size: @desktop--tag--m;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 14px;
     }
   }
 }

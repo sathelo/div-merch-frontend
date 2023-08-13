@@ -43,13 +43,8 @@ defineProps<IProps>();
 
     .block {
       &__title {
+        .text-s;
         color: @grey-gradation--300;
-        /* desktop/tag S */
-        font-family: Inter;
-        font-size: @desktop--tag--s;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 12px;
         margin-bottom: 24px;
       }
 
@@ -63,13 +58,9 @@ defineProps<IProps>();
       }
 
       &__text {
+        .text-s;
         color: @grey-gradation--black;
-        /* desktop/tag S */
-        font-family: Inter;
-        font-size: 12px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 12px;
+        user-select: none;
       }
     }
   }

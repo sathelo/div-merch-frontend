@@ -1,6 +1,6 @@
 <template>
   <page class="not-found-page">
-    <section class="issue">
+    <section class="not-found-page__issue issue">
       <div class="issue__info info">
         <img :src="errorNotFound" alt="error 404" class="issue__img" />
         <p class="issue__text">Такой страницы не&nbsp;существует</p>
@@ -12,14 +12,12 @@
         </button>
       </div>
     </section>
-    <Footer />
   </page>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 import { Routes } from "@/router";
-import Footer from "@/components/Footer/CFooter.vue";
 
 import errorNotFound from "/images/not-found.png";
 

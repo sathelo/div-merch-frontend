@@ -20,4 +20,4 @@ npm run dev
 - [Less](https://lesscss.org/)
 - [Vue Router](https://v3.router.vuejs.org/)
 - [Element Plus](https://element-plus.org/)
-- [Vue Router](https://router.vuejs.org/)
+- [Swiper](https://swiperjs.com/)

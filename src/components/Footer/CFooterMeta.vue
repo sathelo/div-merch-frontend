@@ -3,12 +3,16 @@
     <img
       :src="copyrightDivMerchUrl"
       alt="div-merch-copyright"
-      class="meta__copyright"
+      class="meta__copyright logo"
     />
     <div class="meta__wrapper">
-      <img :src="logoMastercardUrl" alt="mastercard" class="meta__logo" />
-      <img :src="logoMirUrl" alt="mir" class="meta__logo" />
-      <img :src="logoVisaUrl" alt="visa" class="meta__logo" />
+      <img
+        :src="logoMastercardUrl"
+        alt="mastercard"
+        class="meta__mastercard logo"
+      />
+      <img :src="logoMirUrl" alt="mir" class="meta__mir logo" />
+      <img :src="logoVisaUrl" alt="visa" class="meta__visa logo" />
     </div>
   </section>
 </template>
@@ -28,6 +32,10 @@ import logoVisaUrl from "/logos/visa.svg";
     & > *:not(:last-child) {
       margin-right: 24px;
     }
+  }
+
+  .logo {
+    user-select: none;
   }
 }
 </style>

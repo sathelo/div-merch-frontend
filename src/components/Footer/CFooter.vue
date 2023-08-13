@@ -1,14 +1,15 @@
 <template>
   <footer class="footer">
-    <CFooterInfo :footer="footer" />
+    <CFooterInfo class="footer__info" :footer="footer" />
     <span class="footer__line"></span>
-    <CFooterMeta />
+    <CFooterMeta class="footer__meta" />
   </footer>
 </template>
 
 <script setup lang="ts">
 import CFooterInfo from "@/components/Footer/CFooterInfo.vue";
 import CFooterMeta from "@/components/Footer/CFooterMeta.vue";
+
 import { footer } from "@/data/footer";
 </script>
 

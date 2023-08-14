@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { Products } from "@/data/main";
+import type { Products } from "@/data/main/products.types";
 
 interface IProps {
   products: Products;
@@ -44,18 +44,6 @@ defineProps<IProps>();
       border: 1px solid @grey-gradation--100;
       flex-direction: column;
       flex-basis: calc(100% / 4);
-
-      @media screen and (min-width: 526px) {
-        flex-basis: calc(100%);
-      }
-
-      @media screen and (min-width: 756px) {
-        flex-basis: calc(100% / 2);
-      }
-
-      @media screen and (min-width: 984px) {
-        flex-basis: calc(100% / 3);
-      }
 
       &__photo {
         margin-bottom: 12px;

@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Categories } from "@/data/main";
+import type { Categories } from "@/data/main/categories.types";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";

@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Menu } from "@/data/menu";
+import type { Menu } from "@/data/header/menu.types";
 
 interface IProps {
   menu: Menu;

@@ -2,16 +2,21 @@
   <nav class="actions">
     <ul
       class="actions-nav"
-      v-for="({ iconUrl, href, target }, keyAction, actionIndex) in actions"
+      v-for="(action, actionIndex) in actions"
       :key="actionIndex"
     >
       <li class="actions-nav__item item">
         <a
           class="item__btn btn"
-          :href="href ? href : '#'"
-          :target="target ? target : '_self'"
+          :href="action.href ? action.href : '#'"
+          :target="action.target ? action.target : '_self'"
         >
-          <img class="btn__ico" :src="iconUrl" :alt="`${keyAction}`" />
+          <img
+            class="btn__ico"
+            :class="{`btn__ico--${action.name}`: action.name}"
+            :src="action.iconUrl"
+            :alt="`${action.name}`"
+          />
         </a>
       </li>
     </ul>
@@ -19,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Actions } from "@/data/actions";
+import type { Actions } from "@/data/header/action.types";
 
 interface IProps {
   actions: Actions;

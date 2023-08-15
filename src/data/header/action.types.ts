@@ -5,9 +5,9 @@ export type ActionWithoutName = {
 };
 
 export interface IActionWithName extends ActionWithoutName {
-  name: string;
+  name?: string;
 }
 
-export type Action = IActionWithName | ActionWithoutName;
+export type Action = IActionWithName;
 
 export type Actions = Action[];

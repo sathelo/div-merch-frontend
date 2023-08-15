@@ -70,6 +70,7 @@ defineProps<IProps>();
       flex-direction: column;
       width: 100%;
       border: 1px solid @grey-gradation--100;
+      cursor: pointer;
 
       &__photo {
         margin-bottom: 24px;

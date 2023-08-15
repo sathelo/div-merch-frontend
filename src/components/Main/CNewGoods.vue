@@ -44,6 +44,7 @@ defineProps<IProps>();
       border: 1px solid @grey-gradation--100;
       flex-direction: column;
       flex-basis: calc(100% / 4);
+      cursor: pointer;
 
       &__photo {
         margin-bottom: 12px;

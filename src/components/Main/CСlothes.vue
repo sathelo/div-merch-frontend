@@ -41,6 +41,7 @@ defineProps<IProps>();
       background-repeat: no-repeat;
       background-size: cover;
       background-position: top;
+      cursor: pointer;
 
       &:first-child {
         margin-right: 40px;

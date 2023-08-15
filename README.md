@@ -1,3 +1,8 @@
+# TODO
+
+- @/data/main this fix trash
+- @/components/Main--temp fix trash
+
 # div-merch-frontend
 
 ## Project setup

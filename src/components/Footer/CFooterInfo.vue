@@ -3,7 +3,7 @@
     <div class="info-blocks">
       <div
         class="info-blocks__block block"
-        v-for="({ title, items }, _keyItems, itemsIndex) in footer"
+        v-for="({ title, items }, _keyItems, itemsIndex) in info"
         :key="itemsIndex"
       >
         <div class="block__title">{{ title }}</div>
@@ -24,10 +24,10 @@
 </template>
 
 <script setup lang="ts">
-import { type Footer } from "@/data/footer";
+import type { Info } from "@/data/footer/info.types";
 
 interface IProps {
-  footer: Footer;
+  info: Info;
 }
 
 defineProps<IProps>();

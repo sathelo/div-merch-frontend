@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Slides } from "@/data/main";
+import type { Slides } from "@/data/main/slides.types";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay } from "swiper/modules";

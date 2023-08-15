@@ -1,34 +1,7 @@
-type FooterItem = {
-  text: string;
-  href?: HTMLLinkElement["href"];
-  target?: HTMLLinkElement["target"];
-};
+import { Info } from "./info.types";
 
-export type Footer = {
-  onlineShop: {
-    title: string;
-    items: FooterItem[];
-  };
-  offlineShop: {
-    title: string;
-    items: FooterItem[];
-  };
-  support: {
-    title: string;
-    items: FooterItem[];
-  };
-  info: {
-    title: string;
-    items: FooterItem[];
-  };
-  feedback: {
-    title: string;
-    items: FooterItem[];
-  };
-};
-
-export const footer: Footer = {
-  onlineShop: {
+export const info: Info = [
+  {
     title: "Онлайн магазин",
     items: [
       {
@@ -37,7 +10,7 @@ export const footer: Footer = {
       { text: "+7 (928) 700-90-90" },
     ],
   },
-  offlineShop: {
+  {
     title: "Офлайн магазин",
     items: [
       {
@@ -45,7 +18,7 @@ export const footer: Footer = {
       },
     ],
   },
-  support: {
+  {
     title: "Поддержка",
     items: [
       {
@@ -70,7 +43,7 @@ export const footer: Footer = {
       },
     ],
   },
-  info: {
+  {
     title: "Информация",
     items: [
       {
@@ -90,7 +63,7 @@ export const footer: Footer = {
       },
     ],
   },
-  feedback: {
+  {
     title: "Обратная связь",
     items: [
       {
@@ -110,4 +83,4 @@ export const footer: Footer = {
       },
     ],
   },
-};
+];

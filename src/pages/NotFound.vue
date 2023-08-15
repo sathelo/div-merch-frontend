@@ -48,29 +48,16 @@ const router = useRouter();
     }
 
     &__text {
-      color: @grey-gradation--black;
+      .text-h2;
       text-align: center;
-
-      /* desktop/h2 */
-      font-family: Inter;
-      font-size: @desktop--h2;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 36px;
-
+      color: @grey-gradation--black;
       margin-bottom: 24px;
     }
 
     .btn {
       &__text {
+        .text-lead-s;
         color: @grey-gradation--white;
-
-        /* desktop/lead S */
-        font-family: Inter;
-        font-size: @desktop--lead--s;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 20px;
       }
     }
   }

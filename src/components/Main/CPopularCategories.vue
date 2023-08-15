@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Categories } from "@/data/main";
+import type { Categories } from "@/data/main/categories.types";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
@@ -70,6 +70,7 @@ defineProps<IProps>();
       flex-direction: column;
       width: 100%;
       border: 1px solid @grey-gradation--100;
+      cursor: pointer;
 
       &__photo {
         margin-bottom: 24px;

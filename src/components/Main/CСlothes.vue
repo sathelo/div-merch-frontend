@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Clothes } from "@/data/main";
+import type { Clothes } from "@/data/main/clothes.types";
 
 interface IProps {
   clothes: Clothes;
@@ -41,6 +41,7 @@ defineProps<IProps>();
       background-repeat: no-repeat;
       background-size: cover;
       background-position: top;
+      cursor: pointer;
 
       &:first-child {
         margin-right: 40px;

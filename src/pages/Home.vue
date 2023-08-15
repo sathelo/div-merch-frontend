@@ -6,8 +6,14 @@
         class="main__popular-categories"
         :categories="categories"
       />
-      <CСlothes :clothes="clothes" class="main__clothes" />
-      <CNewGoods :products="filteredProducts" class="main__new-goods" />
+      <CСlothes
+        :clothes="clothes"
+        class="main__clothes"
+      />
+      <CNewGoods
+        :products="filteredProducts"
+        class="main__new-goods"
+      />
     </section>
   </page>
 </template>

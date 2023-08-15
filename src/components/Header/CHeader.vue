@@ -1,10 +1,24 @@
 <template>
   <header class="header">
-    <a class="header__logo logo" href="#" target="_self">
-      <img class="logo__image" :src="logoDivMerchUrl" alt="div.merch" />
+    <a
+      class="header__logo logo"
+      href="#"
+      target="_self"
+    >
+      <img
+        class="logo__image"
+        :src="logoDivMerchUrl"
+        alt="div.merch"
+      >
     </a>
-    <CHeaderMenu class="header__menu" :menu="menu" />
-    <CHeaderActions class="header__actions" :actions="filteredActions" />
+    <CHeaderMenu
+      class="header__menu"
+      :menu="menu"
+    />
+    <CHeaderActions
+      class="header__actions"
+      :actions="filteredActions"
+    />
   </header>
 </template>
 
@@ -24,7 +38,7 @@ const filteredActions = computed(() => {
   const reg = /(icons\/)(\w+).svg/;
   const res = actions.map((action: Action) => {
     const match = action.iconUrl.match(reg);
-    const iconName = match ? match[2] : null;
+    const iconName = match ? match[2] : undefined;
     return {
       ...action,
       name: iconName,

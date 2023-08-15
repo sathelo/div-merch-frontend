@@ -1,9 +1,9 @@
 <template>
   <nav class="actions">
     <ul
-      class="actions-nav"
       v-for="(action, actionIndex) in actions"
       :key="actionIndex"
+      class="actions-nav"
     >
       <li class="actions-nav__item item">
         <a
@@ -17,14 +17,16 @@
             :class="`btn__ico--${getName(action.name)}`"
             :src="action.iconUrl"
             :alt="`${getName(action.name)}`"
-          />
+          >
         </a>
 
         <div
           v-if="isBasket(action.name) && counter"
           class="item__counter counter"
         >
-          <p class="counter__text">{{ counter }}</p>
+          <p class="counter__text">
+            {{ counter }}
+          </p>
         </div>
       </li>
     </ul>

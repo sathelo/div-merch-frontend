@@ -2,18 +2,20 @@
   <section class="info">
     <div class="info-blocks">
       <div
-        class="info-blocks__block block"
         v-for="({ title, items }, _keyItems, itemsIndex) in info"
         :key="itemsIndex"
+        class="info-blocks__block block"
       >
-        <div class="block__title">{{ title }}</div>
+        <div class="block__title">
+          {{ title }}
+        </div>
         <div class="block__wrapper">
           <a
-            class="block__text"
             v-for="(item, itemIndex) in items"
             :key="itemIndex"
-            :href="item.href ? item.href : '#'"
-            :target="item.target ? item.target : '_self'"
+            class="block__text"
+            :href="item.href ? item.href : ''"
+            :target="item.target ? item.target : ''"
           >
             {{ item.text }}
           </a>

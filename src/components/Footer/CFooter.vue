@@ -1,7 +1,10 @@
 <template>
   <footer class="footer">
-    <CFooterInfo class="footer__info" :info="info" />
-    <span class="footer__line"></span>
+    <CFooterInfo
+      class="footer__info"
+      :info="info"
+    />
+    <span class="footer__line" />
     <CFooterMeta class="footer__meta" />
   </footer>
 </template>

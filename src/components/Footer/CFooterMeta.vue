@@ -4,15 +4,23 @@
       :src="copyrightDivMerchUrl"
       alt="div-merch-copyright"
       class="meta__copyright logo"
-    />
+    >
     <div class="meta__wrapper">
       <img
         :src="logoMastercardUrl"
         alt="mastercard"
         class="meta__mastercard logo"
-      />
-      <img :src="logoMirUrl" alt="mir" class="meta__mir logo" />
-      <img :src="logoVisaUrl" alt="visa" class="meta__visa logo" />
+      >
+      <img
+        :src="logoMirUrl"
+        alt="mir"
+        class="meta__mir logo"
+      >
+      <img
+        :src="logoVisaUrl"
+        alt="visa"
+        class="meta__visa logo"
+      >
     </div>
   </section>
 </template>

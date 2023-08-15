@@ -1,6 +1,14 @@
 <template>
-  <button type="button" :class="classes">
-    <div v-if="$slots.icon" class="button__ico"><slot name="icon" /></div>
+  <button
+    type="button"
+    :class="classes"
+  >
+    <div
+      v-if="$slots.icon"
+      class="button__ico"
+    >
+      <slot name="icon" />
+    </div>
     <slot />
   </button>
 </template>

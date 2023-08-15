@@ -1,9 +1,9 @@
 <template>
   <nav class="menu">
     <ul
-      class="menu-nav"
       v-for="({ name, href, target }, itemIndex) in menu"
       :key="itemIndex"
+      class="menu-nav"
     >
       <li class="menu-nav__item item">
         <a

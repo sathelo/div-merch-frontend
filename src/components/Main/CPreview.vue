@@ -2,7 +2,7 @@
   <swiper
     :modules="[Autoplay, Pagination]"
     :slides-per-view="'auto'"
-    :grabCursor="true"
+    :grab-cursor="true"
     :breakpoints="{
       1024: {
         spaceBetween: 40,
@@ -26,8 +26,12 @@
       class="preview__slide slide"
     >
       <div class="slide__info">
-        <h2 class="slide__title">{{ slide.info.title }}</h2>
-        <h2 class="slide__subtitle">{{ slide.info.subtitle }}</h2>
+        <h2 class="slide__title">
+          {{ slide.info.title }}
+        </h2>
+        <h2 class="slide__subtitle">
+          {{ slide.info.subtitle }}
+        </h2>
       </div>
     </swiper-slide>
   </swiper>

@@ -2,13 +2,21 @@
   <page class="not-found-page">
     <section class="not-found-page__issue issue">
       <div class="issue__info info">
-        <img :src="errorNotFound" alt="error 404" class="issue__img" />
-        <p class="issue__text">Такой страницы не&nbsp;существует</p>
-        <button
-          @click="router.push({ name: Routes.home })"
-          class="issue__btn btn btn--primary"
+        <img
+          :src="errorNotFound"
+          alt="error 404"
+          class="issue__img"
         >
-          <p class="btn__text">Вернуться на&nbsp;главную</p>
+        <p class="issue__text">
+          Такой страницы не&nbsp;существует
+        </p>
+        <button
+          class="issue__btn btn btn--primary"
+          @click="router.push({ name: Routes.home })"
+        >
+          <p class="btn__text">
+            Вернуться на&nbsp;главную
+          </p>
         </button>
       </div>
     </section>

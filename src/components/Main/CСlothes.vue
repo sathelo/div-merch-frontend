@@ -8,7 +8,9 @@
         :style="{ backgroundImage: `url(${cloth.img})` }"
       >
         <div class="card__btn btn">
-          <div class="btn__text">{{ cloth.title }}</div>
+          <div class="btn__text">
+            {{ cloth.title }}
+          </div>
         </div>
       </div>
     </div>

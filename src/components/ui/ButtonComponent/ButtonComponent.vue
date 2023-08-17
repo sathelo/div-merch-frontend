@@ -5,7 +5,7 @@
   >
     <div
       v-if="$slots.icon"
-      class="button__ico"
+      class="btn__ico"
     >
       <slot name="icon" />
     </div>
@@ -15,33 +15,32 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { TypeCButton, ICButtonProps } from "./CButton.types";
+import { TypesCButton, ICButtonProps } from "./ButtonComponent.types";
 
 const props = defineProps<ICButtonProps>();
 
 const classes = computed(() => ({
   btn: true,
-  "btn--primary": props.variant === TypeCButton.primary,
-  "btn--secondary": props.variant === TypeCButton.secondary,
-  "btn--link": props.variant === TypeCButton.link,
+  "btn--primary": props.variant === TypesCButton.primary,
+  "btn--secondary": props.variant === TypesCButton.secondary,
+  "btn--link": props.variant === TypesCButton.link,
 }));
 </script>
 
 <style lang="less" scoped>
 .btn {
+  .flex-properties(flex, center, center);
   transition: 0.2s;
   cursor: pointer;
 
+  &__ico {
+    margin-right: 8px;
+  }
+
   &--primary {
+    .text-lead-s;
     .content(18px 24px, 1000px, @blue--500);
     color: @grey-gradation--white;
-
-    /* desktop/lead S */
-    font-family: Inter;
-    font-size: @desktop--lead--s;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px;
 
     &:hover {
       background: @blue--400;
@@ -56,24 +55,18 @@ const classes = computed(() => ({
     }
 
     &:disabled {
-      color: var(--grey-gradation-200, #b3b3b3);
+      color: @grey-gradation--200;
 
       background: @grey-gradation--100;
     }
   }
 
   &--secondary {
+    .text-lead-s;
     .content(18px 24px, 1000px);
     border: 1px solid @purple--100;
 
     color: @blue--500;
-
-    /* desktop/lead S */
-    font-family: Inter;
-    font-size: @desktop--lead--s;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 20px;
 
     &:hover {
       background: @blue--100;
@@ -91,10 +84,31 @@ const classes = computed(() => ({
     }
 
     &:disabled {
-      color: var(--grey-gradation-200, #b3b3b3);
+      color: @grey-gradation--200;
 
       background: @grey-gradation--100;
       border: 1px solid @grey-gradation--100;
+    }
+  }
+
+  &--link {
+    .text-m;
+    color: @grey-gradation--black;
+
+    &:hover {
+      color: @blue--500;
+    }
+
+    &:focus {
+      color: @blue--500;
+    }
+
+    &:active {
+      color: @blue--500;
+    }
+
+    &:disabled {
+      color: @grey-gradation--100;
     }
   }
 }

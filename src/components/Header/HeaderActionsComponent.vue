@@ -7,9 +7,9 @@
     >
       <li class="actions-nav__item item">
         <a
-          class="item__btn btn"
-          :class="`btn__${getName(action.name)}`"
-          :href="action.href ? action.href : '#'"
+        :class="`btn__${getName(action.name)}`"
+        :href="action.href ? action.href : '#'"
+        class="item__btn btn"
           :target="action.target ? action.target : '_self'"
         >
           <img

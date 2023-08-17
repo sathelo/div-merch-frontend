@@ -57,7 +57,7 @@ defineProps<IProps>();
         &__text {
           .text-lead-m;
           text-align: center;
-          color: --grey-gradation--black;
+          color: @grey-gradation--black;
         }
       }
     }

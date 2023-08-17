@@ -2,8 +2,7 @@
   <header class="header">
     <a
       class="header__logo logo"
-      href="#"
-      target="_self"
+      @click="router.push({name: Routes.home})"
     >
       <img
         class="logo__image"
@@ -11,11 +10,11 @@
         alt="div.merch"
       >
     </a>
-    <CHeaderMenu
+    <HeaderMenuComponent
       class="header__menu"
       :menu="menu"
     />
-    <CHeaderActions
+    <HeaderActionsComponent
       class="header__actions"
       :actions="filteredActions"
     />
@@ -24,14 +23,16 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
-import CHeaderMenu from "./CHeaderMenu.vue";
-import CHeaderActions from "./CHeaderActions.vue";
+import HeaderMenuComponent from "./HeaderMenuComponent.vue";
+import HeaderActionsComponent from "./HeaderActionsComponent.vue";
 
 import logoDivMerchUrl from "/logos/div-merch.svg";
 
 import { menu } from "@/data/header/menu";
 import { actions } from "@/data/header/action";
+import { Routes } from "@/router/routes.types";
 import type { Action } from "@/data/header/action.types";
 
 const filteredActions = computed(() => {
@@ -46,6 +47,8 @@ const filteredActions = computed(() => {
   });
   return res;
 });
+
+const router = useRouter();
 </script>
 
 <style lang="less" scoped>
@@ -55,6 +58,7 @@ const filteredActions = computed(() => {
 
   &__logo {
     user-select: none;
+    cursor: pointer;
   }
 }
 </style>

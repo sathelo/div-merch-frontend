@@ -1,26 +1,21 @@
-import { Nav, Menu } from "./menu.types";
-
-const defaultNav: Nav = {
-  name: "",
-  href: "#",
-  target: "_self",
-};
+import { Routes } from "@/router/routes.types";
+import { Menu } from "./menu.types";
 
 export const menu: Menu = [
   {
-    ...defaultNav,
-    name: "Главная",
+    title: "Главная",
+    namePath: Routes.home,
   },
   {
-    ...defaultNav,
-    name: "Коллекции",
+    title: "Коллекции",
+    namePath: Routes.collections,
   },
   {
-    ...defaultNav,
-    name: "Все товары",
+    title: "Все товары",
+    namePath: Routes.allProducts,
   },
   {
-    ...defaultNav,
-    name: "Категории",
+    title: "Категории",
+    namePath: Routes.categories,
   },
 ];

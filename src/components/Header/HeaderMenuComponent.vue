@@ -1,31 +1,39 @@
 <template>
   <nav class="menu">
     <ul
-      v-for="({ name, href, target }, itemIndex) in menu"
+      v-for="({ title, namePath }, itemIndex) in menu"
       :key="itemIndex"
       class="menu-nav"
     >
-      <li class="menu-nav__item item">
-        <a
-          class="item__text"
-          :href="href ? href : '#'"
-          :target="target ? target : '_self'"
+      <li
+        class="menu-nav__item item"
+      >
+        <ButtonComponent
+          :variant="TypesCButton.link"
+          @click="router.push({name: namePath})"
         >
-          {{ name }}
-        </a>
+          {{ title }}
+        </ButtonComponent>
       </li>
     </ul>
   </nav>
 </template>
 
 <script setup lang="ts">
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { useRouter } from "vue-router";
+
 import type { Menu } from "@/data/header/menu.types";
+import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
 
 interface IProps {
   menu: Menu;
 }
 
 defineProps<IProps>();
+
+const router = useRouter();
 </script>
 
 <style lang="less" scoped>

@@ -1,16 +1,16 @@
 <template>
   <page class="home-page">
     <section class="home-page__main main">
-      <CPreview :slides="slides" />
-      <CPopularCategories
+      <PreviewComponent :slides="slides" />
+      <PopularCategoriesComponent
         class="main__popular-categories"
         :categories="categories"
       />
-      <CСlothes
+      <ClothesComponent
         :clothes="clothes"
         class="main__clothes"
       />
-      <CNewGoods
+      <NewGoodsComponent
         :products="filteredProducts"
         class="main__new-goods"
       />
@@ -21,10 +21,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import CPreview from "@/components/Main/CPreview.vue";
-import CPopularCategories from "@/components/Main/CPopularCategories.vue";
-import CСlothes from "@/components/Main/CСlothes.vue";
-import CNewGoods from "@/components/Main/CNewGoods.vue";
+import PreviewComponent from "@/components/Main/PreviewComponent.vue";
+import PopularCategoriesComponent from "@/components/Main/PopularCategoriesComponent.vue";
+import ClothesComponent from "@/components/Main/ClothesComponent.vue";
+import NewGoodsComponent from "@/components/Main/NewGoodsComponent.vue";
 
 import { slides } from "@/data/main/slides";
 import { categories } from "@/data/main/categories";

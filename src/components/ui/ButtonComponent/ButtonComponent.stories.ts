@@ -2,8 +2,8 @@
 
 import type { Meta, StoryObj } from "@storybook/vue3";
 
-import CButton from "@/components/ui/CButton/CButton.vue";
-import { ICButtonProps, TypeCButton } from "./CButton.types";
+import CButton from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+import { ICButtonProps, TypesCButton } from "./ButtonComponent.types";
 
 type ComponentMeta = Meta<typeof CButton>;
 type ComponentStory = StoryObj<typeof meta>;
@@ -16,7 +16,7 @@ const meta: ComponentMeta = {
     setup() {
       return { args };
     },
-    template: "<CButton :variant='args.variant'>button<CButton/>",
+    template: "<ButtonComponent :variant='args.variant'>button<ButtonComponent/>",
   }),
 } as ComponentStory;
 
@@ -25,16 +25,16 @@ export default meta;
 export const Default: ComponentStory = {};
 export const Primary: ComponentStory = {
   args: {
-    variant: TypeCButton.primary,
+    variant: TypesCButton.primary,
   },
 };
 export const Secondary: ComponentStory = {
   args: {
-    variant: TypeCButton.secondary,
+    variant: TypesCButton.secondary,
   },
 };
 export const Link: ComponentStory = {
   args: {
-    variant: TypeCButton.link,
+    variant: TypesCButton.link,
   },
 };

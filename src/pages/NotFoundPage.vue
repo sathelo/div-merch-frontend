@@ -2,22 +2,15 @@
   <page class="not-found-page">
     <section class="not-found-page__issue issue">
       <div class="issue__info info">
-        <img
-          :src="errorNotFound"
-          alt="error 404"
-          class="issue__img"
-        >
-        <p class="issue__text">
-          Такой страницы не&nbsp;существует
-        </p>
-        <button
-          class="issue__btn btn btn--primary"
+        <img :src="errorNotFound" alt="error 404" class="issue__img" />
+        <p class="issue__text">Такой страницы не&nbsp;существует</p>
+        <ButtonComponent
+          :variant="TypesCButton.primary"
+          class="issue__btn btn"
           @click="router.push({ name: Routes.home })"
         >
-          <p class="btn__text">
-            Вернуться на&nbsp;главную
-          </p>
-        </button>
+          <p class="btn__text">Вернуться на&nbsp;главную</p>
+        </ButtonComponent>
       </div>
     </section>
   </page>
@@ -25,9 +18,12 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { Routes } from "@/router";
 
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 import errorNotFound from "/images/not-found.png";
+
+import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { Routes } from "@/router/routes.types";
 
 const router = useRouter();
 </script>
@@ -60,13 +56,6 @@ const router = useRouter();
       text-align: center;
       color: @grey-gradation--black;
       margin-bottom: 24px;
-    }
-
-    .btn {
-      &__text {
-        .text-lead-s;
-        color: @grey-gradation--white;
-      }
     }
   }
 }

@@ -1,17 +1,17 @@
 <template>
   <footer class="footer">
-    <CFooterInfo
+    <FooterInfoComponent
       class="footer__info"
       :info="info"
     />
     <span class="footer__line" />
-    <CFooterMeta class="footer__meta" />
+    <FooterMetaComponent class="footer__meta" />
   </footer>
 </template>
 
 <script setup lang="ts">
-import CFooterInfo from "@/components/Footer/CFooterInfo.vue";
-import CFooterMeta from "@/components/Footer/CFooterMeta.vue";
+import FooterInfoComponent from "@/components/Footer/FooterInfoComponent.vue";
+import FooterMetaComponent from "@/components/Footer/FooterMetaComponent.vue";
 
 import { info } from "@/data/footer/info";
 </script>

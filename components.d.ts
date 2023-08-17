@@ -7,6 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'СlothesComponent': typeof import('./src/components/Main/СlothesComponent.vue')['default']
+    Button: typeof import('./src/components/ui/CButton/Button.vue')['default']
+    ButtonComponent: typeof import('./src/components/ui/ButtonComponent/ButtonComponent.vue')['default']
     'CСlothes': typeof import('./src/components/Main/CСlothes.vue')['default']
     CButton: typeof import('./src/components/ui/CButton/CButton.vue')['default']
     CFooter: typeof import('./src/components/Footer/CFooter.vue')['default']
@@ -15,6 +18,7 @@ declare module 'vue' {
     CHeader: typeof import('./src/components/Header/CHeader.vue')['default']
     CHeaderActions: typeof import('./src/components/Header/CHeaderActions.vue')['default']
     CHeaderMenu: typeof import('./src/components/Header/CHeaderMenu.vue')['default']
+    ClothesComponent: typeof import('./src/components/Main/ClothesComponent.vue')['default']
     CMain: typeof import('./src/components/Main--temp/CMain.vue')['default']
     CMainBreadcrumbs: typeof import('./src/components/Main--temp/CMainBreadcrumbs.vue')['default']
     CMainContent: typeof import('./src/components/Main--temp/CMainContent.vue')['default']
@@ -27,6 +31,16 @@ declare module 'vue' {
     CNewGoods: typeof import('./src/components/Main/CNewGoods.vue')['default']
     CPopularCategories: typeof import('./src/components/Main/CPopularCategories.vue')['default']
     CPreview: typeof import('./src/components/Main/CPreview.vue')['default']
+    FooterComponent: typeof import('./src/components/Footer/FooterComponent.vue')['default']
+    FooterInfoComponent: typeof import('./src/components/Footer/FooterInfoComponent.vue')['default']
+    FooterMetaComponent: typeof import('./src/components/Footer/FooterMetaComponent.vue')['default']
+    HeaderActionsComponent: typeof import('./src/components/Header/HeaderActionsComponent.vue')['default']
+    HeaderComponent: typeof import('./src/components/Header/HeaderComponent.vue')['default']
+    HeaderMenuComponent: typeof import('./src/components/Header/HeaderMenuComponent.vue')['default']
+    NewGoodsComponent: typeof import('./src/components/Main/NewGoodsComponent.vue')['default']
+    PickiComponent: typeof import('./src/components/Main/PickiComponent.vue')['default']
+    PopularCategoriesComponent: typeof import('./src/components/Main/PopularCategoriesComponent.vue')['default']
+    PreviewComponent: typeof import('./src/components/Main/PreviewComponent.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

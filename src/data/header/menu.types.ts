@@ -1,7 +1,8 @@
+import { RouteRecordName } from "vue-router";
+
 export type Nav = {
-  name: string;
-  href?: HTMLLinkElement["href"];
-  target?: HTMLLinkElement["target"];
+  title: string;
+  namePath?: RouteRecordName;
 };
 
 export type Menu = Nav[];

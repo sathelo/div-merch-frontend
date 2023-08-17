@@ -4,7 +4,7 @@
       Популярные категории
     </h2>
     <div class="popular-categories__info">
-      <swiper
+      <Swiper
         :breakpoints="{
           0: {
             grabCursor: true,
@@ -17,7 +17,7 @@
         }"
         class="popular-categories-cards"
       >
-        <swiper-slide
+        <SwiperSlide
           v-for="(category, categoryIndex) in categories"
           :key="categoryIndex"
           class="popular-categories-cards__card card"
@@ -30,19 +30,25 @@
           <p class="card__title">
             {{ category.title }}
           </p>
-        </swiper-slide>
-      </swiper>
-      <button class="popular-categories__btn btn btn--secondary">
+        </SwiperSlide>
+      </Swiper>
+      <ButtonComponent
+        class="popular-categories__btn btn"
+        :variant="TypesCButton.secondary"
+      >
         <p class="btn__text">
           Все категории
         </p>
-      </button>
+      </ButtonComponent>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
 import type { Categories } from "@/data/main/categories.types";
+import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
@@ -95,11 +101,7 @@ defineProps<IProps>();
   }
 
   .btn {
-    &__text {
-      .text-lead-s;
-      text-align: center;
-      color: @grey-gradation--black;
-    }
+    margin: 0 auto;
   }
 }
 </style>

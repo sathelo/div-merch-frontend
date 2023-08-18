@@ -9,6 +9,7 @@
 
 ```
 npm install
+npm run prepare
 ```
 
 ## Compiles and hot-reloads for development

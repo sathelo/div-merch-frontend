@@ -23,23 +23,31 @@ export const info: Info = [
     items: [
       {
         text: "Помощь",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Возврат",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Доставка и оплата",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Программа лояльности",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
     ],
   },
@@ -48,18 +56,24 @@ export const info: Info = [
     items: [
       {
         text: "Контакты",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Магазины",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Блог",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
     ],
   },
@@ -68,18 +82,24 @@ export const info: Info = [
     items: [
       {
         text: "Подписаться на email рассылку",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Див в вк",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
       {
         text: "Див в телеграме",
-        href: "#",
-        target: "_self",
+        args: {
+          href: "#",
+          target: "_self",
+        },
       },
     ],
   },

@@ -1,7 +1,6 @@
 # TODO
 
-- @/data/main this fix trash
-- @/components/Main--temp fix trash
+- настроить сертификат (https)
 
 # div-merch-frontend
 
@@ -9,6 +8,7 @@
 
 ```
 npm install
+npm run prepare
 ```
 
 ## Compiles and hot-reloads for development

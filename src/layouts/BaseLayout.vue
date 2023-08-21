@@ -1,14 +1,14 @@
 <template>
   <section class="base-layout">
-    <Header />
+    <HeaderComponent />
     <router-view />
-    <Footer />
+    <FooterComponent />
   </section>
 </template>
 
 <script setup lang="ts">
-import Header from "@/components/Header/CHeader.vue";
-import Footer from "@/components/Footer/CFooter.vue";
+import HeaderComponent from "@/components/Header/HeaderComponent.vue";
+import FooterComponent from "@/components/Footer/FooterComponent.vue";
 </script>
 
 <style lang="less" scoped></style>

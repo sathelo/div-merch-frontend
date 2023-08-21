@@ -1,7 +1,6 @@
 # TODO
 
-- @/data/main this fix trash
-- @/components/Main--temp fix trash
+- настроить сертификат (https)
 
 # div-merch-frontend
 

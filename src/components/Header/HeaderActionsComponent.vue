@@ -6,20 +6,14 @@
       class="actions-nav"
     >
       <li class="actions-nav__item item">
-        <a
-        :class="`btn__${getName(action.name)}`"
-        :href="action.href ? action.href : '#'"
-        class="item__btn btn"
-          :target="action.target ? action.target : '_self'"
-        >
+        <ButtonComponent :variant="TypesCButton.round" class="item__btn btn">
           <img
             class="btn__ico"
             :class="`btn__ico--${getName(action.name)}`"
             :src="action.iconUrl"
             :alt="`${getName(action.name)}`"
-          >
-        </a>
-
+          />
+        </ButtonComponent>
         <div
           v-if="isBasket(action.name) && counter"
           class="item__counter counter"
@@ -34,8 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Actions, Action } from "@/data/header/action.types";
 import { ref } from "vue";
+
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import type { Actions, Action } from "@/data/header/action.types";
 
 interface IProps {
   actions: Actions;
@@ -49,7 +47,7 @@ function getName(name: Action["name"]): Action["name"] {
   return name ? name : "";
 }
 
-function isBasket(name: Action["name"]): Boolean {
+function isBasket(name: Action["name"]): boolean {
   return name === "basket";
 }
 </script>
@@ -66,19 +64,6 @@ function isBasket(name: Action["name"]): Boolean {
     position: relative;
   }
 
-  .btn {
-    .content(16px 18px, 224px, initial);
-    .flex-properties(flex, center, center);
-
-    &__ico {
-      user-select: none;
-    }
-
-    &__basket {
-      .content(16px 18px, 224px, @grey-gradation--white);
-    }
-  }
-
   .counter {
     .content(0, 50%, @blue--500);
     .flex-properties(flex, center, center);
@@ -90,7 +75,7 @@ function isBasket(name: Action["name"]): Boolean {
 
     &__text {
       .text-s;
-      color: var(--grey-gradation-white, #fff);
+      color: @grey-gradation--white;
     }
   }
 }

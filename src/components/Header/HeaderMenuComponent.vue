@@ -5,12 +5,10 @@
       :key="itemIndex"
       class="menu-nav"
     >
-      <li
-        class="menu-nav__item item"
-      >
+      <li class="menu-nav__item item">
         <ButtonComponent
           :variant="TypesCButton.link"
-          @click="router.push({name: namePath})"
+          @click="router.push({ name: namePath })"
         >
           {{ title }}
         </ButtonComponent>

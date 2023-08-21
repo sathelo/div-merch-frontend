@@ -10,15 +10,25 @@
           {{ title }}
         </div>
         <div class="block__wrapper">
-          <a
+          <div
             v-for="(item, itemIndex) in items"
             :key="itemIndex"
-            class="block__text"
-            :href="item.href ? item.href : ''"
-            :target="item.target ? item.target : ''"
+            class="block__item item"
           >
-            {{ item.text }}
-          </a>
+            <p v-if="isBtn(item?.args)" class="item__text">
+              {{ item.text }}
+            </p>
+            <ButtonComponent
+              v-else
+              :variant="TypesCButton.link"
+              :size="Size.s"
+              class="item__btn btn"
+            >
+              <p class="btn__text">
+                {{ item.text }}
+              </p>
+            </ButtonComponent>
+          </div>
         </div>
       </div>
     </div>
@@ -26,13 +36,21 @@
 </template>
 
 <script setup lang="ts">
-import type { Info } from "@/data/footer/info.types";
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { Size } from "@/types/enums/typography.enum";
+import type { Info, DataInfoWithoutTextBlock } from "@/data/footer/info.types";
 
 interface IProps {
   info: Info;
 }
 
 defineProps<IProps>();
+
+function isBtn(args?: DataInfoWithoutTextBlock): boolean {
+  return !(args?.href || args?.target || args?.namePath);
+}
 </script>
 
 <style lang="less" scoped>
@@ -57,12 +75,14 @@ defineProps<IProps>();
         & > *:not(:last-child) {
           margin-bottom: 16px;
         }
-      }
 
-      &__text {
-        .text-s;
-        color: @grey-gradation--black;
-        user-select: none;
+        .item {
+          &__text {
+            .text-s;
+            color: @grey-gradation--black;
+            user-select: none;
+          }
+        }
       }
     }
   }

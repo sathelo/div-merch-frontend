@@ -2,21 +2,23 @@
 
 import type { Meta, StoryObj } from "@storybook/vue3";
 
-import CButton from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 import { ICButtonProps, TypesCButton } from "./ButtonComponent.types";
 
-type ComponentMeta = Meta<typeof CButton>;
+type ComponentMeta = Meta<typeof ButtonComponent>;
 type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
-  title: "Button/CButton",
-  component: CButton,
+  title: "Button/ButtonComponent",
+  tags: ["autodocs"],
+  component: ButtonComponent,
   render: (args: ICButtonProps) => ({
-    components: { CButton },
+    components: { ButtonComponent },
     setup() {
       return { args };
     },
-    template: "<ButtonComponent :variant='args.variant'>button<ButtonComponent/>",
+    template:
+      "<ButtonComponent :variant='args.variant' :variant='args.size' :disabled='args.disabled'>button<ButtonComponent/>",
   }),
 } as ComponentStory;
 
@@ -36,5 +38,10 @@ export const Secondary: ComponentStory = {
 export const Link: ComponentStory = {
   args: {
     variant: TypesCButton.link,
+  },
+};
+export const Round: ComponentStory = {
+  args: {
+    variant: TypesCButton.round,
   },
 };

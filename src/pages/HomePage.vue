@@ -6,14 +6,8 @@
         class="main__popular-categories"
         :categories="categories"
       />
-      <ClothesComponent
-        :clothes="clothes"
-        class="main__clothes"
-      />
-      <NewGoodsComponent
-        :products="filteredProducts"
-        class="main__new-goods"
-      />
+      <ClothesComponent :clothes="clothes" class="main__clothes" />
+      <NewGoodsComponent :products="filteredProducts" class="main__new-goods" />
     </section>
   </page>
 </template>
@@ -47,7 +41,7 @@ const filteredProducts = computed(() => {
 <style lang="less" scoped>
 .home-page {
   .main {
-    .page();
+    .page;
     .content(40px, 40px, @grey-gradation--white);
   }
 }

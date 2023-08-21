@@ -1,7 +1,14 @@
-export type DataInfoBlock = {
-  text: string;
+import { RouteRecordName } from "vue-router";
+
+export type DataInfoWithoutTextBlock = {
   href?: HTMLLinkElement["href"];
   target?: HTMLLinkElement["target"];
+  namePath?: RouteRecordName;
+};
+
+export type DataInfoBlock = {
+  text: string;
+  args?: DataInfoWithoutTextBlock;
 };
 
 export type InfoBlock = {

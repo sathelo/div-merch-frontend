@@ -1,12 +1,6 @@
 <template>
-  <button
-    type="button"
-    :class="classes"
-  >
-    <div
-      v-if="$slots.icon"
-      class="btn__ico"
-    >
+  <button type="button" :class="classes" :disabled="isDisabled">
+    <div v-if="$slots.icon" class="btn__ico">
       <slot name="icon" />
     </div>
     <slot />
@@ -15,6 +9,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+
 import { TypesCButton, ICButtonProps } from "./ButtonComponent.types";
 
 const props = defineProps<ICButtonProps>();
@@ -24,7 +19,13 @@ const classes = computed(() => ({
   "btn--primary": props.variant === TypesCButton.primary,
   "btn--secondary": props.variant === TypesCButton.secondary,
   "btn--link": props.variant === TypesCButton.link,
+  "btn--round": props.variant === TypesCButton.round,
+  [`${props.size}`]: props.size,
 }));
+
+const isDisabled = computed(() => {
+  return props.disabled ? true : false;
+});
 </script>
 
 <style lang="less" scoped>
@@ -33,7 +34,7 @@ const classes = computed(() => ({
   transition: 0.2s;
   cursor: pointer;
 
-  &__ico {
+  &--primary > &__ico {
     margin-right: 8px;
   }
 
@@ -109,6 +110,27 @@ const classes = computed(() => ({
 
     &:disabled {
       color: @grey-gradation--100;
+    }
+  }
+
+  &--round {
+    .content(16px, 24px);
+
+    &:hover {
+      background: @grey-gradation--white;
+    }
+
+    &:focus {
+      background: @grey-gradation--white;
+    }
+
+    &:active {
+      background: @grey-gradation--white;
+    }
+
+    &:disabled {
+      color: @grey-gradation--300;
+      background: @grey-gradation--white;
     }
   }
 }

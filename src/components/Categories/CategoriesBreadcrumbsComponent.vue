@@ -1,9 +1,9 @@
 <template>
   <el-breadcrumb class="main-breadcrumbs" :separator-icon="ArrowRight">
     <el-breadcrumb-item
-      class="main-breadcrumbs__crumb"
       v-for="({ text, path }, _keyCrumb, crumbIndex) in breadcrumbs"
       :key="crumbIndex"
+      class="main-breadcrumbs__crumb"
       :to="{ path: path ?? path }"
       >{{ text }}
     </el-breadcrumb-item>

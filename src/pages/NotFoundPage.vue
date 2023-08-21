@@ -30,7 +30,7 @@ const router = useRouter();
 
 <style lang="less" scoped>
 .not-found-page {
-  .page();
+  .page;
 
   .issue {
     .flex-properties(flex, center, center);

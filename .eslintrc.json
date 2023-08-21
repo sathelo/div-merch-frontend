@@ -16,8 +16,6 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "vue"
-  ],
+  "plugins": ["vue"],
   "rules": {}
 }

@@ -32,19 +32,11 @@
         <h2 class="slide__subtitle">
           {{ slide.info.subtitle }}
         </h2>
-        <ButtonComponent
-          :variant="TypesCButton.primary"
-          class="slide__btn btn"
-        >
-          <template #icon> 
-            <img
-              :src="slide.info.btn.ico"
-              :alt="slide.info.btn.ico"
-            >
+        <ButtonComponent :variant="TypesCButton.primary" class="slide__btn btn">
+          <template #icon>
+            <img :src="slide.info.btn.ico" :alt="slide.info.btn.ico" />
           </template>
-          <p class="btn__text">
-            Оформить предзаказ
-          </p>
+          <p class="btn__text">Оформить предзаказ</p>
         </ButtonComponent>
       </div>
     </SwiperSlide>

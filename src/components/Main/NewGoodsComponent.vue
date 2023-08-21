@@ -1,19 +1,13 @@
 <template>
   <section class="new-goods">
-    <div class="new-goods__title">
-      Новые поступления
-    </div>
+    <div class="new-goods__title">Новые поступления</div>
     <div class="new-goods-cards">
       <div
         v-for="(product, productIndex) in products"
         :key="productIndex"
         class="new-goods-cards__card card"
       >
-        <img
-          :src="product.img"
-          :alt="product.type"
-          class="card__photo"
-        >
+        <img :src="product.img" :alt="product.type" class="card__photo" />
         <p class="card__type">
           {{ product.type }}
         </p>

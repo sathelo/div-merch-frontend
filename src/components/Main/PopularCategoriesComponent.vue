@@ -1,8 +1,6 @@
 <template>
   <section class="popular-categories">
-    <h2 class="popular-categories__title">
-      Популярные категории
-    </h2>
+    <h2 class="popular-categories__title">Популярные категории</h2>
     <div class="popular-categories__info">
       <Swiper
         :breakpoints="{
@@ -22,11 +20,7 @@
           :key="categoryIndex"
           class="popular-categories-cards__card card"
         >
-          <img
-            :src="category.img"
-            :alt="category.title"
-            class="card__photo"
-          >
+          <img :src="category.img" :alt="category.title" class="card__photo" />
           <p class="card__title">
             {{ category.title }}
           </p>
@@ -36,9 +30,7 @@
         class="popular-categories__btn btn"
         :variant="TypesCButton.secondary"
       >
-        <p class="btn__text">
-          Все категории
-        </p>
+        <p class="btn__text">Все категории</p>
       </ButtonComponent>
     </div>
   </section>

@@ -1,9 +1,6 @@
 <template>
   <footer class="footer">
-    <FooterInfoComponent
-      class="footer__info"
-      :info="info"
-    />
+    <FooterInfoComponent class="footer__info" :info="info" />
     <span class="footer__line" />
     <FooterMetaComponent class="footer__meta" />
   </footer>

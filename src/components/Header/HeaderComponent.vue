@@ -1,19 +1,9 @@
 <template>
   <header class="header">
-    <a
-      class="header__logo logo"
-      @click="router.push({name: Routes.home})"
-    >
-      <img
-        class="logo__image"
-        :src="logoDivMerchUrl"
-        alt="div.merch"
-      >
+    <a class="header__logo logo" @click="router.push({ name: Routes.home })">
+      <img class="logo__image" :src="logoDivMerchUrl" alt="div.merch" />
     </a>
-    <HeaderMenuComponent
-      class="header__menu"
-      :menu="menu"
-    />
+    <HeaderMenuComponent class="header__menu" :menu="menu" />
     <HeaderActionsComponent
       class="header__actions"
       :actions="filteredActions"

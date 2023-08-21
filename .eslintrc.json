@@ -8,7 +8,7 @@
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
     "@vue/eslint-config-typescript/recommended",
-    "plugin:prettier/recommended"
+    "@vue/prettier"
   ],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
@@ -16,9 +16,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["vue"],
-  "ignorePatterns": ["**/*.json", "**/*.md"],
-  "rules": {
-    "@typescript-eslint/prefer-optional-chain": "error"
-  }
+  "plugins": [
+    "vue"
+  ],
+  "rules": {}
 }

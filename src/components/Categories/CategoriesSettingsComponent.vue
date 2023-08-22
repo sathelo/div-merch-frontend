@@ -27,11 +27,8 @@ const maxPrice = ref(480000);
 const defaultPrices = ref([0, 240000]);
 
 const prices = computed({
-  get() {
-    return defaultPrices.value;
-  },
-
-  set(newPrices) {
+  get: () => defaultPrices.value,
+  set: (newPrices) => {
     defaultPrices.value = newPrices;
   },
 });

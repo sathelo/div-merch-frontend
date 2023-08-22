@@ -13,6 +13,9 @@ import { ref } from "vue";
 
 import { ElCheckbox, ElCheckboxGroup } from "element-plus";
 
+// Import styles element-plus
+import "element-plus/dist/index.css";
+
 interface IProps {
   title: string;
 }

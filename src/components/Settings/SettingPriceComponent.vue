@@ -8,12 +8,7 @@
         class="info__range"
       >
         <p class="info__label">{{ range.label }}</p>
-        <input
-          :value="range.price"
-          class="info__input"
-          type="number"
-          @input="updateRange(rangeIndex, $event.target)"
-        />
+        <input v-model="range.price.value" class="info__input" type="number" />
       </div>
     </div>
     <ElSlider
@@ -52,22 +47,39 @@ const props = defineProps<IProps>();
 const emits = defineEmits<IEmits>();
 
 const ranges = computed(() => [
-  { label: "От", price: props.prices[0] },
-  { label: "До", price: props.prices[1] },
+  { label: "От", price: fromPrice },
+  { label: "До", price: beforePrice },
 ]);
+
+const fromPrice = computed({
+  get: () => props.prices[0],
+  set: (value) => {
+    if (typeof value === "string") value = parseInt(value);
+    if (Number.isNaN(value)) {
+      localPrices.value[0] = -1;
+      value = 0;
+    }
+    localPrices.value[0] = value;
+    updatePrices();
+  },
+});
+
+const beforePrice = computed({
+  get: () => props.prices[1],
+  set: (value) => {
+    if (typeof value === "string") value = parseInt(value);
+    if (Number.isNaN(value)) {
+      localPrices.value[1] = -1;
+      value = props.maxPrice;
+    }
+    localPrices.value[1] = value;
+    updatePrices();
+  },
+});
 
 const localPrices = ref([...props.prices]);
 
-function updateRange(index: number, price: EventTarget | null): void {
-  const inputValue = (price as HTMLInputElement).value;
-  const value = parseInt(inputValue);
-  if (!isNaN(value)) {
-    localPrices.value[index] = value;
-    updatePrices(localPrices.value);
-  }
-}
-
-function updatePrices<T extends Arrayable<number>>(newPrices: T): void {
+function updatePrices<T extends Arrayable<number>>(newPrices?: T): void {
   emits(
     "updatePrices",
     Array.isArray(newPrices) ? newPrices : localPrices.value,

@@ -16,7 +16,7 @@ const meta: ComponentMeta = {
       return { args };
     },
     template:
-      "<ButtonComponent :variant='args.variant' :variant='args.size' :disabled='args.disabled'>button<ButtonComponent/>",
+      "<ButtonComponent :variant='args.variant' :size='args.size' :disabled='args.disabled'>button</ButtonComponent>",
   }),
 } as ComponentStory;
 

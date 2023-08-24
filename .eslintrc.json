@@ -8,7 +8,8 @@
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
     "@vue/eslint-config-typescript/recommended",
-    "@vue/prettier"
+    "@vue/prettier",
+    "plugin:storybook/recommended"
   ],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
@@ -16,6 +17,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["vue"],
+  "plugins": [
+    "vue"
+  ],
   "rules": {}
 }

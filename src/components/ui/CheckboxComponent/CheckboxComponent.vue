@@ -2,6 +2,7 @@
   <div :class="classes" class="checkbox">
     <input
       :id="`${uniqueId}`"
+      v-model="isChecked"
       :disabled="isDisabled"
       type="checkbox"
       class="checkbox__input"
@@ -17,7 +18,12 @@ import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 import { useUniqueId } from "@/composable/useUniqueId";
 
+interface IEmits {
+  (e: "updateCheckboxes", isChecked: boolean, index: number): void;
+}
+
 const props = defineProps<ICCheckboxProps>();
+const emits = defineEmits<IEmits>();
 
 const classes = computed(() => ({
   [`${props.size}`]: props.size,
@@ -25,6 +31,13 @@ const classes = computed(() => ({
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;
+});
+
+const isChecked = computed({
+  get: () => props.isChecked || false,
+  set: (value) => {
+    emits("updateCheckboxes", value, props.index);
+  },
 });
 
 const { uniqueId } = useUniqueId();

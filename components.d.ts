@@ -16,6 +16,8 @@ declare module 'vue' {
     ClothesComponent: typeof import('./src/components/Main/ClothesComponent.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
+    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElCheckboxGroup: typeof import('element-plus/es')['ElCheckboxGroup']
     FooterComponent: typeof import('./src/components/Footer/FooterComponent.vue')['default']
     FooterInfoComponent: typeof import('./src/components/Footer/FooterInfoComponent.vue')['default']
     FooterMetaComponent: typeof import('./src/components/Footer/FooterMetaComponent.vue')['default']

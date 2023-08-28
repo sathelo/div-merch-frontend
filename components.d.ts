@@ -13,6 +13,7 @@ declare module 'vue' {
     CategoriesSelectComponent: typeof import('./src/components/Categories/CategoriesSelectComponent.vue')['default']
     CategoriesSettingsComponent: typeof import('./src/components/Categories/CategoriesSettingsComponent.vue')['default']
     CheckboxComponent: typeof import('./src/components/ui/CheckboxComponent/CheckboxComponent.vue')['default']
+    ChispComponent: typeof import('./src/components/ui/ChispComponent/ChispComponent.vue')['default']
     ClothesComponent: typeof import('./src/components/Main/ClothesComponent.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']

@@ -1,15 +1,19 @@
 <template>
   <button type="button" :class="classes" :disabled="isDisabled">
-    <slot />
+    <slot>chisp</slot>
   </button>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 
+import { Size } from "@/types/enums/typography.enum";
 import { ICChispProps } from "./ChispComponent.types";
 
-const props = defineProps<ICChispProps>();
+const props = withDefaults(defineProps<ICChispProps>(), {
+  size: Size.leadS,
+  disabled: false,
+});
 
 const classes = computed(() => ({
   btn: true,
@@ -25,7 +29,6 @@ const isDisabled = computed(() => {
 .btn {
   .flex-properties(flex, center, center);
   .content(10px 14px, 8px);
-  .text-s;
   border: 1px solid @grey-gradation--100;
   transition: 0.2s;
   cursor: pointer;

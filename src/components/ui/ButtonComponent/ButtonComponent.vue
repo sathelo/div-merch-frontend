@@ -3,7 +3,7 @@
     <div v-if="$slots.icon" class="btn__ico">
       <slot name="icon" />
     </div>
-    <slot />
+    <slot>button</slot>
   </button>
 </template>
 
@@ -12,7 +12,13 @@ import { computed } from "vue";
 
 import { TypesCButton, ICButtonProps } from "./ButtonComponent.types";
 
-const props = defineProps<ICButtonProps>();
+import { Size } from "@/types/enums/typography.enum";
+
+const props = withDefaults(defineProps<ICButtonProps>(), {
+  disabled: false,
+  size: Size.leadS,
+  variant: TypesCButton.primary,
+});
 
 const classes = computed(() => ({
   btn: true,
@@ -20,7 +26,7 @@ const classes = computed(() => ({
   "btn--secondary": props.variant === TypesCButton.secondary,
   "btn--link": props.variant === TypesCButton.link,
   "btn--round": props.variant === TypesCButton.round,
-  [`${props.size}`]: props.size,
+  [props.size]: true,
 }));
 
 const isDisabled = computed(() => {
@@ -34,12 +40,15 @@ const isDisabled = computed(() => {
   transition: 0.2s;
   cursor: pointer;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   &--primary > &__ico {
     margin-right: 8px;
   }
 
   &--primary {
-    .text-lead-s;
     .content(18px 24px, 1000px, @blue--500);
     color: @grey-gradation--white;
 
@@ -57,16 +66,14 @@ const isDisabled = computed(() => {
 
     &:disabled {
       color: @grey-gradation--200;
-
       background: @grey-gradation--100;
+      cursor: not-allowed;
     }
   }
 
   &--secondary {
-    .text-lead-s;
     .content(18px 24px, 1000px);
     border: 1px solid @purple--100;
-
     color: @blue--500;
 
     &:hover {
@@ -86,14 +93,13 @@ const isDisabled = computed(() => {
 
     &:disabled {
       color: @grey-gradation--200;
-
       background: @grey-gradation--100;
       border: 1px solid @grey-gradation--100;
+      cursor: not-allowed;
     }
   }
 
   &--link {
-    .text-m;
     color: @grey-gradation--black;
 
     &:hover {
@@ -110,6 +116,7 @@ const isDisabled = computed(() => {
 
     &:disabled {
       color: @grey-gradation--100;
+      cursor: not-allowed;
     }
   }
 
@@ -131,6 +138,7 @@ const isDisabled = computed(() => {
     &:disabled {
       color: @grey-gradation--300;
       background: @grey-gradation--white;
+      cursor: not-allowed;
     }
   }
 }

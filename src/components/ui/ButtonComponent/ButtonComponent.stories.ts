@@ -1,22 +1,53 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
+import { Size } from "@/types/enums/typography.enum";
 
-import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+import ButtonComponent from "./ButtonComponent.vue";
 import { ICButtonProps, TypesCButton } from "./ButtonComponent.types";
 
 type ComponentMeta = Meta<typeof ButtonComponent>;
 type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
+  component: ButtonComponent,
   title: "Button/ButtonComponent",
   tags: ["autodocs"],
-  component: ButtonComponent,
+  argTypes: {
+    /* props */
+    variant: {
+      description: "Вариант внешнего вида кнопки",
+      options: TypesCButton,
+      control: {
+        type: "radio",
+      },
+    },
+    size: {
+      description: "Размер текста находящегося в кнопке",
+      options: Size,
+      control: {
+        type: "radio",
+      },
+    },
+    disabled: {
+      description: "Состояние кнопки",
+      control: {
+        type: "boolean",
+      },
+    },
+    /* slots */
+    icon: {
+      description: "Иконка в кнопке",
+    },
+    default: {
+      description: "Текст в кнопке",
+    },
+  },
   render: (args: ICButtonProps) => ({
     components: { ButtonComponent },
     setup() {
       return { args };
     },
     template:
-      "<ButtonComponent :variant='args.variant' :size='args.size' :disabled='args.disabled'>button</ButtonComponent>",
+      "<ButtonComponent :variant='args.variant' :size='args.size' :disabled='args.disabled'></ ButtonComponent>",
   }),
 } as ComponentStory;
 

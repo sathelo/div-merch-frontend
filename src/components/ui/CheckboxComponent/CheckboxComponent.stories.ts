@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
-
 import CheckboxComponent from "@/components/ui/CheckboxComponent/CheckboxComponent.vue";
+
+import type { Meta, StoryObj } from "@storybook/vue3";
+import { Size } from "@/types/enums/typography.enum";
 import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 type ComponentMeta = Meta<typeof CheckboxComponent>;
@@ -9,6 +10,40 @@ type ComponentStory = StoryObj<typeof meta>;
 const meta: ComponentMeta = {
   title: "Checkbox/CheckboxComponent",
   tags: ["autodocs"],
+  argTypes: {
+    /* props */
+    index: {
+      description:
+        "Порядковый номер для привязки контекста (использовать, если в компоненте несколько флажков, передаем порядковый index)",
+    },
+    isChecked: {
+      description: "Состояние флажка",
+      control: {
+        type: "boolean",
+      },
+    },
+    size: {
+      description: "Размер текста находящегося в флажке",
+      options: Size,
+      control: {
+        type: "radio",
+      },
+    },
+    disabled: {
+      description: "Состояние флажка",
+      control: {
+        type: "boolean",
+      },
+    },
+    /* events */
+    updateCheckboxes: {
+      description: "Событие, обновление состояния флажка",
+    },
+    /* slots */
+    default: {
+      description: "Текст в флажке",
+    },
+  },
   component: CheckboxComponent,
   render: (args: ICCheckboxProps) => ({
     components: { CheckboxComponent },
@@ -16,7 +51,7 @@ const meta: ComponentMeta = {
       return { args };
     },
     template:
-      "<CheckboxComponent :size='args.size' :disabled='args.disabled'>checkbox</CheckboxComponent>",
+      "<CheckboxComponent :index='args.index' :isChecked='args.isChecked' :size='args.size' :disabled='args.disabled'></CheckboxComponent>",
   }),
 } as ComponentStory;
 

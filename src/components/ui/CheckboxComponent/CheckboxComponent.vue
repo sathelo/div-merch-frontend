@@ -7,22 +7,30 @@
       type="checkbox"
       class="checkbox__input"
     />
-    <label :for="`${uniqueId}`" class="checkbox__label"><slot /></label>
+    <label :for="`${uniqueId}`" class="checkbox__label">
+      <slot>checkbox</slot>
+    </label>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ICCheckboxProps } from "./CheckboxComponent.types";
-
 import { useUniqueId } from "@/composable/useUniqueId";
 
+import { Size } from "@/types/enums/typography.enum";
+import { ICCheckboxProps } from "./CheckboxComponent.types";
+
 interface IEmits {
-  (e: "updateCheckboxes", isChecked: boolean, index: number): void;
+  (e: "updateCheckboxes", isChecked: boolean, uniqueId: number): void;
 }
 
-const props = defineProps<ICCheckboxProps>();
+const props = withDefaults(defineProps<ICCheckboxProps>(), {
+  index: 0,
+  isChecked: false,
+  size: Size.leadS,
+  disabled: false,
+});
 const emits = defineEmits<IEmits>();
 
 const classes = computed(() => ({
@@ -34,7 +42,7 @@ const isDisabled = computed(() => {
 });
 
 const isChecked = computed({
-  get: () => props.isChecked || false,
+  get: () => !!props.isChecked,
   set: (value) => {
     emits("updateCheckboxes", value, props.index);
   },
@@ -46,10 +54,8 @@ const { uniqueId } = useUniqueId();
 <style lang="less" scoped>
 .checkbox {
   .flex-properties(flex, center);
-  .text-s;
   color: @grey-gradation--200;
   transition: 0.2s;
-  cursor: pointer;
 
   &__input {
     position: absolute;
@@ -60,6 +66,7 @@ const { uniqueId } = useUniqueId();
   &__input + &__label {
     .flex-properties(inline-flex, center);
     user-select: none;
+    cursor: pointer;
   }
 
   &__input + &__label::before {
@@ -70,13 +77,11 @@ const { uniqueId } = useUniqueId();
     border-radius: 4px;
     background: @grey-gradation--100;
     margin-right: 8px;
-    cursor: pointer;
   }
 
   /* стили при наведении курсора */
   &__input:not(:disabled):not(:checked) + &__label:hover {
     & {
-      .text-s;
       color: @grey-gradation--300;
     }
 
@@ -88,7 +93,6 @@ const { uniqueId } = useUniqueId();
   /* стили для активного */
   &__input:not(:disabled):active + &__label {
     & {
-      .text-s;
       color: @grey-gradation--black;
     }
 
@@ -100,7 +104,6 @@ const { uniqueId } = useUniqueId();
   /* стили для фокуса */
   &__input:focus + &__label {
     & {
-      .text-s;
       color: @grey-gradation--300;
     }
 
@@ -112,7 +115,6 @@ const { uniqueId } = useUniqueId();
   /* стили для checked */
   &__input:checked + &__label {
     & {
-      .text-s;
       color: @grey-gradation--black;
     }
 
@@ -128,8 +130,8 @@ const { uniqueId } = useUniqueId();
   /* стили для disabled */
   &__input:disabled + &__label {
     & {
-      .text-s;
       color: @grey-gradation--200;
+      cursor: not-allowed;
     }
 
     &::before {

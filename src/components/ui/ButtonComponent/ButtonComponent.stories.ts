@@ -1,7 +1,7 @@
+import ButtonComponent from "./ButtonComponent.vue";
+
 import type { Meta, StoryObj } from "@storybook/vue3";
 import { Size } from "@/types/enums/typography.enum";
-
-import ButtonComponent from "./ButtonComponent.vue";
 import { ICButtonProps, TypesCButton } from "./ButtonComponent.types";
 
 type ComponentMeta = Meta<typeof ButtonComponent>;

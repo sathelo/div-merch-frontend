@@ -61,5 +61,9 @@ function updateCheckboxes(isChecked: boolean, index: number): void {
       margin-bottom: 12px;
     }
   }
+
+  &__checkbox {
+    .text-s;
+  }
 }
 </style>

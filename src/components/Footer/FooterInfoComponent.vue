@@ -9,25 +9,16 @@
         <div class="block__title">
           {{ title }}
         </div>
-        <div class="block__wrapper">
-          <div
+        <div class="block__items items">
+          <ButtonComponent
             v-for="(item, itemIndex) in items"
             :key="itemIndex"
-            class="block__item item"
+            :variant="TypesCButton.link"
+            class="items__item item"
+            :class="{ 'item--select-none': isBtn(item?.args) }"
           >
-            <p v-if="isBtn(item?.args)" class="item__text">
-              {{ item.text }}
-            </p>
-            <ButtonComponent
-              v-else
-              :variant="TypesCButton.link"
-              class="item__btn btn"
-            >
-              <p class="btn__text">
-                {{ item.text }}
-              </p>
-            </ButtonComponent>
-          </div>
+            {{ item.text }}
+          </ButtonComponent>
         </div>
       </div>
     </div>
@@ -66,8 +57,8 @@ function isBtn(args?: DataInfoWithoutTextBlock): boolean {
         margin-bottom: 24px;
       }
 
-      &__wrapper {
-        .flex-properties(flex, initial, initial);
+      &__items {
+        .flex-properties(flex, flex-start, initial);
         flex-direction: column;
 
         & > *:not(:last-child) {
@@ -75,10 +66,11 @@ function isBtn(args?: DataInfoWithoutTextBlock): boolean {
         }
 
         .item {
-          &__text {
-            .text-s;
-            color: @grey-gradation--black;
+          .text-s;
+
+          &--select-none {
             user-select: none;
+            pointer-events: none;
           }
         }
       }

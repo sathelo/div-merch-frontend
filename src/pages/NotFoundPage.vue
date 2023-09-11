@@ -9,7 +9,7 @@
           class="issue__btn btn"
           @click="router.push({ name: Routes.home })"
         >
-          <p class="btn__text">Вернуться на&nbsp;главную</p>
+          Вернуться на&nbsp;главную
         </ButtonComponent>
       </div>
     </section>
@@ -56,6 +56,10 @@ const router = useRouter();
       text-align: center;
       color: @grey-gradation--black;
       margin-bottom: 24px;
+    }
+
+    .btn {
+      .text-lead-s;
     }
   }
 }

@@ -30,7 +30,7 @@
         class="popular-categories__btn btn"
         :variant="TypesCButton.secondary"
       >
-        <p class="btn__text">Все категории</p>
+        Все категории
       </ButtonComponent>
     </div>
   </section>
@@ -93,6 +93,7 @@ defineProps<IProps>();
   }
 
   .btn {
+    .text-lead-s;
     margin: 0 auto;
   }
 }

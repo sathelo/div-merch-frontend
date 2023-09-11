@@ -36,7 +36,7 @@
           <template #icon>
             <img :src="slide.info.btn.ico" :alt="slide.info.btn.ico" />
           </template>
-          <p class="btn__text">Оформить предзаказ</p>
+          Оформить предзаказ
         </ButtonComponent>
       </div>
     </SwiperSlide>
@@ -94,6 +94,10 @@ defineProps<IProps>();
       text-align: center;
       color: @grey-gradation--200;
       margin-bottom: 32px;
+    }
+
+    .btn {
+      .text-lead-s;
     }
   }
 }

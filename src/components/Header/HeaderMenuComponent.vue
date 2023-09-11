@@ -45,7 +45,6 @@ const router = useRouter();
   .item {
     &__text {
       .text-m;
-      color: @grey-gradation--black;
     }
   }
 }

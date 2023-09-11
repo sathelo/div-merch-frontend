@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes" class="checkbox">
+  <div class="checkbox">
     <input
       :id="`${uniqueId}`"
       v-model="isChecked"
@@ -18,7 +18,6 @@ import { computed } from "vue";
 
 import { useUniqueId } from "@/composable/useUniqueId";
 
-import { Size } from "@/types/enums/typography.enum";
 import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 interface IEmits {
@@ -28,14 +27,9 @@ interface IEmits {
 const props = withDefaults(defineProps<ICCheckboxProps>(), {
   index: 0,
   isChecked: false,
-  size: Size.leadS,
   disabled: false,
 });
 const emits = defineEmits<IEmits>();
-
-const classes = computed(() => ({
-  [`${props.size}`]: props.size,
-}));
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;

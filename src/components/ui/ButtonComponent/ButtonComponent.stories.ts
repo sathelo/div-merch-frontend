@@ -1,7 +1,6 @@
 import ButtonComponent from "./ButtonComponent.vue";
 
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Size } from "@/types/enums/typography.enum";
 import { ICButtonProps, TypesCButton } from "./ButtonComponent.types";
 
 type ComponentMeta = Meta<typeof ButtonComponent>;
@@ -16,13 +15,6 @@ const meta: ComponentMeta = {
     variant: {
       description: "Вариант внешнего вида кнопки",
       options: TypesCButton,
-      control: {
-        type: "radio",
-      },
-    },
-    size: {
-      description: "Размер текста находящегося в кнопке",
-      options: Size,
       control: {
         type: "radio",
       },
@@ -47,7 +39,7 @@ const meta: ComponentMeta = {
       return { args };
     },
     template:
-      "<ButtonComponent :variant='args.variant' :size='args.size' :disabled='args.disabled'></ ButtonComponent>",
+      "<ButtonComponent :variant='args.variant' :disabled='args.disabled'></ ButtonComponent>",
   }),
 } as ComponentStory;
 

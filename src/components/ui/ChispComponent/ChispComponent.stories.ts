@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/vue3";
 
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
-import { Size } from "@/types/enums/typography.enum";
 import { ICChispProps } from "./ChispComponent.types";
 
 type ComponentMeta = Meta<typeof ChispComponent>;
@@ -13,13 +12,6 @@ const meta: ComponentMeta = {
   tags: ["autodocs"],
   argTypes: {
     /* props */
-    size: {
-      description: "Размер текста находящегося в чипсе",
-      options: Size,
-      control: {
-        type: "radio",
-      },
-    },
     disabled: {
       description: "Состояние кнопки",
       control: {
@@ -37,8 +29,7 @@ const meta: ComponentMeta = {
     setup() {
       return { args };
     },
-    template:
-      "<ChispComponent :size='args.size' :disabled='args.disabled'></ChispComponent>",
+    template: "<ChispComponent :disabled='args.disabled'></ChispComponent>",
   }),
 } as ComponentStory;
 

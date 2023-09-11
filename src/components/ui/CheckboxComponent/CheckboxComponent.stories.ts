@@ -1,7 +1,6 @@
 import CheckboxComponent from "@/components/ui/CheckboxComponent/CheckboxComponent.vue";
 
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { Size } from "@/types/enums/typography.enum";
 import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 type ComponentMeta = Meta<typeof CheckboxComponent>;
@@ -20,13 +19,6 @@ const meta: ComponentMeta = {
       description: "Состояние флажка",
       control: {
         type: "boolean",
-      },
-    },
-    size: {
-      description: "Размер текста находящегося в флажке",
-      options: Size,
-      control: {
-        type: "radio",
       },
     },
     disabled: {
@@ -51,7 +43,7 @@ const meta: ComponentMeta = {
       return { args };
     },
     template:
-      "<CheckboxComponent :index='args.index' :isChecked='args.isChecked' :size='args.size' :disabled='args.disabled'></CheckboxComponent>",
+      "<CheckboxComponent :index='args.index' :isChecked='args.isChecked' :disabled='args.disabled'></CheckboxComponent>",
   }),
 } as ComponentStory;
 

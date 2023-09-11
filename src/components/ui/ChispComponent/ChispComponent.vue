@@ -7,17 +7,14 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { Size } from "@/types/enums/typography.enum";
 import { ICChispProps } from "./ChispComponent.types";
 
 const props = withDefaults(defineProps<ICChispProps>(), {
-  size: Size.leadS,
   disabled: false,
 });
 
 const classes = computed(() => ({
   btn: true,
-  [`${props.size}`]: props.size,
 }));
 
 const isDisabled = computed(() => {

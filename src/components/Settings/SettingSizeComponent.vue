@@ -45,6 +45,7 @@ function updateCheckboxes(isChecked: boolean, index: number): void {
 <style lang="less" scoped>
 .setting {
   .content(32px, 24px, initial);
+  .text-s;
   border: 1px solid @grey-gradation--100;
 
   &__title {
@@ -62,7 +63,7 @@ function updateCheckboxes(isChecked: boolean, index: number): void {
     }
 
     & > .setting__chisp:nth-of-type(-n + 4) {
-      background: #000;
+      margin-bottom: 8px;
     }
   }
 }

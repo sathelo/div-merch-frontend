@@ -12,11 +12,8 @@ import { computed } from "vue";
 
 import { TypesCButton, ICButtonProps } from "./ButtonComponent.types";
 
-import { Size } from "@/types/enums/typography.enum";
-
 const props = withDefaults(defineProps<ICButtonProps>(), {
   disabled: false,
-  size: Size.leadS,
   variant: TypesCButton.primary,
 });
 
@@ -26,7 +23,6 @@ const classes = computed(() => ({
   "btn--secondary": props.variant === TypesCButton.secondary,
   "btn--link": props.variant === TypesCButton.link,
   "btn--round": props.variant === TypesCButton.round,
-  [props.size]: true,
 }));
 
 const isDisabled = computed(() => {

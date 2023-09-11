@@ -21,7 +21,6 @@
             <ButtonComponent
               v-else
               :variant="TypesCButton.link"
-              :size="Size.s"
               class="item__btn btn"
             >
               <p class="btn__text">
@@ -39,7 +38,6 @@
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
 import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
-import { Size } from "@/types/enums/typography.enum";
 import type { Info, DataInfoWithoutTextBlock } from "@/data/footer/info.types";
 
 interface IProps {

@@ -1,5 +1,3 @@
-import { Size } from "@/types/enums/typography.enum";
-
 export enum TypesCButton {
   primary = "primary",
   secondary = "secondary",
@@ -9,6 +7,5 @@ export enum TypesCButton {
 
 export interface ICButtonProps {
   variant?: TypesCButton;
-  size?: Size;
   disabled?: boolean;
 }

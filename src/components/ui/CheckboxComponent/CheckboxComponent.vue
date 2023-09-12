@@ -21,7 +21,7 @@ import { useUniqueId } from "@/composable/useUniqueId";
 import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 interface IEmits {
-  (e: "updateCheckboxes", isChecked: boolean, uniqueId: number): void;
+  (e: "updateCheckbox", isChecked: boolean, uniqueId: number): void;
 }
 
 const props = withDefaults(defineProps<ICCheckboxProps>(), {
@@ -38,7 +38,7 @@ const isDisabled = computed(() => {
 const isChecked = computed({
   get: () => !!props.isChecked,
   set: (value) => {
-    emits("updateCheckboxes", value, props.index);
+    emits("updateCheckbox", value, props.index);
   },
 });
 

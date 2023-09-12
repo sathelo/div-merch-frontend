@@ -6,9 +6,9 @@
         v-for="({ label, isChecked }, checkboxIndex) in checkboxes"
         :key="checkboxIndex"
         :index="checkboxIndex"
-        :is-checked="isChecked"
-        class="setting__chisp"
-        @update-checkboxes="updateCheckboxes"
+        class="setting__chisp chisp"
+        :class="{ 'chisp--active': isChecked }"
+        @update-chisp="updateChisp"
       >
         {{ label }}
       </ChispComponent>
@@ -37,8 +37,8 @@ const checkboxes = ref([
   { label: "3XL", isChecked: false },
 ]);
 
-function updateCheckboxes(isChecked: boolean, index: number): void {
-  checkboxes.value[index].isChecked = isChecked;
+function updateChisp(index: number): void {
+  checkboxes.value[index].isChecked = !checkboxes.value[index].isChecked;
 }
 </script>
 
@@ -64,6 +64,16 @@ function updateCheckboxes(isChecked: boolean, index: number): void {
 
     & > .setting__chisp:nth-of-type(-n + 4) {
       margin-bottom: 8px;
+    }
+  }
+
+  .chisp {
+    .text-s;
+    width: calc((100% - (3 * 8px)) / 4);
+
+    &--active {
+      background: @grey-gradation--100;
+      border: 1px solid @grey-gradation--100;
     }
   }
 }

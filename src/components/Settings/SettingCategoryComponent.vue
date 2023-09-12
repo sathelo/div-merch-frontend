@@ -8,7 +8,7 @@
         :index="checkboxIndex"
         :is-checked="isChecked"
         class="setting__checkbox"
-        @update-checkboxes="updateCheckboxes"
+        @update-checkbox="updateCheckbox"
       >
         {{ label }}
       </CheckboxComponent>
@@ -37,7 +37,7 @@ const checkboxes = ref([
   { label: "Брелоки", isChecked: false },
 ]);
 
-function updateCheckboxes(isChecked: boolean, index: number): void {
+function updateCheckbox(isChecked: boolean, index: number): void {
   checkboxes.value[index].isChecked = isChecked;
 }
 </script>

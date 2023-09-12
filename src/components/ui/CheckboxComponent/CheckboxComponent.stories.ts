@@ -28,7 +28,7 @@ const meta: ComponentMeta = {
       },
     },
     /* events */
-    updateCheckboxes: {
+    updateCheckbox: {
       description: "Событие, обновление состояния флажка",
     },
     /* slots */

@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ICChispProps } from "./ChispComponent.types";
+import { ICChispProps } from "@/components/ui/ChispComponent/ChispComponent.types";
 
 interface IEmits {
   (e: "updateChisp", index: number): void;
@@ -42,6 +42,7 @@ function clickHandler() {
   .flex-properties(flex, center, center);
   .content(10px 14px, 8px);
   border: 1px solid @grey-gradation--100;
+  user-select: none;
   transition: 0.2s;
   cursor: pointer;
 

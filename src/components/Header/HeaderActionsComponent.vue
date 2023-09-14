@@ -6,7 +6,7 @@
       class="actions-nav"
     >
       <li class="actions-nav__item item">
-        <ButtonComponent :variant="TypesCButton.round" class="item__btn btn">
+        <ButtonComponent :variant="ECButtonType.round" class="item__btn btn">
           <img
             class="btn__ico"
             :class="`btn__ico--${getName(action.name)}`"
@@ -32,7 +32,8 @@ import { ref } from "vue";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
-import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
 import type { Actions, Action } from "@/data/header/action.types";
 
 interface IProps {
@@ -44,7 +45,7 @@ defineProps<IProps>();
 const counter = ref(0);
 
 function getName(name: Action["name"]): Action["name"] {
-  return name ? name : "";
+  return name ?? "";
 }
 
 function isBasket(name: Action["name"]): boolean {

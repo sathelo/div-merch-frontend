@@ -1,7 +1,9 @@
-import ButtonComponent from "./ButtonComponent.vue";
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
+import { ICButtonProps } from "@/components/ui/ButtonComponent/ButtonComponent.types";
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { ICButtonProps, TypesCButton } from "./ButtonComponent.types";
 
 type ComponentMeta = Meta<typeof ButtonComponent>;
 type ComponentStory = StoryObj<typeof meta>;
@@ -14,7 +16,7 @@ const meta: ComponentMeta = {
     /* props */
     variant: {
       description: "Вариант внешнего вида кнопки",
-      options: TypesCButton,
+      options: ECButtonType,
       control: {
         type: "radio",
       },
@@ -48,21 +50,21 @@ export default meta;
 export const Default: ComponentStory = {};
 export const Primary: ComponentStory = {
   args: {
-    variant: TypesCButton.primary,
+    variant: ECButtonType.primary,
   },
 };
 export const Secondary: ComponentStory = {
   args: {
-    variant: TypesCButton.secondary,
+    variant: ECButtonType.secondary,
   },
 };
 export const Link: ComponentStory = {
   args: {
-    variant: TypesCButton.link,
+    variant: ECButtonType.link,
   },
 };
 export const Round: ComponentStory = {
   args: {
-    variant: TypesCButton.round,
+    variant: ECButtonType.round,
   },
 };

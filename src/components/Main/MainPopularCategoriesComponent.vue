@@ -28,7 +28,7 @@
       </Swiper>
       <ButtonComponent
         class="popular-categories__btn btn"
-        :variant="TypesCButton.secondary"
+        :variant="ECButtonType.secondary"
       >
         Все категории
       </ButtonComponent>
@@ -37,12 +37,13 @@
 </template>
 
 <script setup lang="ts">
+import { Swiper, SwiperSlide } from "swiper/vue";
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
-import type { Categories } from "@/data/main/categories.types";
-import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import { Swiper, SwiperSlide } from "swiper/vue";
+import type { Categories } from "@/data/main/categories.types";
+
 import "swiper/css";
 
 interface IProps {

@@ -7,7 +7,7 @@ import AllProductsPage from "@/pages/AllProductsPage.vue";
 import CategoriesPage from "@/pages/CategoriesPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 
-import { Routes } from "./routes.types";
+import { Routes } from "@/router/routes.enums";
 
 const routes = [
   {

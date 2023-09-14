@@ -41,6 +41,6 @@ function updatePrices(newPrices: number[]): void {
 <style lang="less" scoped>
 .settings {
   width: 100%;
-  max-width: 276px;
+  max-width: 340px;
 }
 </style>

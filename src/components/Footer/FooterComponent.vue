@@ -7,10 +7,10 @@
 </template>
 
 <script setup lang="ts">
+import { info } from "@/data/footer/info";
+
 import FooterInfoComponent from "@/components/Footer/FooterInfoComponent.vue";
 import FooterMetaComponent from "@/components/Footer/FooterMetaComponent.vue";
-
-import { info } from "@/data/footer/info";
 </script>
 
 <style lang="less" scoped>

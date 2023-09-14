@@ -1,7 +1,7 @@
 import CheckboxComponent from "@/components/ui/CheckboxComponent/CheckboxComponent.vue";
 
+import { ICCheckboxProps } from "@/components/ui/CheckboxComponent/CheckboxComponent.types";
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 type ComponentMeta = Meta<typeof CheckboxComponent>;
 type ComponentStory = StoryObj<typeof meta>;

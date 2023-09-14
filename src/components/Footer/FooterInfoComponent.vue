@@ -13,7 +13,7 @@
           <ButtonComponent
             v-for="(item, itemIndex) in items"
             :key="itemIndex"
-            :variant="TypesCButton.link"
+            :variant="ECButtonType.link"
             class="items__item item"
             :class="{ 'item--select-none': isBtn(item?.args) }"
           >
@@ -28,7 +28,8 @@
 <script setup lang="ts">
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
-import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
 import type { Info, DataInfoWithoutTextBlock } from "@/data/footer/info.types";
 
 interface IProps {

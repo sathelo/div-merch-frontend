@@ -28,9 +28,8 @@ import { computed, ref } from "vue";
 
 import { ElSlider } from "element-plus";
 
-import { Arrayable } from "element-plus/lib/utils/typescript.js";
+import type { Arrayable } from "element-plus/lib/utils/typescript.js";
 
-// Import styles element-plus
 import "element-plus/dist/index.css";
 
 interface IProps {

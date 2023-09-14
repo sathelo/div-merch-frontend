@@ -58,11 +58,11 @@ function updateChisp(index: number): void {
     .flex-properties(flex);
     flex-wrap: wrap;
 
-    & > *:not(.setting__chisp:nth-last-of-type(4n)) {
+    & > *:not(.setting__chisp:nth-of-type(4n)) {
       margin-right: 8px;
     }
 
-    & > .setting__chisp:nth-of-type(-n + 4) {
+    & > *:not(.setting__chisp:nth-last-of-type(-n + 4)) {
       margin-bottom: 8px;
     }
   }

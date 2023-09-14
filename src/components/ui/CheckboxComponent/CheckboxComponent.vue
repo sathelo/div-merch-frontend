@@ -18,7 +18,7 @@ import { computed } from "vue";
 
 import { useUniqueId } from "@/composable/useUniqueId";
 
-import { ICCheckboxProps } from "./CheckboxComponent.types";
+import { ICCheckboxProps } from "@/components/ui/CheckboxComponent/CheckboxComponent.types";
 
 interface IEmits {
   (e: "updateCheckbox", isChecked: boolean, uniqueId: number): void;
@@ -115,7 +115,7 @@ const { uniqueId } = useUniqueId();
     &::before {
       .flex-properties(flex, center, center);
       background: @grey-gradation--black;
-      background-image: url("/icons/check.svg");
+      background-image: url("/icons/check-low-contrast.svg");
       background-repeat: no-repeat;
       background-position: center;
     }

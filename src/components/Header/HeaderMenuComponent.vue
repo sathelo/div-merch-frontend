@@ -7,7 +7,7 @@
     >
       <li class="menu-nav__item item">
         <ButtonComponent
-          :variant="TypesCButton.link"
+          :variant="ECButtonType.link"
           @click="router.push({ name: namePath })"
         >
           {{ title }}
@@ -18,12 +18,13 @@
 </template>
 
 <script setup lang="ts">
-import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
-
 import { useRouter } from "vue-router";
 
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
 import type { Menu } from "@/data/header/menu.types";
-import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
 
 interface IProps {
   menu: Menu;

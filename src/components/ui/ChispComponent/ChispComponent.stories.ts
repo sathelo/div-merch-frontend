@@ -1,8 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
-
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
-import { ICChispProps } from "./ChispComponent.types";
+import { ICChispProps } from "@/components/ui/ChispComponent/ChispComponent.types";
+import type { Meta, StoryObj } from "@storybook/vue3";
 
 type ComponentMeta = Meta<typeof ChispComponent>;
 type ComponentStory = StoryObj<typeof meta>;

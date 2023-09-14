@@ -1,4 +1,4 @@
-import type { Slides } from "./slides.types";
+import type { Slides } from "@/data/main/slides.types";
 
 const defaultSlide = {
   img: "/preview/1.png",

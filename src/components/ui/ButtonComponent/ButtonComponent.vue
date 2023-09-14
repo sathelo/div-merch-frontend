@@ -10,19 +10,21 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { TypesCButton, ICButtonProps } from "./ButtonComponent.types";
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
+import { ICButtonProps } from "@/components/ui/ButtonComponent/ButtonComponent.types";
 
 const props = withDefaults(defineProps<ICButtonProps>(), {
   disabled: false,
-  variant: TypesCButton.primary,
+  variant: ECButtonType.primary,
 });
 
 const classes = computed(() => ({
   btn: true,
-  "btn--primary": props.variant === TypesCButton.primary,
-  "btn--secondary": props.variant === TypesCButton.secondary,
-  "btn--link": props.variant === TypesCButton.link,
-  "btn--round": props.variant === TypesCButton.round,
+  "btn--primary": props.variant === ECButtonType.primary,
+  "btn--secondary": props.variant === ECButtonType.secondary,
+  "btn--link": props.variant === ECButtonType.link,
+  "btn--round": props.variant === ECButtonType.round,
 }));
 
 const isDisabled = computed(() => {

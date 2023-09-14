@@ -1,4 +1,4 @@
-import type { Clothes } from "./clothes.types";
+import type { Clothes } from "@/data/main/clothes.types";
 
 export const clothes: Clothes = [
   {

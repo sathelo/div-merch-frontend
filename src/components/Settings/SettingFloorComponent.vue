@@ -1,17 +1,25 @@
 <template>
   <section class="setting">
     <h2 class="setting__title">{{ title }}</h2>
-    <ElCheckboxGroup v-model="checkedFloor" class="setting__wrapper">
-      <ElCheckbox label="Мужской" class="setting__checkbox" />
-      <ElCheckbox label="Женский" class="setting__checkbox" />
-    </ElCheckboxGroup>
+    <div class="setting__wrapper">
+      <CheckboxComponent
+        v-for="({ label, isChecked }, checkboxIndex) in checkboxes"
+        :key="checkboxIndex"
+        :index="checkboxIndex"
+        :is-checked="isChecked"
+        class="setting__checkbox"
+        @update-checkbox="updateCheckbox"
+      >
+        {{ label }}
+      </CheckboxComponent>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 
-import { ElCheckbox, ElCheckboxGroup } from "element-plus";
+import CheckboxComponent from "@/components/ui/CheckboxComponent/CheckboxComponent.vue";
 
 interface IProps {
   title: string;
@@ -19,7 +27,14 @@ interface IProps {
 
 defineProps<IProps>();
 
-const checkedFloor = ref([]);
+const checkboxes = ref([
+  { label: "Мужской", isChecked: false },
+  { label: "Женский", isChecked: false },
+]);
+
+function updateCheckbox(isChecked: boolean, index: number): void {
+  checkboxes.value[index].isChecked = isChecked;
+}
 </script>
 
 <style lang="less" scoped>
@@ -36,6 +51,14 @@ const checkedFloor = ref([]);
   &__wrapper {
     .flex-properties(flex);
     flex-direction: column;
+
+    & > *:not(.setting__checkbox:last-of-type) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__checkbox {
+    .text-s;
   }
 }
 </style>

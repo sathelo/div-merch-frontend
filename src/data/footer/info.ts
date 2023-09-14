@@ -1,4 +1,4 @@
-import { Info } from "./info.types";
+import type { Info } from "@/data/footer/info.types";
 
 export const info: Info = [
   {

@@ -32,11 +32,11 @@
         <h2 class="slide__subtitle">
           {{ slide.info.subtitle }}
         </h2>
-        <ButtonComponent :variant="TypesCButton.primary" class="slide__btn btn">
+        <ButtonComponent :variant="ECButtonType.primary" class="slide__btn btn">
           <template #icon>
             <img :src="slide.info.btn.ico" :alt="slide.info.btn.ico" />
           </template>
-          <p class="btn__text">Оформить предзаказ</p>
+          Оформить предзаказ
         </ButtonComponent>
       </div>
     </SwiperSlide>
@@ -44,13 +44,14 @@
 </template>
 
 <script setup lang="ts">
-import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
-
-import type { Slides } from "@/data/main/slides.types";
-import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
-
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Pagination, Autoplay } from "swiper/modules";
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
+import type { Slides } from "@/data/main/slides.types";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
@@ -94,6 +95,10 @@ defineProps<IProps>();
       text-align: center;
       color: @grey-gradation--200;
       margin-bottom: 32px;
+    }
+
+    .btn {
+      .text-lead-s;
     }
   }
 }

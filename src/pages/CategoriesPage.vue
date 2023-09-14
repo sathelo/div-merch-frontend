@@ -1,5 +1,5 @@
 <template>
-  <page class="categories">
+  <div class="categories">
     <div class="categories__wrapper">
       <CategoriesBreadcrumbsComponent class="categories__breadcrumbs" />
       <CategoriesSelectComponent class="categories__select" />
@@ -8,7 +8,7 @@
       <CategoriesSettingsComponent class="categories__settings" />
       <CategoriesContentComponent class="categories__content" />
     </div>
-  </page>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -20,7 +20,6 @@ import CategoriesContentComponent from "@/components/Categories/CategoriesConten
 
 <style lang="less" scoped>
 .categories {
-  .page;
   .content(40px, 32px, @grey-gradation--white);
   width: 100%;
   height: 100%;

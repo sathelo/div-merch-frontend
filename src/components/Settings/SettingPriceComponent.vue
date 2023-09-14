@@ -2,28 +2,35 @@
   <section class="setting">
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__info info">
-      <div class="info__from">
-        От
-        <p class="info__text">{{ prices[0] }}</p>
-      </div>
-      <div class="info__before">
-        До
-        <p class="info__text">{{ prices[1] }}</p>
+      <div
+        v-for="(range, rangeIndex) in ranges"
+        :key="rangeIndex"
+        class="info__range"
+      >
+        <p class="info__label">{{ range.label }}</p>
+        <input v-model="range.price.value" class="info__input" type="number" />
       </div>
     </div>
     <ElSlider
-      :prices="prices"
+      v-model="localPrices"
       range
+      :max="maxPrice"
+      :show-tooltip="false"
       class="setting__slider"
       style="--el-slider-height: 2px"
-      :max="maxPrice"
-      @change="updatePrices($event as number[])"
+      @input="updatePrices($event)"
     />
   </section>
 </template>
 
 <script setup lang="ts">
+import { computed, ref } from "vue";
+
 import { ElSlider } from "element-plus";
+
+import type { Arrayable } from "element-plus/lib/utils/typescript.js";
+
+import "element-plus/dist/index.css";
 
 interface IProps {
   title: string;
@@ -35,11 +42,47 @@ interface IEmits {
   (e: "updatePrices", prices: number[]): void;
 }
 
-defineProps<IProps>();
+const props = defineProps<IProps>();
 const emits = defineEmits<IEmits>();
 
-function updatePrices(newPrices: number[]): void {
-  emits("updatePrices", newPrices);
+const ranges = computed(() => [
+  { label: "От", price: fromPrice },
+  { label: "До", price: beforePrice },
+]);
+
+const fromPrice = computed({
+  get: () => props.prices[0],
+  set: (value) => {
+    if (typeof value === "string") value = parseInt(value);
+    if (Number.isNaN(value)) {
+      localPrices.value[0] = -1;
+      value = 0;
+    }
+    localPrices.value[0] = value;
+    updatePrices();
+  },
+});
+
+const beforePrice = computed({
+  get: () => props.prices[1],
+  set: (value) => {
+    if (typeof value === "string") value = parseInt(value);
+    if (Number.isNaN(value)) {
+      localPrices.value[1] = -1;
+      value = props.maxPrice;
+    }
+    localPrices.value[1] = value;
+    updatePrices();
+  },
+});
+
+const localPrices = ref([...props.prices]);
+
+function updatePrices<T extends Arrayable<number>>(newPrices?: T): void {
+  emits(
+    "updatePrices",
+    Array.isArray(newPrices) ? newPrices : localPrices.value,
+  );
 }
 </script>
 
@@ -62,18 +105,21 @@ function updatePrices(newPrices: number[]): void {
       margin-right: 16px;
     }
 
-    &__from,
-    &__before {
-      .flex-properties(flex, initial, flex-start);
-      .text-s;
-      color: @grey-gradation--black;
+    &__range {
+      .flex-properties(flex, center, flex-start);
       width: 100%;
     }
 
-    &__text {
+    &__label {
+      .text-s;
+      color: @grey-gradation--black;
+    }
+
+    &__input {
       .text-s;
       color: @grey-gradation--200;
       margin-left: 4px;
+      width: 100%;
     }
   }
 }

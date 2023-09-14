@@ -14,6 +14,9 @@
 import { type Breadcrumbs } from "@/data/main";
 import { ArrowRight } from "@element-plus/icons-vue"; // test/delete/stash
 
+// Import styles element-plus
+import "element-plus/dist/index.css";
+
 interface IProps {
   breadcrumbs: Breadcrumbs;
 }

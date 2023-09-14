@@ -1,14 +1,6 @@
-import { Size } from "@/types/enums/typography.enum";
-
-export enum TypesCButton {
-  primary = "primary",
-  secondary = "secondary",
-  link = "link",
-  round = "round",
-}
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
 export interface ICButtonProps {
-  variant?: TypesCButton;
-  size?: Size;
+  variant?: ECButtonType;
   disabled?: boolean;
 }

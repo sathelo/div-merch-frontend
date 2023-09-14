@@ -1,4 +1,4 @@
-import { Actions, Action } from "./action.types";
+import type { Actions, Action } from "@/data/header/action.types";
 
 const defaultAction: Action = {
   iconUrl: "",

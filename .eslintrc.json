@@ -7,6 +7,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:vue/vue3-recommended",
+    "plugin:storybook/recommended",
     "@vue/eslint-config-typescript/recommended",
     "@vue/prettier"
   ],
@@ -16,6 +17,8 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["vue"],
+  "plugins": [
+    "vue"
+  ],
   "rules": {}
 }

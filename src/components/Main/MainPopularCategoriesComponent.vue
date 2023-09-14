@@ -28,21 +28,22 @@
       </Swiper>
       <ButtonComponent
         class="popular-categories__btn btn"
-        :variant="TypesCButton.secondary"
+        :variant="ECButtonType.secondary"
       >
-        <p class="btn__text">Все категории</p>
+        Все категории
       </ButtonComponent>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { Swiper, SwiperSlide } from "swiper/vue";
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
-import type { Categories } from "@/data/main/categories.types";
-import { TypesCButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import { Swiper, SwiperSlide } from "swiper/vue";
+import type { Categories } from "@/data/main/categories.types";
+
 import "swiper/css";
 
 interface IProps {
@@ -93,6 +94,7 @@ defineProps<IProps>();
   }
 
   .btn {
+    .text-lead-s;
     margin: 0 auto;
   }
 }

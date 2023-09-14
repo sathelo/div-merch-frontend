@@ -1,5 +1,6 @@
-import { Routes } from "@/router/routes.types";
-import { Menu } from "./menu.types";
+import { Routes } from "@/router/routes.enums";
+
+import type { Menu } from "@/data/header/menu.types";
 
 export const menu: Menu = [
   {

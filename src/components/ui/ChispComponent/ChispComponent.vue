@@ -1,7 +1,7 @@
 <template>
   <button
     type="button"
-    :class="classes"
+    class="chisp"
     :disabled="isDisabled"
     @click="clickHandler"
   >
@@ -12,7 +12,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ICChispProps } from "@/components/ui/ChispComponent/ChispComponent.types";
+import { ICChispProps } from "./ChispComponent.types";
 
 interface IEmits {
   (e: "updateChisp", index: number): void;
@@ -23,10 +23,6 @@ const props = withDefaults(defineProps<ICChispProps>(), {
   disabled: false,
 });
 const emits = defineEmits<IEmits>();
-
-const classes = computed(() => ({
-  chisp: true,
-}));
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;

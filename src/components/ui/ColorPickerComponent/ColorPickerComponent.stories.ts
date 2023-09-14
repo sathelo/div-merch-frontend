@@ -9,15 +9,10 @@ type ComponentMeta = Meta<typeof ColorPickerComponent>;
 type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
-  title: "ColorPicker/ColorPickerComponent",
+  component: ColorPickerComponent,
+  title: "Navigation/ColorPickerComponent",
   tags: ["autodocs"],
   argTypes: {
-    isChecked: {
-      description: "Состояние выбора цвета",
-      control: {
-        type: "boolean",
-      },
-    },
     /* props */
     index: {
       description:
@@ -36,12 +31,17 @@ const meta: ComponentMeta = {
     bg: {
       description: "Фон выбора цвета",
     },
+    isChecked: {
+      description: "Состояние выбора цвета",
+      control: {
+        type: "boolean",
+      },
+    },
     /* events */
     updateColor: {
       description: "Событие, обновление состояния выбора цвета",
     },
   },
-  component: ColorPickerComponent,
   render: (args: ICColorProps) => ({
     components: { ColorPickerComponent },
     setup() {
@@ -51,7 +51,8 @@ const meta: ComponentMeta = {
     <ColorPickerComponent 
       :index='args.index' 
       :type='args.type' 
-      :bg='args.bg'>
+      :bg='args.bg'
+      :isChecked='args.isChecked'>
     </ColorPickerComponent>
     `,
   }),

@@ -3,13 +3,13 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <ColorPickerComponent
-        v-for="({ type, isChecked, bg }, colorIndex) in colors"
+        v-for="({ type, bg, isChecked }, colorIndex) in colors"
         :key="colorIndex"
         :index="colorIndex"
         :type="type"
         :bg="bg"
+        :is-checked="isChecked"
         class="setting__color color"
-        :class="{ 'color--active': isChecked }"
         @update-color="updateColor"
       />
     </div>
@@ -27,8 +27,8 @@ interface IProps {
 
 defineProps<IProps>();
 
-function updateColor(index: number): void {
-  colors.value[index].isChecked = !colors.value[index].isChecked;
+function updateColor(newState: boolean, index: number): void {
+  colors.value[index].isChecked = newState;
 }
 </script>
 

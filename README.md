@@ -1,12 +1,12 @@
 # TODO
 
-- сторисы поправить index on type: number
 - на главной странице swiper'у сделать ему красивый переход по тайму
 - веб-компонент карточка
 - сделать выпадашку в категориях (сортировка по чему-то) 
 - сделать масштабирование
 - хлебные крошки
 - настроить сертификат (https)
+- в сторибуке поправить ui-компоненты (ColorPicker click, Chisp isActive btn, Button click pseudoclass :active check work)
 
 # div-merch-frontend
 

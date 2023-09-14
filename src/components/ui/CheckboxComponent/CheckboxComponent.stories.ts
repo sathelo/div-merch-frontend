@@ -7,13 +7,17 @@ type ComponentMeta = Meta<typeof CheckboxComponent>;
 type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
-  title: "Checkbox/CheckboxComponent",
+  component: CheckboxComponent,
+  title: "Navigation/CheckboxComponent",
   tags: ["autodocs"],
   argTypes: {
     /* props */
     index: {
       description:
         "Порядковый номер для привязки контекста (использовать, если в компоненте несколько флажков, передаем порядковый index)",
+      control: {
+        type: "number",
+      },
     },
     isChecked: {
       description: "Состояние флажка",
@@ -36,14 +40,18 @@ const meta: ComponentMeta = {
       description: "Текст в флажке",
     },
   },
-  component: CheckboxComponent,
   render: (args: ICCheckboxProps) => ({
     components: { CheckboxComponent },
     setup() {
       return { args };
     },
-    template:
-      "<CheckboxComponent :index='args.index' :isChecked='args.isChecked' :disabled='args.disabled'></CheckboxComponent>",
+    template: `
+    <CheckboxComponent 
+      :index='args.index' 
+      :isChecked='args.isChecked' 
+      :disabled='args.disabled'>
+    </CheckboxComponent>
+    `,
   }),
 } as ComponentStory;
 

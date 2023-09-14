@@ -18,7 +18,7 @@ import { computed } from "vue";
 
 import { useUniqueId } from "@/composable/useUniqueId";
 
-import { ICCheckboxProps } from "@/components/ui/CheckboxComponent/CheckboxComponent.types";
+import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 interface IEmits {
   (e: "updateCheckbox", isChecked: boolean, uniqueId: number): void;

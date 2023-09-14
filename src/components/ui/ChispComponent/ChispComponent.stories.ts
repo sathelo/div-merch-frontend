@@ -7,13 +7,17 @@ type ComponentMeta = Meta<typeof ChispComponent>;
 type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
-  title: "Chips/ChispComponent",
+  component: ChispComponent,
+  title: "Navigation/ChispComponent",
   tags: ["autodocs"],
   argTypes: {
     /* props */
     index: {
       description:
         "Порядковый номер для привязки контекста (использовать, если в компоненте несколько чипсов, передаем порядковый index)",
+      control: {
+        type: "number",
+      },
     },
     disabled: {
       description: "Состояние кнопки",
@@ -30,14 +34,17 @@ const meta: ComponentMeta = {
       description: "Текст в чипсе",
     },
   },
-  component: ChispComponent,
   render: (args: ICChispProps) => ({
     components: { ChispComponent },
     setup() {
       return { args };
     },
-    template:
-      "<ChispComponent :index='args.index' :disabled='args.disabled'></ChispComponent>",
+    template: `
+    <ChispComponent 
+      :index='args.index' 
+      :disabled='args.disabled'>
+    </ChispComponent>
+    `,
   }),
 } as ComponentStory;
 

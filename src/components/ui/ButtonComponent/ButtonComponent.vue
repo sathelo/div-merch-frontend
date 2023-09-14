@@ -10,9 +10,9 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+import { ECButtonType } from "./ButtonComponent.enums";
 
-import { ICButtonProps } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { ICButtonProps } from "./ButtonComponent.types";
 
 const props = withDefaults(defineProps<ICButtonProps>(), {
   disabled: false,

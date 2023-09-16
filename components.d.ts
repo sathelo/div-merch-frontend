@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ButtonComponent: typeof import('./src/components/ui/ButtonComponent/ButtonComponent.vue')['default']
+    CardComponent: typeof import('./src/components/ui/CardComponent/CardComponent.vue')['default']
     CategoriesBreadcrumbsComponent: typeof import('./src/components/Categories/CategoriesBreadcrumbsComponent.vue')['default']
     CategoriesContentComponent: typeof import('./src/components/Categories/CategoriesContentComponent.vue')['default']
     CategoriesSelectComponent: typeof import('./src/components/Categories/CategoriesSelectComponent.vue')['default']

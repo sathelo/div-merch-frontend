@@ -42,7 +42,7 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Categories } from "@/data/main/categories.types";
+import type { Categories } from "@/data/home/categories.types";
 
 import "swiper/css";
 

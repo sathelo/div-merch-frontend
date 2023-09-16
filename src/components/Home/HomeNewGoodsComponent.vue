@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Products } from "@/data/main/products.types";
+import type { Products } from "@/data/home/products.types";
 
 interface IProps {
   products: Products;

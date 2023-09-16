@@ -1,4 +1,4 @@
-import type { Product, Products } from "@/data/main/products.types";
+import type { Product, Products } from "@/data/home/products.types";
 
 const defaultProduct: Product = {
   img: "/products/t-shirt.png",

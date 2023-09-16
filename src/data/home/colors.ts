@@ -2,8 +2,8 @@ import { ref } from "vue";
 
 import { EColorPickerType } from "@/components/ui/ColorPickerComponent/ColorPickerComponent.enums";
 
-import { ICColorWithoutStyle } from "@/data/main/colors.types";
-import type { ICColors } from "@/data/main/colors.types";
+import { ICColorWithoutStyle } from "@/data/home/colors.types";
+import type { ICColors } from "@/data/home/colors.types";
 
 const colorWithoutStyle: ICColorWithoutStyle = {
   type: EColorPickerType.low,

@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { colors } from "@/data/main/colors";
+import { colors } from "@/data/home/colors";
 
 import ColorPickerComponent from "@/components/ui/ColorPickerComponent/ColorPickerComponent.vue";
 

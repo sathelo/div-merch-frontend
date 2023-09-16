@@ -50,7 +50,7 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Slides } from "@/data/main/slides.types";
+import type { Slides } from "@/data/home/slides.types";
 
 import "swiper/css";
 import "swiper/css/pagination";

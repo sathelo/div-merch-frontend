@@ -27,7 +27,7 @@
         </SwiperSlide>
       </Swiper>
       <ButtonComponent
-        class="popular-categories__btn btn"
+        class="popular-categories__btn"
         :variant="ECButtonType.secondary"
       >
         Все категории
@@ -93,7 +93,7 @@ defineProps<IProps>();
     }
   }
 
-  .btn {
+  &__btn {
     .text-lead-s;
     margin: 0 auto;
   }

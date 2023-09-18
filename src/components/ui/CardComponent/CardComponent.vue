@@ -1,5 +1,5 @@
 <template>
-  <section class="card">
+  <div class="card">
     <img :src="infoProduct.img" :alt="infoProduct.type" class="card__image" />
     <p class="card__type">
       {{ infoProduct.type }}
@@ -10,7 +10,7 @@
     <p class="card__price">
       {{ infoProduct.price }}
     </p>
-  </section>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -39,16 +39,22 @@ withDefaults(defineProps<ICCardProps>(), {
   }
 
   &__type {
+    .text-s;
+    color: @grey-gradation--200;
     text-align: center;
     margin-bottom: 4px;
   }
 
   &__title {
+    .text-lead-s;
+    color: @grey-gradation--black;
     text-align: center;
     margin-bottom: 12px;
   }
 
   &__price {
+    .text-lead-s;
+    color: @grey-gradation--300;
     text-align: center;
   }
 

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 import CheckLowContrastIco from "/icons/check-low-contrast.svg";
 import CheckHighContrastIco from "/icons/check-high-contrast.svg";
@@ -21,14 +21,13 @@ import { EColorPickerType } from "./ColorPickerComponent.enums";
 import { ICColorProps } from "./ColorPickerComponent.types";
 
 interface IEmits {
-  (e: "updateColor", value: boolean, index: number): void;
+  (e: "update:modelValue", v: boolean): void;
+  (e: "change", v: boolean): void;
 }
 
 const props = withDefaults(defineProps<ICColorProps>(), {
-  index: 0,
   type: EColorPickerType.low,
   bg: "#666666",
-  isChecked: false,
 });
 const emits = defineEmits<IEmits>();
 
@@ -38,10 +37,14 @@ const types = computed(() =>
     : CheckHighContrastIco,
 );
 
+const isCheckedLocal = ref(false);
+
 const isChecked = computed({
-  get: () => props.isChecked,
+  get: () => props.modelValue ?? isCheckedLocal.value,
   set: (value) => {
-    emits("updateColor", value, props.index);
+    isCheckedLocal.value = value;
+    emits("update:modelValue", value);
+    emits("change", value);
   },
 });
 </script>

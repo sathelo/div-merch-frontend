@@ -12,22 +12,24 @@ const meta: ComponentMeta = {
   tags: ["autodocs"],
   argTypes: {
     /* props */
-    index: {
-      description:
-        "Порядковый номер для привязки контекста (использовать, если в компоненте несколько чипсов, передаем порядковый index)",
+    modelValue: {
+      description: "Состояние чипса",
       control: {
-        type: "number",
+        type: "boolean",
       },
     },
     disabled: {
-      description: "Состояние кнопки",
+      description: "Состояние чипса",
       control: {
         type: "boolean",
       },
     },
     /* events */
-    updateChisp: {
+    "update:modelValue": {
       description: "Событие, обновление состояния чипса",
+    },
+    change: {
+      description: "Событие, изменение состояния чипса",
     },
     /* slots */
     default: {
@@ -41,7 +43,7 @@ const meta: ComponentMeta = {
     },
     template: `
     <ChispComponent 
-      :index='args.index' 
+      :modelValue='args.modelValue' 
       :disabled='args.disabled'>
     </ChispComponent>
     `,

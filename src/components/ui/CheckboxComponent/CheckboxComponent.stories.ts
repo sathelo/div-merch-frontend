@@ -12,14 +12,7 @@ const meta: ComponentMeta = {
   tags: ["autodocs"],
   argTypes: {
     /* props */
-    index: {
-      description:
-        "Порядковый номер для привязки контекста (использовать, если в компоненте несколько флажков, передаем порядковый index)",
-      control: {
-        type: "number",
-      },
-    },
-    isChecked: {
+    modelValue: {
       description: "Состояние флажка",
       control: {
         type: "boolean",
@@ -32,8 +25,11 @@ const meta: ComponentMeta = {
       },
     },
     /* events */
-    updateCheckbox: {
+    "update:modelValue": {
       description: "Событие, обновление состояния флажка",
+    },
+    change: {
+      description: "Событие, изменение состояния флажка",
     },
     /* slots */
     default: {
@@ -47,8 +43,7 @@ const meta: ComponentMeta = {
     },
     template: `
     <CheckboxComponent 
-      :index='args.index' 
-      :isChecked='args.isChecked' 
+      :modelValue='args.modelValue' 
       :disabled='args.disabled'>
     </CheckboxComponent>
     `,

@@ -1,32 +1,27 @@
 <template>
-  <div class="checkbox">
-    <input
-      :id="`${uniqueId}`"
-      v-model="isChecked"
-      :disabled="isDisabled"
-      type="checkbox"
-      class="checkbox__input"
-    />
-    <label :for="`${uniqueId}`" class="checkbox__label">
+  <button
+    :class="{ 'checkbox--active': isChecked }"
+    :disabled="isDisabled"
+    class="checkbox"
+  >
+    <input v-model="isChecked" type="checkbox" class="checkbox__checked" />
+    <label class="checkbox__label">
       <slot>checkbox</slot>
     </label>
-  </div>
+  </button>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-
-import { useUniqueId } from "@/composable/useUniqueId";
+import { computed, ref } from "vue";
 
 import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 interface IEmits {
-  (e: "updateCheckbox", isChecked: boolean, uniqueId: number): void;
+  (e: "update:modelValue", v: boolean): void;
+  (e: "change", v: boolean): void;
 }
 
 const props = withDefaults(defineProps<ICCheckboxProps>(), {
-  index: 0,
-  isChecked: false,
   disabled: false,
 });
 const emits = defineEmits<IEmits>();
@@ -35,100 +30,92 @@ const isDisabled = computed(() => {
   return props.disabled ? true : false;
 });
 
+const isCheckedLocal = ref(false);
+
 const isChecked = computed({
-  get: () => !!props.isChecked,
+  get: () => props.modelValue ?? isCheckedLocal.value,
   set: (value) => {
-    emits("updateCheckbox", value, props.index);
+    isCheckedLocal.value = value;
+    emits("update:modelValue", value);
+    emits("change", value);
   },
 });
-
-const { uniqueId } = useUniqueId();
 </script>
 
 <style lang="less" scoped>
 .checkbox {
   .flex-properties(flex, center);
+  .text-s;
+  position: relative;
+  z-index: 1;
   color: @grey-gradation--200;
   transition: 0.2s;
+  overflow: hidden;
 
-  &__input {
-    position: absolute;
-    z-index: -1;
-    opacity: 0;
+  &--active {
+    color: @grey-gradation--black;
+
+    .checkbox__label::before {
+      border: 1px solid @grey-gradation--black;
+      background: @grey-gradation--black url("/icons/check.svg") center center
+        no-repeat;
+    }
   }
 
-  &__input + &__label {
-    .flex-properties(inline-flex, center);
-    user-select: none;
+  &__checked {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
     cursor: pointer;
   }
 
-  &__input + &__label::before {
-    content: "";
-    width: 16px;
-    height: 16px;
-    border: 1px solid @grey-gradation--100;
-    border-radius: 4px;
-    background: @grey-gradation--100;
-    margin-right: 8px;
-  }
-
-  /* стили при наведении курсора */
-  &__input:not(:disabled):not(:checked) + &__label:hover {
-    & {
-      color: @grey-gradation--300;
-    }
+  &__label {
+    .flex-properties(flex);
+    user-select: none;
+    pointer-events: none;
 
     &::before {
+      .content(7px, 4px, @grey-gradation--100);
+      content: "";
+      border: 1px solid @grey-gradation--100;
+      transition: 0.2s;
+      margin-right: 8px;
+    }
+  }
+
+  &:hover {
+    color: @grey-gradation--300;
+
+    .checkbox__label::before {
+      border: 1px solid @grey-gradation--300;
       background: @grey-gradation--300;
     }
   }
 
-  /* стили для активного */
-  &__input:not(:disabled):active + &__label {
-    & {
-      color: @grey-gradation--black;
-    }
+  &:focus {
+    color: @grey-gradation--300;
 
-    &::before {
-      background: @grey-gradation--black;
-    }
-  }
-
-  /* стили для фокуса */
-  &__input:focus + &__label {
-    & {
-      color: @grey-gradation--300;
-    }
-
-    &::before {
+    .checkbox__label::before {
+      border: 1px solid @grey-gradation--300;
       background: @grey-gradation--300;
     }
   }
 
-  /* стили для checked */
-  &__input:checked + &__label {
-    & {
-      color: @grey-gradation--black;
-    }
+  &:active {
+    color: @grey-gradation--black;
 
-    &::before {
-      .flex-properties(flex, center, center);
+    .checkbox__label::before {
+      border: 1px solid @grey-gradation--black;
       background: @grey-gradation--black;
-      background-image: url("/icons/check-low-contrast.svg");
-      background-repeat: no-repeat;
-      background-position: center;
     }
   }
 
-  /* стили для disabled */
-  &__input:disabled + &__label {
-    & {
-      color: @grey-gradation--200;
-      cursor: not-allowed;
-    }
+  &:disabled {
+    color: @grey-gradation--200;
 
-    &::before {
+    .checkbox__label::before {
       border: 1px solid @grey-gradation--100;
       background: @grey-gradation--white;
     }

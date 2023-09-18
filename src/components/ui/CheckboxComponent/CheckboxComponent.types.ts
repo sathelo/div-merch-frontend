@@ -1,5 +1,4 @@
 export interface ICCheckboxProps {
-  index?: number;
-  isChecked?: boolean;
+  modelValue?: boolean;
   disabled?: boolean;
 }

@@ -1,5 +1,7 @@
 import CardComponent from "@/components/ui/CardComponent/CardComponent.vue";
 
+import { CardDecoratorWithLimitedWidth } from "./CardComponent.decorator";
+
 import { ICCardProps } from "@/components/ui/CardComponent/CardComponent.types";
 import type { Meta, StoryObj } from "@storybook/vue3";
 
@@ -19,6 +21,7 @@ const meta: ComponentMeta = {
       },
     },
   },
+  decorators: [CardDecoratorWithLimitedWidth],
   render: (args: ICCardProps) => ({
     components: { CardComponent },
     setup() {

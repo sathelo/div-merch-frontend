@@ -32,7 +32,7 @@
         <h2 class="slide__subtitle">
           {{ slide.info.subtitle }}
         </h2>
-        <ButtonComponent :variant="ECButtonType.primary" class="slide__btn btn">
+        <ButtonComponent :variant="ECButtonType.primary" class="slide__btn">
           <template #icon>
             <img :src="slide.info.btn.ico" :alt="slide.info.btn.ico" />
           </template>
@@ -97,7 +97,7 @@ defineProps<IProps>();
       margin-bottom: 32px;
     }
 
-    .btn {
+    &__btn {
       .text-lead-s;
     }
   }

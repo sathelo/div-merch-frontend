@@ -1,7 +1,7 @@
 # TODO
 
 ## таски на сегодня
-- веб-компонент карточка
+- storybook fix component chisp (styles), checkbox (styles), button
 - сделать в категориях список товаров используя веб-компонент карточка
 - на главной странице swiper'у сделать ему красивый переход по тайму
 
@@ -10,7 +10,6 @@
 - сделать масштабирование
 - хлебные крошки
 - настроить сертификат (https)
-- в сторибуке поправить ui-компоненты (ColorPicker click, Chisp isActive btn, Button click pseudoclass :active check work)
 
 # div-merch-frontend
 

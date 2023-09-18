@@ -14,13 +14,6 @@ const meta: ComponentMeta = {
   tags: ["autodocs"],
   argTypes: {
     /* props */
-    index: {
-      description:
-        "Порядковый номер для привязки контекста (использовать, если в компоненте несколько выборов цветов, передаем порядковый index)",
-      control: {
-        type: "number",
-      },
-    },
     type: {
       description: "Контрастность галочки",
       options: EColorPickerType,
@@ -31,15 +24,18 @@ const meta: ComponentMeta = {
     bg: {
       description: "Фон выбора цвета",
     },
-    isChecked: {
+    modelValue: {
       description: "Состояние выбора цвета",
       control: {
         type: "boolean",
       },
     },
     /* events */
-    updateColor: {
+    "update:modelValue": {
       description: "Событие, обновление состояния выбора цвета",
+    },
+    change: {
+      description: "Событие, изменение состояния выбора цвета",
     },
   },
   render: (args: ICColorProps) => ({
@@ -49,10 +45,9 @@ const meta: ComponentMeta = {
     },
     template: `
     <ColorPickerComponent 
-      :index='args.index' 
       :type='args.type' 
       :bg='args.bg'
-      :isChecked='args.isChecked'>
+      :modelValue='args.modelValue'>
     </ColorPickerComponent>
     `,
   }),

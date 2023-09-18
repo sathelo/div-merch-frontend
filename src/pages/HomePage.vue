@@ -23,10 +23,10 @@ import PopularCategoriesComponent from "@/components/Home/HomePopularCategoriesC
 import ClothesComponent from "@/components/Home/HomeClothesComponent.vue";
 import NewGoodsComponent from "@/components/Home/HomeNewGoodsComponent.vue";
 
-import type { Product } from "@/data/home/products.types";
+import type { Card } from "@/components/ui/CardComponent/CardComponent.types";
 
 const filteredProducts = computed(() => {
-  const res = products.map((product: Product) => ({
+  const res = products.map((product: Card) => ({
     ...product,
     price:
       `${product.price}`.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, "$1 ") +

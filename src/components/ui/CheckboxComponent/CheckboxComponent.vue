@@ -1,18 +1,22 @@
 <template>
-  <button
-    :class="{ 'checkbox--active': isChecked }"
-    :disabled="isDisabled"
-    class="checkbox"
-  >
-    <input v-model="isChecked" type="checkbox" class="checkbox__checked" />
-    <label class="checkbox__label">
+  <div class="checkbox">
+    <input
+      :id="uniqueId"
+      v-model="isChecked"
+      type="checkbox"
+      class="checkbox__checked"
+      :disabled="isDisabled"
+    />
+    <label class="checkbox__label" :for="uniqueId">
       <slot>checkbox</slot>
     </label>
-  </button>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+
+import { getUniqueId } from "@/utils/uniqueId";
 
 import { ICCheckboxProps } from "./CheckboxComponent.types";
 
@@ -25,6 +29,8 @@ const props = withDefaults(defineProps<ICCheckboxProps>(), {
   disabled: false,
 });
 const emits = defineEmits<IEmits>();
+
+const { uniqueId } = getUniqueId();
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;
@@ -45,77 +51,78 @@ const isChecked = computed({
 <style lang="less" scoped>
 .checkbox {
   .flex-properties(flex, center);
-  .text-s;
   position: relative;
-  z-index: 1;
-  color: @grey-gradation--200;
-  transition: 0.2s;
-  overflow: hidden;
-
-  &--active {
-    color: @grey-gradation--black;
-
-    .checkbox__label::before {
-      border: 1px solid @grey-gradation--black;
-      background: @grey-gradation--black url("/icons/check.svg") center center
-        no-repeat;
-    }
-  }
 
   &__checked {
     position: absolute;
     z-index: -1;
-    width: 100%;
-    height: 100%;
     opacity: 0;
+  }
+
+  &__checked + &__label {
+    .flex-properties(inline-flex, center);
+    color: @grey-gradation--200;
+    user-select: none;
+    transition: 0.2s;
     cursor: pointer;
   }
 
-  &__label {
-    .flex-properties(flex);
-    user-select: none;
-    pointer-events: none;
+  &__checked + &__label::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 1px solid @grey-gradation--100;
+    border-radius: 4px;
+    background: @grey-gradation--100;
+    margin-right: 8px;
+  }
+
+  /* стили при наведении курсора */
+  &__checked:not(:disabled):not(:checked) + &__label:hover {
+    color: @grey-gradation--300;
 
     &::before {
-      .content(7px, 4px, @grey-gradation--100);
-      content: "";
-      border: 1px solid @grey-gradation--100;
-      transition: 0.2s;
-      margin-right: 8px;
-    }
-  }
-
-  &:hover {
-    color: @grey-gradation--300;
-
-    .checkbox__label::before {
-      border: 1px solid @grey-gradation--300;
       background: @grey-gradation--300;
     }
   }
 
-  &:focus {
-    color: @grey-gradation--300;
-
-    .checkbox__label::before {
-      border: 1px solid @grey-gradation--300;
-      background: @grey-gradation--300;
-    }
-  }
-
-  &:active {
+  /* стили для активного */
+  &__checked:not(:disabled):active + &__label {
     color: @grey-gradation--black;
 
-    .checkbox__label::before {
-      border: 1px solid @grey-gradation--black;
+    &::before {
       background: @grey-gradation--black;
     }
   }
 
-  &:disabled {
-    color: @grey-gradation--200;
+  /* стили для фокуса */
+  &__checked:focus + &__label {
+    color: @grey-gradation--300;
 
-    .checkbox__label::before {
+    &::before {
+      background: @grey-gradation--300;
+    }
+  }
+
+  /* стили для checked */
+  &__checked:checked + &__label {
+    color: @grey-gradation--black;
+
+    &::before {
+      .flex-properties(flex, center, center);
+      background: @grey-gradation--black;
+      background-image: url("/icons/check-low-contrast.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  /* стили для disabled */
+  &__checked:disabled + &__label {
+    color: @grey-gradation--200;
+    cursor: not-allowed;
+
+    &::before {
       border: 1px solid @grey-gradation--100;
       background: @grey-gradation--white;
     }

@@ -1,20 +1,22 @@
 <template>
   <div class="chisp">
     <input
-      :id="uid"
+      :id="uniqueId"
       v-model="isChecked"
       type="checkbox"
       class="chisp__checked"
       :disabled="isDisabled"
     />
-    <label class="chisp__label" :for="uid">
-      <slot>chisp {{ isChecked }} </slot>
+    <label class="chisp__label" :for="uniqueId">
+      <slot>chisp</slot>
     </label>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+
+import { getUniqueId } from "@/utils/uniqueId";
 
 import { ICChispProps } from "./ChispComponent.types";
 
@@ -28,7 +30,7 @@ const props = withDefaults(defineProps<ICChispProps>(), {
 });
 const emits = defineEmits<IEmits>();
 
-const uid = ref(Math.random().toString(36).substr(2, 9));
+const { uniqueId } = getUniqueId();
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;
@@ -49,78 +51,51 @@ const isChecked = computed({
 <style lang="less" scoped>
 .chisp {
   position: relative;
-  z-index: 1;
 
   &__checked {
     position: absolute;
     z-index: -1;
-    width: 100%;
-    height: 100%;
     opacity: 0;
-    cursor: pointer;
   }
 
   &__label {
+    .flex-properties(flex, center, center);
+    .content(10px 14px, 8px);
+    color: @grey-gradation--black;
+    border: 1px solid @grey-gradation--100;
     user-select: none;
-    pointer-events: none;
+    transition: 0.2s;
+    cursor: pointer;
   }
 
-  &__checked:disabled + &__label:hover {
-    background: red;
+  /* стили при наведении курсора */
+  &__checked:not(:disabled):not(:checked) + &__label:hover {
+    border: 1px solid @grey-gradation--200;
+  }
+
+  /* стили для активного */
+  &__checked:not(:disabled):active + &__label {
+    background: @grey-gradation--100;
+    border: 1px solid @grey-gradation--100;
+  }
+
+  /* стили для фокуса */
+  &__checked:focus + &__label {
+    border: 1px solid @grey-gradation--200;
+  }
+
+  /* стили для checked */
+  &__checked:checked + &__label {
+    background: @grey-gradation--100;
+    border: 1px solid @grey-gradation--100;
+  }
+
+  /* стили для disabled */
+  &__checked:disabled + &__label {
+    color: @grey-gradation--200;
+    background: @grey-gradation--100;
+    border: 1px solid @grey-gradation--100;
+    cursor: not-allowed;
   }
 }
-
-// .chisp {
-//   .flex-properties(flex, center, center);
-//   .content(10px 14px, 8px);
-//   .text-s;
-//   // position: relative;
-//   // z-index: 1;
-//   border: 1px solid @grey-gradation--100;
-//   transition: 0.2s;
-//   // overflow: hidden;
-
-//   &__checked:checked  {
-//     background: @grey-gradation--100;
-//     border: 1px solid @grey-gradation--100;
-//     transition: 0.2s;
-//   }
-
-//   &:hover {
-//     color: @grey-gradation--black;
-//     border: 1px solid @grey-gradation--200;
-//   }
-
-//   &:focus {
-//     color: @grey-gradation--black;
-//     border: 1px solid @grey-gradation--200;
-//   }
-
-//   &:active {
-//     color: @grey-gradation--black;
-//     background: @grey-gradation--100;
-//     border: 1px solid @grey-gradation--100;
-//   }
-
-//   &__checked:disabled {
-//     color: @grey-gradation--200;
-//     background: @grey-gradation--100;
-//     border: 1px solid @grey-gradation--100;
-//     cursor: not-allowed;
-//   }
-
-//   &__checked {
-//     position: absolute;
-//     z-index: -1;
-//     width: 100%;
-//     height: 100%;
-//     opacity: 0;
-//     cursor: pointer;
-//   }
-
-//   &__label {
-//     user-select: none;
-//     pointer-events: none;
-//   }
-// }
 </style>

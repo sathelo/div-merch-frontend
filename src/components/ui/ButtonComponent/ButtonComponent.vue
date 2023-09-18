@@ -38,10 +38,6 @@ const isDisabled = computed(() => {
   transition: 0.2s;
   cursor: pointer;
 
-  &:disabled {
-    cursor: not-allowed;
-  }
-
   &--primary > &__ico {
     margin-right: 8px;
   }
@@ -51,7 +47,7 @@ const isDisabled = computed(() => {
     color: @grey-gradation--white;
 
     &:hover {
-      background: @blue--400;
+      background: #2505a6;
     }
 
     &:focus {

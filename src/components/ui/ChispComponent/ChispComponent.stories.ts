@@ -1,5 +1,7 @@
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
+import { ChispDecoratorWithLimitedWidth } from "@/components/ui/ChispComponent/ChispComponent.decorator";
+
 import { ICChispProps } from "@/components/ui/ChispComponent/ChispComponent.types";
 import type { Meta, StoryObj } from "@storybook/vue3";
 
@@ -36,6 +38,7 @@ const meta: ComponentMeta = {
       description: "Текст в чипсе",
     },
   },
+  decorators: [ChispDecoratorWithLimitedWidth],
   render: (args: ICChispProps) => ({
     components: { ChispComponent },
     setup() {

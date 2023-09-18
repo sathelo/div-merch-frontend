@@ -33,7 +33,7 @@ defineProps<IProps>();
   }
 
   &-cards {
-    display: flex;
+    .flex-properties(flex);
     flex-wrap: wrap;
 
     &__card {

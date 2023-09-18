@@ -6,12 +6,17 @@
     </div>
     <div class="categories__wrapper">
       <CategoriesSettingsComponent class="categories__settings" />
-      <CategoriesContentComponent class="categories__content" />
+      <CategoriesContentComponent
+        :products="products"
+        class="categories__content"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { products } from "@/data/home/products";
+
 import CategoriesBreadcrumbsComponent from "@/components/Categories/CategoriesBreadcrumbsComponent.vue";
 import CategoriesSelectComponent from "@/components/Categories/CategoriesSelectComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";

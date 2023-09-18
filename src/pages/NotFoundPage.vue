@@ -5,7 +5,7 @@
       <p class="not-found__text">Такой страницы не&nbsp;существует</p>
       <ButtonComponent
         :variant="ECButtonType.primary"
-        class="not-found__btn btn"
+        class="not-found__btn"
         @click="router.push({ name: Routes.home })"
       >
         Вернуться на&nbsp;главную
@@ -52,10 +52,6 @@ const router = useRouter();
     text-align: center;
     color: @grey-gradation--black;
     margin-bottom: 24px;
-  }
-
-  .btn {
-    .text-lead-s;
   }
 }
 </style>

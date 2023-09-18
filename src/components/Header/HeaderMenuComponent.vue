@@ -8,6 +8,7 @@
       <li class="menu-nav__item item">
         <ButtonComponent
           :variant="ECButtonType.link"
+          class="item__btn"
           @click="router.push({ name: namePath })"
         >
           {{ title }}
@@ -41,12 +42,6 @@ const router = useRouter();
 
   & > &-nav:not(:last-of-type) {
     margin-right: 48px;
-  }
-
-  .item {
-    &__text {
-      .text-m;
-    }
   }
 }
 </style>

@@ -1,27 +1,54 @@
 <template>
-  <el-breadcrumb class="main-breadcrumbs" :separator-icon="ArrowRight">
-    <el-breadcrumb-item
-      v-for="({ text, path }, _keyCrumb, crumbIndex) in breadcrumbs"
-      :key="crumbIndex"
-      class="main-breadcrumbs__crumb"
-      :to="{ path: path ?? path }"
-      >{{ text }}
-    </el-breadcrumb-item>
-  </el-breadcrumb>
+  <ul class="breadcrumbs">
+    <li
+      v-for="(breadcrumb, breadcrumbIndex) in breadcrumbs"
+      :key="breadcrumbIndex"
+      class="breadcrumbs__crumb crumb"
+    >
+      <ButtonComponent
+        :variant="ECButtonType.link"
+        class="crumb__btn"
+        @click="router.push({ name: breadcrumb.path })"
+      >
+        {{ breadcrumb.name }}
+      </ButtonComponent>
+    </li>
+  </ul>
 </template>
 
 <script setup lang="ts">
-import { type Breadcrumbs } from "@/data/main";
-import { ArrowRight } from "@element-plus/icons-vue"; // test/delete/stash
+import { useRouter } from "vue-router";
 
-// Import styles element-plus
-import "element-plus/dist/index.css";
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+
+import type { Breadcrumbs } from "@/data/home/breadcrumbs.types";
 
 interface IProps {
   breadcrumbs: Breadcrumbs;
 }
 
 defineProps<IProps>();
+
+const router = useRouter();
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.breadcrumbs {
+  .flex-properties(flex, center);
+
+  & > :not(&__crumb:last-of-type) {
+    .flex-properties(flex, center);
+
+    &::after {
+      content: "";
+      padding: 6px;
+      background-image: url("/icons/arrow-right.svg");
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin: 0 2px;
+    }
+  }
+}
+</style>

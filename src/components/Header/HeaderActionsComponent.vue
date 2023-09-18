@@ -7,12 +7,14 @@
     >
       <li class="actions-nav__item item">
         <ButtonComponent :variant="ECButtonType.round" class="item__btn btn">
-          <img
-            class="btn__ico"
-            :class="`btn__ico--${getName(action.name)}`"
-            :src="action.iconUrl"
-            :alt="`${getName(action.name)}`"
-          />
+          <template #icon>
+            <img
+              class="btn__ico"
+              :class="`btn__ico--${getName(action.name)}`"
+              :src="action.iconUrl"
+              :alt="`${getName(action.name)}`"
+            />
+          </template>
         </ButtonComponent>
         <div
           v-if="isBasket(action.name) && counter"

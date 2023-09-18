@@ -61,6 +61,7 @@ const isChecked = computed({
 
   &__checked + &__label {
     .flex-properties(inline-flex, center);
+    .text-s;
     color: @grey-gradation--200;
     user-select: none;
     transition: 0.2s;

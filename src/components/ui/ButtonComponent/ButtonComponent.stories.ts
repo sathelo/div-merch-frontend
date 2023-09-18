@@ -44,6 +44,7 @@ const meta: ComponentMeta = {
     <ButtonComponent 
       :variant='args.variant' 
       :disabled='args.disabled'>
+      button
     </ButtonComponent>
     `,
   }),

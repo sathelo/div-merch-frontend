@@ -3,7 +3,7 @@
     <div v-if="$slots.icon" class="btn__ico">
       <slot name="icon" />
     </div>
-    <slot>button</slot>
+    <slot />
   </button>
 </template>
 
@@ -35,8 +35,13 @@ const isDisabled = computed(() => {
 <style lang="less" scoped>
 .btn {
   .flex-properties(flex, center, center);
+  .text-lead-s;
   transition: 0.2s;
   cursor: pointer;
+
+  &__ico {
+    user-select: none;
+  }
 
   &--primary > &__ico {
     margin-right: 8px;

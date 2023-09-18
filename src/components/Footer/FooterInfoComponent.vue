@@ -67,8 +67,6 @@ function isBtn(args?: DataInfoWithoutTextBlock): boolean {
         }
 
         .item {
-          .text-s;
-
           &--select-none {
             user-select: none;
             pointer-events: none;

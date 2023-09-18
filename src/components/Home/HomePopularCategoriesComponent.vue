@@ -94,7 +94,6 @@ defineProps<IProps>();
   }
 
   &__btn {
-    .text-lead-s;
     margin: 0 auto;
   }
 }

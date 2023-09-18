@@ -5,10 +5,8 @@
       <CheckboxComponent
         v-for="({ label, isChecked }, checkboxIndex) in checkboxes"
         :key="checkboxIndex"
-        :index="checkboxIndex"
         :is-checked="isChecked"
         class="setting__checkbox"
-        @update-checkbox="updateCheckbox"
       >
         {{ label }}
       </CheckboxComponent>
@@ -31,10 +29,6 @@ const checkboxes = ref([
   { label: "Мужской", isChecked: false },
   { label: "Женский", isChecked: false },
 ]);
-
-function updateCheckbox(isChecked: boolean, index: number): void {
-  checkboxes.value[index].isChecked = isChecked;
-}
 </script>
 
 <style lang="less" scoped>

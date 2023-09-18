@@ -61,6 +61,7 @@ const isChecked = computed({
   &__label {
     .flex-properties(flex, center, center);
     .content(10px 14px, 8px);
+    .text-s;
     color: @grey-gradation--black;
     border: 1px solid @grey-gradation--100;
     user-select: none;

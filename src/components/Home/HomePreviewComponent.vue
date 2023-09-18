@@ -96,10 +96,6 @@ defineProps<IProps>();
       color: @grey-gradation--200;
       margin-bottom: 32px;
     }
-
-    &__btn {
-      .text-lead-s;
-    }
   }
 }
 </style>

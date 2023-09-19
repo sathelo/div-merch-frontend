@@ -68,6 +68,11 @@ export const Link: ComponentStory = {
     variant: ECButtonType.link,
   },
 };
+export const LinkCrumb: ComponentStory = {
+  args: {
+    variant: ECButtonType.linkCrumb,
+  },
+};
 export const Round: ComponentStory = {
   args: {
     variant: ECButtonType.round,

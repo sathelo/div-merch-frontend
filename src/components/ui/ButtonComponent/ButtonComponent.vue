@@ -24,6 +24,7 @@ const classes = computed(() => ({
   "btn--primary": props.variant === ECButtonType.primary,
   "btn--secondary": props.variant === ECButtonType.secondary,
   "btn--link": props.variant === ECButtonType.link,
+  "btn--link-crumb": props.variant === ECButtonType.linkCrumb,
   "btn--round": props.variant === ECButtonType.round,
 }));
 
@@ -99,7 +100,30 @@ const isDisabled = computed(() => {
   }
 
   &--link {
+    .text-m;
     color: @grey-gradation--black;
+
+    &:hover {
+      color: @blue--500;
+    }
+
+    &:focus {
+      color: @blue--500;
+    }
+
+    &:active {
+      color: @blue--500;
+    }
+
+    &:disabled {
+      color: @grey-gradation--100;
+      cursor: not-allowed;
+    }
+  }
+
+  &--link-crumb {
+    .text-s;
+    color: @grey-gradation--200;
 
     &:hover {
       color: @blue--500;

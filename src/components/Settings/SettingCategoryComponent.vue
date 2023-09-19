@@ -3,12 +3,12 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <CheckboxComponent
-        v-for="({ label, isChecked }, checkboxIndex) in checkboxes"
+        v-for="(checkbox, checkboxIndex) in checkboxes"
         :key="checkboxIndex"
-        :is-checked="isChecked"
+        :is-checked="checkbox.isChecked"
         class="setting__checkbox"
       >
-        {{ label }}
+        {{ checkbox.label }}
       </CheckboxComponent>
     </div>
   </section>

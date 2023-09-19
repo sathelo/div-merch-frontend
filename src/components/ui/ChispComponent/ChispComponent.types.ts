@@ -1,4 +1,4 @@
 export interface ICChispProps {
-  index?: number;
+  modelValue?: boolean;
   disabled?: boolean;
 }

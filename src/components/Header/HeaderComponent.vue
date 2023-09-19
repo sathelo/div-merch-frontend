@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <a class="header__logo logo" @click="router.push({ name: Routes.home })">
+    <a class="header__logo logo" @click="navigateToRoute(Routes.home)">
       <img class="logo__image" :src="DivMerchUrlLogo" alt="div.merch" />
     </a>
     <HeaderMenuComponent class="header__menu" :menu="menu" />
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { useRouter } from "vue-router";
+import { navigateToRoute } from "@/router/routes.ts";
 
 import { menu } from "@/data/header/menu";
 import { actions } from "@/data/header/action";
@@ -37,8 +37,6 @@ const filteredActions = computed(() => {
   });
   return res;
 });
-
-const router = useRouter();
 </script>
 
 <style lang="less" scoped>

@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Clothes } from "@/data/main/clothes.types";
+import type { Clothes } from "@/data/home/clothes.types";
 
 interface IProps {
   clothes: Clothes;

@@ -3,16 +3,16 @@
     <div v-if="$slots.icon" class="btn__ico">
       <slot name="icon" />
     </div>
-    <slot>button</slot>
+    <slot />
   </button>
 </template>
 
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
+import { ECButtonType } from "./ButtonComponent.enums";
 
-import { ICButtonProps } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+import { ICButtonProps } from "./ButtonComponent.types";
 
 const props = withDefaults(defineProps<ICButtonProps>(), {
   disabled: false,
@@ -24,6 +24,7 @@ const classes = computed(() => ({
   "btn--primary": props.variant === ECButtonType.primary,
   "btn--secondary": props.variant === ECButtonType.secondary,
   "btn--link": props.variant === ECButtonType.link,
+  "btn--link-crumb": props.variant === ECButtonType.linkCrumb,
   "btn--round": props.variant === ECButtonType.round,
 }));
 
@@ -35,11 +36,12 @@ const isDisabled = computed(() => {
 <style lang="less" scoped>
 .btn {
   .flex-properties(flex, center, center);
+  .text-lead-s;
   transition: 0.2s;
   cursor: pointer;
 
-  &:disabled {
-    cursor: not-allowed;
+  &__ico {
+    user-select: none;
   }
 
   &--primary > &__ico {
@@ -51,7 +53,7 @@ const isDisabled = computed(() => {
     color: @grey-gradation--white;
 
     &:hover {
-      background: @blue--400;
+      background: #2505a6;
     }
 
     &:focus {
@@ -85,7 +87,7 @@ const isDisabled = computed(() => {
     }
 
     &:active {
-      background: @blue--500;
+      background: @blue--100;
       border: 1px solid @purple--100;
     }
 
@@ -98,6 +100,7 @@ const isDisabled = computed(() => {
   }
 
   &--link {
+    .text-m;
     color: @grey-gradation--black;
 
     &:hover {
@@ -118,8 +121,30 @@ const isDisabled = computed(() => {
     }
   }
 
+  &--link-crumb {
+    .text-s;
+    color: @grey-gradation--200;
+
+    &:hover {
+      color: @blue--500;
+    }
+
+    &:focus {
+      color: @blue--500;
+    }
+
+    &:active {
+      color: @blue--500;
+    }
+
+    &:disabled {
+      color: @grey-gradation--100;
+      cursor: not-allowed;
+    }
+  }
+
   &--round {
-    .content(16px, 24px);
+    .content(13px 16px, 24px);
 
     &:hover {
       background: @grey-gradation--white;

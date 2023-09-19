@@ -6,13 +6,19 @@
       class="actions-nav"
     >
       <li class="actions-nav__item item">
-        <ButtonComponent :variant="ECButtonType.round" class="item__btn btn">
-          <img
-            class="btn__ico"
-            :class="`btn__ico--${getName(action.name)}`"
-            :src="action.iconUrl"
-            :alt="`${getName(action.name)}`"
-          />
+        <ButtonComponent
+          :variant="ECButtonType.round"
+          class="item__btn btn"
+          @click="navigateToRoute(action.namePath)"
+        >
+          <template #icon>
+            <img
+              class="btn__ico"
+              :class="`btn__ico--${getName(action.name)}`"
+              :src="action.iconUrl"
+              :alt="`${getName(action.name)}`"
+            />
+          </template>
         </ButtonComponent>
         <div
           v-if="isBasket(action.name) && counter"
@@ -29,6 +35,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { navigateToRoute } from "@/router/routes";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 

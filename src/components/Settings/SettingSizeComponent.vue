@@ -3,21 +3,19 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <ChispComponent
-        v-for="({ label, isChecked }, checkboxIndex) in checkboxes"
-        :key="checkboxIndex"
-        :index="checkboxIndex"
-        class="setting__chisp chisp"
-        :class="{ 'chisp--active': isChecked }"
-        @update-chisp="updateChisp"
+        v-for="(size, sizeIndex) in sizes"
+        :key="sizeIndex"
+        v-model="size.isChecked"
+        class="setting__chisp"
       >
-        {{ label }}
+        {{ size.label }}
       </ChispComponent>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { sizes } from "@/data/home/sizes";
 
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
@@ -26,26 +24,11 @@ interface IProps {
 }
 
 defineProps<IProps>();
-
-const checkboxes = ref([
-  { label: "S", isChecked: false },
-  { label: "M", isChecked: false },
-  { label: "L", isChecked: false },
-  { label: "XL", isChecked: false },
-  { label: "2XL", isChecked: false },
-  { label: "XXL", isChecked: false },
-  { label: "3XL", isChecked: false },
-]);
-
-function updateChisp(index: number): void {
-  checkboxes.value[index].isChecked = !checkboxes.value[index].isChecked;
-}
 </script>
 
 <style lang="less" scoped>
 .setting {
   .content(32px, 24px, initial);
-  .text-s;
   border: 1px solid @grey-gradation--100;
 
   &__title {
@@ -62,19 +45,13 @@ function updateChisp(index: number): void {
       margin-right: 8px;
     }
 
-    & > *:not(.setting__chisp:nth-last-of-type(-n + 4)) {
+    & > .setting__chisp:nth-of-type(-n + 4) {
       margin-bottom: 8px;
     }
   }
 
-  .chisp {
-    .text-s;
+  &__chisp {
     width: calc((100% - (3 * 8px)) / 4);
-
-    &--active {
-      background: @grey-gradation--100;
-      border: 1px solid @grey-gradation--100;
-    }
   }
 }
 </style>

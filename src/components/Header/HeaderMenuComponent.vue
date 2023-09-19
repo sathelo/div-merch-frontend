@@ -1,16 +1,13 @@
 <template>
   <nav class="menu">
-    <ul
-      v-for="({ title, namePath }, itemIndex) in menu"
-      :key="itemIndex"
-      class="menu-nav"
-    >
+    <ul v-for="(item, itemIndex) in menu" :key="itemIndex" class="menu-nav">
       <li class="menu-nav__item item">
         <ButtonComponent
           :variant="ECButtonType.link"
-          @click="router.push({ name: namePath })"
+          class="item__btn"
+          @click="navigateToRoute(item.namePath)"
         >
-          {{ title }}
+          {{ item.title }}
         </ButtonComponent>
       </li>
     </ul>
@@ -18,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { navigateToRoute } from "@/router/routes.ts";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
@@ -31,8 +28,6 @@ interface IProps {
 }
 
 defineProps<IProps>();
-
-const router = useRouter();
 </script>
 
 <style lang="less" scoped>
@@ -41,12 +36,6 @@ const router = useRouter();
 
   & > &-nav:not(:last-of-type) {
     margin-right: 48px;
-  }
-
-  .item {
-    &__text {
-      .text-m;
-    }
   }
 }
 </style>

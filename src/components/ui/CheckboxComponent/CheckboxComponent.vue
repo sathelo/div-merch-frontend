@@ -1,69 +1,74 @@
 <template>
   <div class="checkbox">
     <input
-      :id="`${uniqueId}`"
+      :id="uniqueId"
       v-model="isChecked"
-      :disabled="isDisabled"
       type="checkbox"
-      class="checkbox__input"
+      class="checkbox__checked"
+      :disabled="isDisabled"
     />
-    <label :for="`${uniqueId}`" class="checkbox__label">
+    <label class="checkbox__label" :for="uniqueId">
       <slot>checkbox</slot>
     </label>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
-import { useUniqueId } from "@/composable/useUniqueId";
+import { getUniqueId } from "@/utils/uniqueId";
 
-import { ICCheckboxProps } from "@/components/ui/CheckboxComponent/CheckboxComponent.types";
+import { ICCheckboxProps } from "./CheckboxComponent.types";
 
 interface IEmits {
-  (e: "updateCheckbox", isChecked: boolean, uniqueId: number): void;
+  (e: "update:modelValue", v: boolean): void;
+  (e: "change", v: boolean): void;
 }
 
 const props = withDefaults(defineProps<ICCheckboxProps>(), {
-  index: 0,
-  isChecked: false,
   disabled: false,
 });
 const emits = defineEmits<IEmits>();
+
+const { uniqueId } = getUniqueId();
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;
 });
 
+const isCheckedLocal = ref(false);
+
 const isChecked = computed({
-  get: () => !!props.isChecked,
+  get: () => props.modelValue ?? isCheckedLocal.value,
   set: (value) => {
-    emits("updateCheckbox", value, props.index);
+    isCheckedLocal.value = value;
+    emits("update:modelValue", value);
+    emits("change", value);
   },
 });
-
-const { uniqueId } = useUniqueId();
 </script>
 
 <style lang="less" scoped>
 .checkbox {
   .flex-properties(flex, center);
-  color: @grey-gradation--200;
-  transition: 0.2s;
+  position: relative;
 
-  &__input {
+  &__checked {
     position: absolute;
     z-index: -1;
     opacity: 0;
   }
 
-  &__input + &__label {
+  &__checked + &__label {
     .flex-properties(inline-flex, center);
+    .text-s;
+    color: @grey-gradation--200;
     user-select: none;
+    transition: 0.2s;
     cursor: pointer;
   }
 
-  &__input + &__label::before {
+  &__checked + &__label::before {
     content: "";
     width: 16px;
     height: 16px;
@@ -74,10 +79,8 @@ const { uniqueId } = useUniqueId();
   }
 
   /* стили при наведении курсора */
-  &__input:not(:disabled):not(:checked) + &__label:hover {
-    & {
-      color: @grey-gradation--300;
-    }
+  &__checked:not(:disabled):not(:checked) + &__label:hover {
+    color: @grey-gradation--300;
 
     &::before {
       background: @grey-gradation--300;
@@ -85,10 +88,8 @@ const { uniqueId } = useUniqueId();
   }
 
   /* стили для активного */
-  &__input:not(:disabled):active + &__label {
-    & {
-      color: @grey-gradation--black;
-    }
+  &__checked:not(:disabled):active + &__label {
+    color: @grey-gradation--black;
 
     &::before {
       background: @grey-gradation--black;
@@ -96,10 +97,8 @@ const { uniqueId } = useUniqueId();
   }
 
   /* стили для фокуса */
-  &__input:focus + &__label {
-    & {
-      color: @grey-gradation--300;
-    }
+  &__checked:focus + &__label {
+    color: @grey-gradation--300;
 
     &::before {
       background: @grey-gradation--300;
@@ -107,10 +106,8 @@ const { uniqueId } = useUniqueId();
   }
 
   /* стили для checked */
-  &__input:checked + &__label {
-    & {
-      color: @grey-gradation--black;
-    }
+  &__checked:checked + &__label {
+    color: @grey-gradation--black;
 
     &::before {
       .flex-properties(flex, center, center);
@@ -122,11 +119,9 @@ const { uniqueId } = useUniqueId();
   }
 
   /* стили для disabled */
-  &__input:disabled + &__label {
-    & {
-      color: @grey-gradation--200;
-      cursor: not-allowed;
-    }
+  &__checked:disabled + &__label {
+    color: @grey-gradation--200;
+    cursor: not-allowed;
 
     &::before {
       border: 1px solid @grey-gradation--100;

@@ -10,7 +10,7 @@ type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
   component: ButtonComponent,
-  title: "Button/ButtonComponent",
+  title: "Buttons/ButtonComponent",
   tags: ["autodocs"],
   argTypes: {
     /* props */
@@ -40,8 +40,13 @@ const meta: ComponentMeta = {
     setup() {
       return { args };
     },
-    template:
-      "<ButtonComponent :variant='args.variant' :disabled='args.disabled'></ ButtonComponent>",
+    template: `
+    <ButtonComponent 
+      :variant='args.variant' 
+      :disabled='args.disabled'>
+      button
+    </ButtonComponent>
+    `,
   }),
 } as ComponentStory;
 
@@ -61,6 +66,11 @@ export const Secondary: ComponentStory = {
 export const Link: ComponentStory = {
   args: {
     variant: ECButtonType.link,
+  },
+};
+export const LinkCrumb: ComponentStory = {
+  args: {
+    variant: ECButtonType.linkCrumb,
   },
 };
 export const Round: ComponentStory = {

@@ -1,13 +1,16 @@
-import type { Product, Products } from "@/data/main/products.types";
+import type {
+  Card,
+  Cards,
+} from "@/components/ui/CardComponent/CardComponent.types";
 
-const defaultProduct: Product = {
+const defaultProduct: Card = {
   img: "/products/t-shirt.png",
   type: "Футболка",
   title: "Recombinate",
   price: 3400,
 };
 
-export const products: Products = [
+export const products: Cards = [
   {
     ...defaultProduct,
   },

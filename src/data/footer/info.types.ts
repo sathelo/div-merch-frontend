@@ -1,9 +1,9 @@
-import { RouteRecordName } from "vue-router";
+import { NamePath } from "@/router/routes.types";
 
 export type DataInfoWithoutTextBlock = {
   href?: HTMLLinkElement["href"];
   target?: HTMLLinkElement["target"];
-  namePath?: RouteRecordName;
+  namePath?: NamePath;
 };
 
 export type DataInfoBlock = {

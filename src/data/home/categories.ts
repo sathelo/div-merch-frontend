@@ -1,4 +1,4 @@
-import type { Categories } from "@/data/main/categories.types";
+import type { Categories } from "@/data/home/categories.types";
 
 export const categories: Categories = [
   {

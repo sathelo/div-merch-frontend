@@ -5,8 +5,8 @@
       <p class="not-found__text">Такой страницы не&nbsp;существует</p>
       <ButtonComponent
         :variant="ECButtonType.primary"
-        class="not-found__btn btn"
-        @click="router.push({ name: Routes.home })"
+        class="not-found__btn"
+        @click="navigateToRoute(Routes.home)"
       >
         Вернуться на&nbsp;главную
       </ButtonComponent>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { navigateToRoute } from "@/router/routes.ts";
 
 import ErrorNotFoundPhoto from "/images/not-found.png";
 
@@ -23,8 +23,6 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { Routes } from "@/router/routes.enums";
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
-
-const router = useRouter();
 </script>
 
 <style lang="less" scoped>
@@ -52,10 +50,6 @@ const router = useRouter();
     text-align: center;
     color: @grey-gradation--black;
     margin-bottom: 24px;
-  }
-
-  .btn {
-    .text-lead-s;
   }
 }
 </style>

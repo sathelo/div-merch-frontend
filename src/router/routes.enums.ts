@@ -4,4 +4,8 @@ export enum Routes {
   allProducts = "all-products",
   categories = "categories",
   notFound = "not-found",
+  favorites = "favorites",
+  search = "search",
+  profile = "profile",
+  basket = "basket",
 }

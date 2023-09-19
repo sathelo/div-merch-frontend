@@ -27,7 +27,7 @@
         </SwiperSlide>
       </Swiper>
       <ButtonComponent
-        class="popular-categories__btn btn"
+        class="popular-categories__btn"
         :variant="ECButtonType.secondary"
       >
         Все категории
@@ -42,7 +42,7 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Categories } from "@/data/main/categories.types";
+import type { Categories } from "@/data/home/categories.types";
 
 import "swiper/css";
 
@@ -93,8 +93,7 @@ defineProps<IProps>();
     }
   }
 
-  .btn {
-    .text-lead-s;
+  &__btn {
     margin: 0 auto;
   }
 }

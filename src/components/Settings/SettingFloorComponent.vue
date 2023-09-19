@@ -3,14 +3,12 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <CheckboxComponent
-        v-for="({ label, isChecked }, checkboxIndex) in checkboxes"
+        v-for="(checkbox, checkboxIndex) in checkboxes"
         :key="checkboxIndex"
-        :index="checkboxIndex"
-        :is-checked="isChecked"
+        :is-checked="checkbox.isChecked"
         class="setting__checkbox"
-        @update-checkbox="updateCheckbox"
       >
-        {{ label }}
+        {{ checkbox.label }}
       </CheckboxComponent>
     </div>
   </section>
@@ -31,10 +29,6 @@ const checkboxes = ref([
   { label: "Мужской", isChecked: false },
   { label: "Женский", isChecked: false },
 ]);
-
-function updateCheckbox(isChecked: boolean, index: number): void {
-  checkboxes.value[index].isChecked = isChecked;
-}
 </script>
 
 <style lang="less" scoped>
@@ -55,10 +49,6 @@ function updateCheckbox(isChecked: boolean, index: number): void {
     & > *:not(.setting__checkbox:last-of-type) {
       margin-bottom: 12px;
     }
-  }
-
-  &__checkbox {
-    .text-s;
   }
 }
 </style>

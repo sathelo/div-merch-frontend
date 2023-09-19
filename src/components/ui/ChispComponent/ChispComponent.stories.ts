@@ -1,5 +1,7 @@
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
+import { ChispDecoratorWithLimitedWidth } from "@/components/ui/ChispComponent/ChispComponent.decorator";
+
 import { ICChispProps } from "@/components/ui/ChispComponent/ChispComponent.types";
 import type { Meta, StoryObj } from "@storybook/vue3";
 
@@ -7,37 +9,47 @@ type ComponentMeta = Meta<typeof ChispComponent>;
 type ComponentStory = StoryObj<typeof meta>;
 
 const meta: ComponentMeta = {
-  title: "Chips/ChispComponent",
+  component: ChispComponent,
+  title: "Navigation/ChispComponent",
   tags: ["autodocs"],
   argTypes: {
     /* props */
-    index: {
-      description:
-        "Порядковый номер для привязки контекста (использовать, если в компоненте несколько чипсов, передаем порядковый index)",
+    modelValue: {
+      description: "Состояние чипса",
+      control: {
+        type: "boolean",
+      },
     },
     disabled: {
-      description: "Состояние кнопки",
+      description: "Состояние чипса",
       control: {
         type: "boolean",
       },
     },
     /* events */
-    updateChisp: {
+    "update:modelValue": {
       description: "Событие, обновление состояния чипса",
+    },
+    change: {
+      description: "Событие, изменение состояния чипса",
     },
     /* slots */
     default: {
       description: "Текст в чипсе",
     },
   },
-  component: ChispComponent,
+  decorators: [ChispDecoratorWithLimitedWidth],
   render: (args: ICChispProps) => ({
     components: { ChispComponent },
     setup() {
       return { args };
     },
-    template:
-      "<ChispComponent :index='args.index' :disabled='args.disabled'></ChispComponent>",
+    template: `
+    <ChispComponent 
+      :modelValue='args.modelValue' 
+      :disabled='args.disabled'>
+    </ChispComponent>
+    `,
   }),
 } as ComponentStory;
 

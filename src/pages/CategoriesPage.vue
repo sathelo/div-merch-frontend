@@ -1,17 +1,26 @@
 <template>
   <div class="categories">
     <div class="categories__wrapper">
-      <CategoriesBreadcrumbsComponent class="categories__breadcrumbs" />
+      <CategoriesBreadcrumbsComponent
+        :breadcrumbs="breadcrumbs"
+        class="categories__breadcrumbs"
+      />
       <CategoriesSelectComponent class="categories__select" />
     </div>
     <div class="categories__wrapper">
       <CategoriesSettingsComponent class="categories__settings" />
-      <CategoriesContentComponent class="categories__content" />
+      <CategoriesContentComponent
+        :products="products"
+        class="categories__content"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { products } from "@/data/home/products";
+import { breadcrumbs } from "@/data/home/breadcrumbs";
+
 import CategoriesBreadcrumbsComponent from "@/components/Categories/CategoriesBreadcrumbsComponent.vue";
 import CategoriesSelectComponent from "@/components/Categories/CategoriesSelectComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
@@ -26,6 +35,10 @@ import CategoriesContentComponent from "@/components/Categories/CategoriesConten
 
   &__wrapper {
     .flex-properties(flex, initial, space-between);
+  }
+
+  & > :not(&__wrapper:last-of-type) {
+    margin-bottom: 40px;
   }
 }
 </style>

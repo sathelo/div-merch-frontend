@@ -1,8 +1,8 @@
-import { RouteRecordName } from "vue-router";
+import type { NamePath } from "@/router/routes.types";
 
 export type Nav = {
   title: string;
-  namePath?: RouteRecordName;
+  namePath?: NamePath;
 };
 
 export type Menu = Nav[];

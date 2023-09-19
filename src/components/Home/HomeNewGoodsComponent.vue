@@ -1,5 +1,5 @@
 <template>
-  <dev class="new-goods">
+  <div class="new-goods">
     <div class="new-goods__title">Новые поступления</div>
     <div class="new-goods-cards">
       <CardComponent
@@ -9,7 +9,7 @@
         class="new-goods-cards__card"
       />
     </div>
-  </dev>
+  </div>
 </template>
 
 <script setup lang="ts">

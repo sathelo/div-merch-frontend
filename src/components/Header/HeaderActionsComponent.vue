@@ -6,7 +6,11 @@
       class="actions-nav"
     >
       <li class="actions-nav__item item">
-        <ButtonComponent :variant="ECButtonType.round" class="item__btn btn">
+        <ButtonComponent
+          :variant="ECButtonType.round"
+          class="item__btn btn"
+          @click="navigateToRoute(action.namePath)"
+        >
           <template #icon>
             <img
               class="btn__ico"
@@ -31,6 +35,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { navigateToRoute } from "@/router/routes";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 

@@ -87,7 +87,7 @@ const isDisabled = computed(() => {
     }
 
     &:active {
-      background: @blue--500;
+      background: @blue--100;
       border: 1px solid @purple--100;
     }
 
@@ -144,7 +144,7 @@ const isDisabled = computed(() => {
   }
 
   &--round {
-    .content(16px, 24px);
+    .content(13px 16px, 24px);
 
     &:hover {
       background: @grey-gradation--white;

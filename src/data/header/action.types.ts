@@ -1,7 +1,8 @@
+import { NamePath } from "@/router/routes.types";
+
 export type ActionWithoutName = {
   iconUrl: string;
-  href?: HTMLLinkElement["href"];
-  target?: HTMLLinkElement["target"];
+  namePath?: NamePath;
 };
 
 export interface IActionWithName extends ActionWithoutName {

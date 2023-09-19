@@ -6,9 +6,9 @@
       class="breadcrumbs__crumb crumb"
     >
       <ButtonComponent
-        :variant="ECButtonType.link"
+        :variant="ECButtonType.linkCrumb"
         class="crumb__btn"
-        @click="router.push({ name: breadcrumb.path })"
+        @click="navigateToRoute(breadcrumb.path)"
       >
         {{ breadcrumb.name }}
       </ButtonComponent>
@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { navigateToRoute } from "@/router/routes.ts";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
@@ -30,8 +30,6 @@ interface IProps {
 }
 
 defineProps<IProps>();
-
-const router = useRouter();
 </script>
 
 <style lang="less" scoped>

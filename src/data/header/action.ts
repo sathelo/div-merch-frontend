@@ -1,26 +1,26 @@
-import type { Actions, Action } from "@/data/header/action.types";
+import { Routes } from "@/router/routes.enums";
 
-const defaultAction: Action = {
-  iconUrl: "",
-  href: "#",
-  target: "_self",
-};
+import type { Actions } from "@/data/header/action.types";
 
 export const actions: Actions = [
   {
-    ...defaultAction,
     iconUrl: "/icons/heart.svg",
+    namePath: Routes.favorites,
+    name: "heart",
   },
   {
-    ...defaultAction,
     iconUrl: "/icons/search.svg",
+    namePath: Routes.search,
+    name: "search",
   },
   {
-    ...defaultAction,
     iconUrl: "/icons/user.svg",
+    namePath: Routes.profile,
+    name: "profile",
   },
   {
-    ...defaultAction,
     iconUrl: "/icons/basket.svg",
+    namePath: Routes.basket,
+    name: "basket",
   },
 ];

@@ -1,8 +1,8 @@
-import { RouteRecordName } from "vue-router";
+import { NamePath } from "@/router/routes.types";
 
 interface IBreadcrumb {
   name: string;
-  path: RouteRecordName;
+  path: NamePath;
 }
 
 export type Breadcrumb = IBreadcrumb;

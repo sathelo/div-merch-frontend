@@ -6,7 +6,7 @@
       <ButtonComponent
         :variant="ECButtonType.primary"
         class="not-found__btn"
-        @click="router.push({ name: Routes.home })"
+        @click="navigateToRoute(Routes.home)"
       >
         Вернуться на&nbsp;главную
       </ButtonComponent>
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { navigateToRoute } from "@/router/routes.ts";
 
 import ErrorNotFoundPhoto from "/images/not-found.png";
 
@@ -23,8 +23,6 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { Routes } from "@/router/routes.enums";
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
-
-const router = useRouter();
 </script>
 
 <style lang="less" scoped>

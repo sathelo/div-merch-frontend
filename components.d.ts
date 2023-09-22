@@ -7,18 +7,16 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BasketCardComponent: typeof import('./src/components/Basket/BasketCardComponent.vue')['default']
     ButtonComponent: typeof import('./src/components/ui/ButtonComponent/ButtonComponent.vue')['default']
     CardComponent: typeof import('./src/components/ui/CardComponent/CardComponent.vue')['default']
     CategoriesBreadcrumbsComponent: typeof import('./src/components/Categories/CategoriesBreadcrumbsComponent.vue')['default']
     CategoriesContentComponent: typeof import('./src/components/Categories/CategoriesContentComponent.vue')['default']
-    CategoriesSelectComponent: typeof import('./src/components/Categories/CategoriesSelectComponent.vue')['default']
     CategoriesSettingsComponent: typeof import('./src/components/Categories/CategoriesSettingsComponent.vue')['default']
     CheckboxComponent: typeof import('./src/components/ui/CheckboxComponent/CheckboxComponent.vue')['default']
     ChispComponent: typeof import('./src/components/ui/ChispComponent/ChispComponent.vue')['default']
     ColorPickerComponent: typeof import('./src/components/ui/ColorPickerComponent/ColorPickerComponent.vue')['default']
     DropdownComponent: typeof import('./src/components/ui/DropdownComponent/DropdownComponent.vue')['default']
-    ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
-    ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     FooterComponent: typeof import('./src/components/Footer/FooterComponent.vue')['default']
     FooterInfoComponent: typeof import('./src/components/Footer/FooterInfoComponent.vue')['default']
     FooterMetaComponent: typeof import('./src/components/Footer/FooterMetaComponent.vue')['default']

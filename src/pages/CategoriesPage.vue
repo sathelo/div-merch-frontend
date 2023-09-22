@@ -33,7 +33,7 @@ import DropdownComponent from "@/components/ui/DropdownComponent/DropdownCompone
 
 <style lang="less" scoped>
 .categories {
-  .content(40px, 32px, @grey-gradation--white);
+  .content(40px, 40px, @grey-gradation--white);
   width: 100%;
   height: 100%;
 

@@ -16,6 +16,7 @@ declare module 'vue' {
     CheckboxComponent: typeof import('./src/components/ui/CheckboxComponent/CheckboxComponent.vue')['default']
     ChispComponent: typeof import('./src/components/ui/ChispComponent/ChispComponent.vue')['default']
     ColorPickerComponent: typeof import('./src/components/ui/ColorPickerComponent/ColorPickerComponent.vue')['default']
+    DropdownComponent: typeof import('./src/components/ui/DropdownComponent/DropdownComponent.vue')['default']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem']
     FooterComponent: typeof import('./src/components/Footer/FooterComponent.vue')['default']

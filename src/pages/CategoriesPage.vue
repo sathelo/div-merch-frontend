@@ -5,7 +5,10 @@
         :breadcrumbs="breadcrumbs"
         class="categories__breadcrumbs"
       />
-      <CategoriesSelectComponent class="categories__select" />
+      <DropdownComponent
+        :options="selectionOptions"
+        class="categories__select"
+      />
     </div>
     <div class="categories__wrapper">
       <CategoriesSettingsComponent class="categories__settings" />
@@ -20,11 +23,12 @@
 <script setup lang="ts">
 import { products } from "@/data/home/products";
 import { breadcrumbs } from "@/data/home/breadcrumbs";
+import { selectionOptions } from "@/data/home/selectionOptions";
 
 import CategoriesBreadcrumbsComponent from "@/components/Categories/CategoriesBreadcrumbsComponent.vue";
-import CategoriesSelectComponent from "@/components/Categories/CategoriesSelectComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
+import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
 </script>
 
 <style lang="less" scoped>

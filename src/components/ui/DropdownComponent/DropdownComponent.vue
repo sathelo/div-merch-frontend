@@ -8,16 +8,18 @@
       <slot>{{ selectOption ? selectOption.value : "Label" }}</slot>
       <img :src="ArrowBottomIco" alt="arrow-bottom" />
     </button>
-    <div v-if="isSelect && !isDisabled" class="select__dropdown">
-      <div class="select__options options">
-        <div
-          v-for="(option, optionIndex) in options"
-          :key="optionIndex"
-          class="options__option"
-          @click="clickSelectOption(option)"
-        >
-          {{ option.value }}
-        </div>
+    <div v-if="isSelect && !isDisabled" class="select__options options">
+      <div
+        v-for="(option, optionIndex) in options"
+        :key="optionIndex"
+        class="options__option"
+        :class="{
+          'options__option--select':
+            JSON.stringify(option) === JSON.stringify(selectOption),
+        }"
+        @click="clickSelectOption(option)"
+      >
+        {{ option.value }}
       </div>
     </div>
   </div>
@@ -78,8 +80,9 @@ function clickSelectOption(option: Option) {
 
 <style lang="less" scoped>
 .select {
-  position: relative;
+  .content(0, 8px);
   width: 100%;
+  overflow: hidden;
 
   &__label {
     .content(10px 14px, 8px);
@@ -104,32 +107,23 @@ function clickSelectOption(option: Option) {
   }
 
   &--active {
-    .content(0, 8px 8px 0 0, @grey-gradation--white);
+    .content(0, 8px, @grey-gradation--white);
+    box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.15);
 
     & > .select__label {
       .content(10px 14px, 8px, @grey-gradation--white);
+      margin-bottom: 4px;
     }
-  }
-
-  &__dropdown {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
   }
 
   .options {
     .content(0, 0 0 8px 8px, @grey-gradation--white);
     .text-s;
-    position: absolute;
-    top: 0;
-    left: 0;
     color: @grey-gradation--black;
     text-align: left;
     width: inherit;
     max-height: 104px;
     overflow-y: scroll;
-    margin-top: 4px;
 
     &__option {
       .content(10px 14px);
@@ -143,7 +137,22 @@ function clickSelectOption(option: Option) {
       &:active {
         background: @grey-gradation--100;
       }
+
+      &--select {
+        background: @grey-gradation--100;
+      }
     }
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    background: @grey-gradation--white;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 2px solid @grey-gradation--white;
+    border-radius: 24px;
+    background: @grey-gradation--100;
   }
 }
 </style>

@@ -53,6 +53,7 @@ function updateSelectValue(option: Option | undefined) {
 
 <style lang="less" scoped>
 .categories {
+  position: relative;
   .content(40px, 40px, @grey-gradation--white);
   width: 100%;
   height: 100%;
@@ -62,6 +63,9 @@ function updateSelectValue(option: Option | undefined) {
   }
 
   &__select {
+    position: absolute;
+    top: 40px;
+    right: 40px;
     width: 100%;
     max-width: 174px;
   }

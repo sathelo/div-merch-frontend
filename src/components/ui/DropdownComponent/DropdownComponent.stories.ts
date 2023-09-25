@@ -20,6 +20,18 @@ const meta: ComponentMeta = {
         type: "boolean",
       },
     },
+    selectValue: {
+      description: "Выбранный элемент из выпадающего списка",
+      control: {
+        type: "object",
+      },
+    },
+    selectValueId: {
+      description: "Выбранное значение из выпадающего списка (по умполчанию)",
+      control: {
+        type: "number",
+      },
+    },
     disabled: {
       description: "Состояние выпадающего списка",
       control: {
@@ -33,13 +45,10 @@ const meta: ComponentMeta = {
       },
     },
     /* events */
-    "update:modelValue": {
+    updateModelValue: {
       description: "Событие, обновление состояния выпадающего списка",
     },
-    changeSelect: {
-      description: "Событие, изменение состояния выпадающего списка",
-    },
-    selectOption: {
+    updateSelectValue: {
       description: "Событие, выбор опции",
     },
     /* slots */
@@ -56,6 +65,7 @@ const meta: ComponentMeta = {
     template: `
     <DropdownComponent 
       :modelValue='args.modelValue'
+      :selectValueId='args.selectValueId'
       :disabled='args.disabled'
       :options='args.options'>
     </DropdownComponent>

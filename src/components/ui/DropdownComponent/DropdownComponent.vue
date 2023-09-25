@@ -1,27 +1,26 @@
 <template>
-  <button
-    class="select"
-    :disabled="isDisabled"
-    :class="{ 'select--active': isSelect }"
-    @click="clickHandlerSelect"
-  >
-    <div class="select__label">
-      <slot>{{ selectOptionLocal ? selectOptionLocal.value : "Label" }}</slot>
+  <div class="select" :class="{ 'select--active': isSelect && !isDisabled }">
+    <button
+      :disabled="isDisabled"
+      class="select__label"
+      @click="clickHandlerSelect"
+    >
+      <slot>{{ selectOption ? selectOption.value : "Label" }}</slot>
       <img :src="ArrowBottomIco" alt="arrow-bottom" />
-    </div>
-    <div v-if="isSelect" class="select__dropdown">
+    </button>
+    <div v-if="isSelect && !isDisabled" class="select__dropdown">
       <div class="select__options options">
         <div
           v-for="(option, optionIndex) in options"
           :key="optionIndex"
           class="options__option"
-          @click="updateSelectOption(option)"
+          @click="clickSelectOption(option)"
         >
           {{ option.value }}
         </div>
       </div>
     </div>
-  </button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -32,9 +31,8 @@ import ArrowBottomIco from "/icons/arrow-bottom.svg";
 import { ICDropdownProps, Option } from "./DropdownComponent.types";
 
 interface IEmits {
-  (e: "update:modelValue", v: boolean): void;
-  (e: "changeSelect", v: boolean): void;
-  (e: "updateSelectOption", v: Option): void;
+  (e: "updateModelValue", v: boolean): void;
+  (e: "updateSelectValue", v: Option | undefined): void;
 }
 
 const props = withDefaults(defineProps<ICDropdownProps>(), {
@@ -58,18 +56,23 @@ const isDisabled = computed(() => {
 });
 
 const isSelect = computed(() => props.modelValue ?? isSelectLocal.value);
-const selectOption = computed(
-  () => props.modelValue ?? selectOptionLocal.value,
-);
+const selectOption = computed(() => {
+  if (props.selectValue) return props.selectValue;
+  if (props.options.length && props.selectValueId !== undefined)
+    return props.options[props.selectValueId];
+  return selectOptionLocal.value;
+});
 
 function clickHandlerSelect() {
   isSelectLocal.value = !isSelectLocal.value;
-  emits("changeSelect", isSelect.value);
+  emits("updateModelValue", isSelectLocal.value);
 }
 
-function updateSelectOption(option: Option) {
+function clickSelectOption(option: Option) {
   selectOptionLocal.value = option;
-  emits("updateSelectOption", selectOption.value);
+  isSelectLocal.value = !isSelectLocal.value;
+  emits("updateSelectValue", selectOptionLocal.value);
+  emits("updateModelValue", isSelectLocal.value);
 }
 </script>
 
@@ -77,7 +80,6 @@ function updateSelectOption(option: Option) {
 .select {
   position: relative;
   width: 100%;
-  cursor: pointer;
 
   &__label {
     .content(10px 14px, 8px);
@@ -85,11 +87,19 @@ function updateSelectOption(option: Option) {
     .text-s;
     position: relative;
     z-index: 2;
+    width: 100%;
     border: 1px solid @grey-gradation--100;
     color: @grey-gradation--black;
+    cursor: pointer;
 
     &:hover {
       border: 1px solid @grey-gradation--200;
+    }
+
+    &:disabled {
+      border: 1px solid @grey-gradation--100;
+      background: @grey-gradation--100;
+      cursor: not-allowed;
     }
   }
 
@@ -98,12 +108,7 @@ function updateSelectOption(option: Option) {
 
     & > .select__label {
       .content(10px 14px, 8px, @grey-gradation--white);
-      margin-bottom: 4px;
     }
-  }
-
-  &:disabled {
-    cursor: not-allowed;
   }
 
   &__dropdown {
@@ -124,9 +129,11 @@ function updateSelectOption(option: Option) {
     width: inherit;
     max-height: 104px;
     overflow-y: scroll;
+    margin-top: 4px;
 
     &__option {
       .content(10px 14px);
+      cursor: pointer;
 
       &:not(:last-child) {
         margin-bottom: 2px;

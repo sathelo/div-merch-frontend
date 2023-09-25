@@ -6,6 +6,8 @@ type Options = Option[];
 
 export interface ICDropdownProps {
   modelValue?: boolean;
+  selectValue?: Option;
+  selectValueId?: number;
   disabled?: boolean;
   options?: Options;
 }

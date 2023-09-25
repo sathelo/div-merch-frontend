@@ -6,8 +6,13 @@
         class="categories__breadcrumbs"
       />
       <DropdownComponent
+        :model-value="isDropdown"
+        :select-value="selectOption"
+        :select-value-id="0"
         :options="selectionOptions"
         class="categories__select"
+        @update-model-value="updateModelValue"
+        @update-select-value="updateSelectValue"
       />
     </div>
     <div class="categories__wrapper">
@@ -21,6 +26,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
 import { products } from "@/data/home/products";
 import { breadcrumbs } from "@/data/home/breadcrumbs";
 import { selectionOptions } from "@/data/home/selectionOptions";
@@ -29,6 +36,19 @@ import CategoriesBreadcrumbsComponent from "@/components/Categories/CategoriesBr
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
 import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
+
+import type { Option } from "@/components/ui/DropdownComponent/DropdownComponent.types";
+
+const isDropdown = ref(false);
+const selectOption = ref<Option>();
+
+function updateModelValue(value: boolean) {
+  isDropdown.value = value;
+}
+
+function updateSelectValue(option: Option | undefined) {
+  selectOption.value = option;
+}
 </script>
 
 <style lang="less" scoped>
@@ -39,6 +59,11 @@ import DropdownComponent from "@/components/ui/DropdownComponent/DropdownCompone
 
   &__wrapper {
     .flex-properties(flex, initial, space-between);
+  }
+
+  &__select {
+    width: 100%;
+    max-width: 174px;
   }
 
   & > :not(&__wrapper:last-of-type) {

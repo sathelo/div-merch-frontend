@@ -2,23 +2,19 @@
   <div class="basket">
     <h2 class="basket__title">Корзина</h2>
     <div class="basket__wrapper">
-      <div class="basket__products products">
-        <BasketCardComponent
-          v-for="(product, productIndex) in products"
-          :key="productIndex"
-          :product="product"
-          class="products__product"
-        />
-      </div>
-      <div class="basket__price">this block is price</div>
+      <BasketCardsComponent class="basket__cards" />
+      <BasketSummaryComponent :total="total" class="basket__summary" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { products } from "@/data/home/products";
+import { ref } from "vue";
 
-import BasketCardComponent from "@/components/Basket/BasketCardComponent.vue";
+import BasketCardsComponent from "@/components/Basket/BasketCardsComponent.vue";
+import BasketSummaryComponent from "@/components/Basket/BasketSummaryComponent.vue";
+
+const total = ref(18450);
 </script>
 
 <style lang="less" scoped>

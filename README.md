@@ -1,19 +1,20 @@
 # TODO
 
 ## таски на сегодня
+- сделать page basket
 
 ## таски на будущее
-- сделать page basket
+- сделать пагинацию для карточек (compose)
+- сделать масштабирование
 - на главной странице swiper'у сделать ему красивый переход по тайму
 - сделать page product
 - выбрать хранилище данных (store) - pinia/vuex
 - хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий 
+- для ui-component 'Dropdown' сделать state: error
 - вынести ползунок диапазонов в ui-component Range sliders
-- сделать пагинацию для карточек (compose)
-- сделать масштабирование
+- переписать ползунки диапазонов и отказаться от либы Element Plus
 - настроить сертификат (https)
 - deploy gh-pages with autopull brach gh-pages with master
-- переписать ползунки диапазонов и отказаться от либы Element Plus
 
 # div-merch-frontend
 

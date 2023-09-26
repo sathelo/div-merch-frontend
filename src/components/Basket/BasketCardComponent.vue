@@ -1,11 +1,11 @@
 <template>
-  <div class="product">
-    <div class="product__info">
-      <img class="product__photo" :src="product.img" :alt="product.img" />
-      <p class="product__title">{{ product.title }}</p>
-      <p class="product__type">{{ product.type }}</p>
+  <div class="card">
+    <div class="card__info">
+      <img class="card__photo" :src="product.img" :alt="product.img" />
+      <p class="card__title">{{ product.title }}</p>
+      <p class="card__type">{{ product.type }}</p>
     </div>
-    <div class="product__settings settings">
+    <div class="card__settings settings">
       <ButtonComponent
         v-for="(button, buttonIndex) in buttons"
         :key="buttonIndex"
@@ -46,41 +46,36 @@ const buttons = ref([
 </script>
 
 <style lang="less" scoped>
-.products {
-  .content(48px, 24px);
-  border: 1px solid @grey-gradation--100;
+.card {
+  .flex-properties(flex);
 
-  .product {
+  &__info {
+    .flex-properties(flex);
+    flex-direction: column;
+  }
+
+  &__photo {
+    max-width: 100px;
+  }
+
+  &__title {
+    .text-lead-s;
+    color: @grey-gradation--black;
+    margin-bottom: 12px;
+  }
+
+  &__type {
+    .text-m;
+    color: @grey-gradation--200;
+    margin-bottom: 18px;
+  }
+
+  &__settings {
     .flex-properties(flex);
 
-    &__info {
-      .flex-properties(flex);
-      flex-direction: column;
-    }
-
-    &__photo {
-      max-width: 100px;
-    }
-
-    &__title {
-      .text-lead-s;
-      color: @grey-gradation--black;
-      margin-bottom: 12px;
-    }
-
-    &__type {
-      .text-m;
-      color: @grey-gradation--200;
-      margin-bottom: 18px;
-    }
-
-    &__settings {
-      .flex-properties(flex);
-
-      .setting {
-        &:not(:last-child) {
-          margin-right: 16px;
-        }
+    .setting {
+      &:not(:last-child) {
+        margin-right: 16px;
       }
     }
   }

@@ -8,6 +8,8 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BasketCardComponent: typeof import('./src/components/Basket/BasketCardComponent.vue')['default']
+    BasketCardsComponent: typeof import('./src/components/Basket/BasketCardsComponent.vue')['default']
+    BasketSummaryComponent: typeof import('./src/components/Basket/BasketSummaryComponent.vue')['default']
     ButtonComponent: typeof import('./src/components/ui/ButtonComponent/ButtonComponent.vue')['default']
     CardComponent: typeof import('./src/components/ui/CardComponent/CardComponent.vue')['default']
     CategoriesBreadcrumbsComponent: typeof import('./src/components/Categories/CategoriesBreadcrumbsComponent.vue')['default']

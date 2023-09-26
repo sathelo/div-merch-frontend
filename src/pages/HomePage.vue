@@ -11,8 +11,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-
 import { slides } from "@/data/home/slides";
 import { categories } from "@/data/home/categories";
 import { clothes } from "@/data/home/clothes";
@@ -23,18 +21,9 @@ import PopularCategoriesComponent from "@/components/Home/HomePopularCategoriesC
 import ClothesComponent from "@/components/Home/HomeClothesComponent.vue";
 import NewGoodsComponent from "@/components/Home/HomeNewGoodsComponent.vue";
 
-import type { Card } from "@/components/ui/CardComponent/CardComponent.types";
+import { formattedPriceToRub } from "@/utils/formattedText";
 
-const filteredProducts = computed(() => {
-  const res = products.map((product: Card) => ({
-    ...product,
-    price:
-      `${product.price}`.replace(/(\d)(?=(\d{3})+([^\d]|$))/g, "$1 ") +
-      " " +
-      "₽",
-  }));
-  return res;
-});
+const filteredProducts = formattedPriceToRub(products);
 </script>
 
 <style lang="less" scoped>

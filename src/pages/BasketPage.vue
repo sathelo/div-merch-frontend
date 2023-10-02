@@ -32,5 +32,13 @@ const total = ref(18450);
   &__wrapper {
     .flex-properties(flex);
   }
+
+  &__cards {
+    width: 70%;
+  }
+
+  &__summary {
+    width: 30%;
+  }
 }
 </style>

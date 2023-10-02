@@ -1,44 +1,125 @@
 <template>
   <section class="summary">
-    <h3 class="summary__title">Итого к&nbsp;оплате</h3>
-    <span class="summary__total">{{ total }}</span>
-    <div class="summary__subtitle">Без учета возможной стоимости доставки</div>
-    <ButtonComponent :variant="ECButtonType.primary">
-      Оформить заказ
-    </ButtonComponent>
+    <div class="summary__discount discount">
+      <p class="discount__title">Сумма заказа</p>
+      <span class="discount__price">{{ formattedPriceToRub(total) }}</span>
+      <p class="discount__subtitle">за&nbsp;4&nbsp;товара</p>
+      <div class="discount__wrapper">
+        <InputComponent v-model="promoValue" class="discount__promo">
+          Оформить заказ
+        </InputComponent>
+        <ButtonComponent
+          :variant="ECButtonType.secondary"
+          class="discount__apply"
+        >
+          Применить
+        </ButtonComponent>
+      </div>
+    </div>
+
+    <div class="summary__total total">
+      <h2 class="total__title">Итого к&nbsp;оплате</h2>
+      <span class="total__price">{{ formattedPriceToRub(total) }}</span>
+      <p class="total__subtitle">Без учета возможной стоимости доставки</p>
+      <ButtonComponent :variant="ECButtonType.primary" class="total__checkout">
+        Оформить заказ
+      </ButtonComponent>
+    </div>
   </section>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
+import InputComponent from "@/components/ui/InputComponent/InputComponent.vue";
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
+
+import { formattedPriceToRub } from "@/utils/formattedText";
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
+import { TPrice } from "@/utils/formattedText.types";
+
 interface IProps {
-  total: string;
+  total: TPrice;
 }
 
 defineProps<IProps>();
+
+const promoValue = ref("");
 </script>
 
 <style lang="less" scoped>
 .summary {
-  &__title {
-    .text-body;
-    color: @grey-gradation--black;
-    margin-bottom: 16px;
+  .content(32px, 24px);
+  border: 1px solid @grey-gradation--100;
+  height: 100%;
+
+  & > *:not(:last-child) {
+    &::after {
+      content: "";
+      .flex-properties(block);
+      width: 100%;
+      height: 1px;
+      background: @grey-gradation--100;
+      margin: 32px 0;
+    }
   }
 
-  &__total {
-    .text-h2;
-    color: @grey-gradation--black;
-    margin-bottom: 8px;
-  }
-
-  &__subtitle {
-    .text-s;
-    color: @grey-gradation--200;
+  .discount {
     margin-bottom: 24px;
+
+    &__title {
+      .text-body;
+      color: @grey-gradation--black;
+      margin-bottom: 16px;
+    }
+
+    &__price {
+      .flex-properties(block);
+      .text-lead-s;
+      color: @grey-gradation--black;
+      margin-bottom: 8px;
+    }
+
+    &__subtitle {
+      .text-s;
+      color: @grey-gradation--200;
+      margin-bottom: 24px;
+    }
+
+    &__wrapper {
+      .flex-properties(flex, center);
+    }
+
+    &__promo {
+      margin-right: 12px;
+    }
+  }
+
+  .total {
+    &__title {
+      .text-body;
+      color: @grey-gradation--black;
+      margin-bottom: 16px;
+    }
+
+    &__price {
+      .flex-properties(block);
+      .text-h2;
+      color: @grey-gradation--black;
+      margin-bottom: 8px;
+    }
+
+    &__subtitle {
+      .text-s;
+      color: @grey-gradation--200;
+      margin-bottom: 24px;
+    }
+
+    &__checkout {
+      width: 100%;
+    }
   }
 }
 </style>

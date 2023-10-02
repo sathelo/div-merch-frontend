@@ -71,9 +71,12 @@ const buttons = ref([
   }
 
   &__settings {
-    .flex-properties(flex);
+    .flex-properties(flex, flex-start);
 
     .setting {
+      display: flex;
+      background: red;
+
       &:not(:last-child) {
         margin-right: 16px;
       }

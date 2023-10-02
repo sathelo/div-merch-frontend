@@ -21,6 +21,7 @@ import FooterMetaComponent from "@/components/Footer/FooterMetaComponent.vue";
   margin-top: auto;
 
   &__line {
+    .flex-properties(block);
     width: 100%;
     height: 1px;
     background: @grey-gradation--200;

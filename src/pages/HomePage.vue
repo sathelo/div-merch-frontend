@@ -6,7 +6,7 @@
       class="home__popular-categories"
     />
     <ClothesComponent :clothes="clothes" class="home__clothes" />
-    <NewGoodsComponent :products="filteredProducts" class="home__new-goods" />
+    <NewGoodsComponent :products="products" class="home__new-goods" />
   </div>
 </template>
 
@@ -20,10 +20,6 @@ import PreviewComponent from "@/components/Home/HomePreviewComponent.vue";
 import PopularCategoriesComponent from "@/components/Home/HomePopularCategoriesComponent.vue";
 import ClothesComponent from "@/components/Home/HomeClothesComponent.vue";
 import NewGoodsComponent from "@/components/Home/HomeNewGoodsComponent.vue";
-
-import { formattedPriceToRub } from "@/utils/formattedText";
-
-const filteredProducts = formattedPriceToRub(products);
 </script>
 
 <style lang="less" scoped>

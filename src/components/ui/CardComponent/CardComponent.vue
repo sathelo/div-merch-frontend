@@ -8,12 +8,14 @@
       {{ infoProduct.title }}
     </p>
     <p class="card__price">
-      {{ infoProduct.price }}
+      {{ formattedPriceToRub(infoProduct.price) }}
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
+import { formattedPriceToRub } from "@/utils/formattedText";
+
 import { ICCardProps } from "./CardComponent.types";
 
 withDefaults(defineProps<ICCardProps>(), {

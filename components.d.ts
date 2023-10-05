@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AddRemoveButtonComponent: typeof import('./src/components/ui/AddRemoveButtonComponent/AddRemoveButtonComponent.vue')['default']
     BasketCardComponent: typeof import('./src/components/Basket/BasketCardComponent.vue')['default']
     BasketCardsComponent: typeof import('./src/components/Basket/BasketCardsComponent.vue')['default']
     BasketSummaryComponent: typeof import('./src/components/Basket/BasketSummaryComponent.vue')['default']

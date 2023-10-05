@@ -5,7 +5,11 @@
       <span class="discount__price">{{ formattedPriceToRub(total) }}</span>
       <p class="discount__subtitle">за&nbsp;4&nbsp;товара</p>
       <div class="discount__wrapper">
-        <InputComponent v-model="promoValue" class="discount__promo">
+        <InputComponent
+          v-model="promoValue"
+          label="Промокод"
+          class="discount__promo"
+        >
           Оформить заказ
         </InputComponent>
         <ButtonComponent

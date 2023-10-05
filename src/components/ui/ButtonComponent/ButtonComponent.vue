@@ -145,6 +145,7 @@ const isDisabled = computed(() => {
 
   &--round {
     .content(13px 16px, 24px);
+    background: @grey-gradation--100;
 
     &:hover {
       background: @grey-gradation--white;

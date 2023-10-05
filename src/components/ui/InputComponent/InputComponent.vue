@@ -69,6 +69,7 @@ function setFocus(v: boolean) {
   border: 1px solid @grey-gradation--100;
   width: 100%;
   height: 52px;
+  transition: 0.2s;
 
   &:hover {
     background: transparent;

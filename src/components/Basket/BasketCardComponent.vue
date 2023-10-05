@@ -22,13 +22,13 @@
     <div class="card__total">
       <p class="card__price">{{ formattedPriceToRub(product.price) }}</p>
       <div class="card__quantity-controller quantity-controller">
-        <AddRemoveButtonComponent
-          :variant="ECAddRemoveButtonType.remove"
+        <AddRemoveComponent
+          :variant="ECAddRemoveType.remove"
           class="quantity-controller__btn quantity-controller__btn--increment"
         />
         <span class="quantity-controller__total">{{ total }}</span>
-        <AddRemoveButtonComponent
-          :variant="ECAddRemoveButtonType.add"
+        <AddRemoveComponent
+          :variant="ECAddRemoveType.add"
           class="quantity-controller__btn quantity-controller__btn--increment"
         />
       </div>
@@ -40,14 +40,14 @@
 import { ref } from "vue";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
-import AddRemoveButtonComponent from "@/components/ui/AddRemoveButtonComponent/AddRemoveButtonComponent.vue";
+import AddRemoveComponent from "@/components/ui/AddRemoveComponent/AddRemoveComponent.vue";
 import HeartIco from "/icons/heart.svg";
 import BasketIco from "/icons/basket.svg";
 
 import { formattedPriceToRub } from "@/utils/formattedText";
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
-import { ECAddRemoveButtonType } from "@/components/ui/AddRemoveButtonComponent/AddRemoveButtonComponent.enums";
+import { ECAddRemoveType } from "@/components/ui/AddRemoveComponent/AddRemoveComponent.enums";
 
 import type { Card } from "@/components/ui/CardComponent/CardComponent.types";
 

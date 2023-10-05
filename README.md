@@ -4,10 +4,10 @@
 - сделать page product
 
 ## таски на будущее
+- выбрать хранилище данных (store) - pinia/vuex
 - на главной странице swiper'у сделать ему красивый переход по тайму
 - сделать масштабирование
 - сделать пагинацию для карточек (compose)
-- выбрать хранилище данных (store) - pinia/vuex
 - хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий 
 - для ui-component 'Dropdown' сделать state: error
 - вынести ползунок диапазонов в ui-component Range sliders

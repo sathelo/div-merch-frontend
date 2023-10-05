@@ -5,7 +5,15 @@
         :breadcrumbs="breadcrumbs"
         class="categories__breadcrumbs"
       />
-      <CategoriesSelectComponent class="categories__select" />
+      <DropdownComponent
+        :model-value="isDropdown"
+        :select-value="selectOption"
+        :select-value-id="0"
+        :options="selectionOptions"
+        class="categories__select"
+        @update-model-value="updateModelValue"
+        @update-select-value="updateSelectValue"
+      />
     </div>
     <div class="categories__wrapper">
       <CategoriesSettingsComponent class="categories__settings" />
@@ -18,23 +26,48 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+
 import { products } from "@/data/home/products";
 import { breadcrumbs } from "@/data/home/breadcrumbs";
+import { selectionOptions } from "@/data/home/selectionOptions";
 
 import CategoriesBreadcrumbsComponent from "@/components/Categories/CategoriesBreadcrumbsComponent.vue";
-import CategoriesSelectComponent from "@/components/Categories/CategoriesSelectComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
+import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
+
+import type { Option } from "@/components/ui/DropdownComponent/DropdownComponent.types";
+
+const isDropdown = ref(false);
+const selectOption = ref<Option>();
+
+function updateModelValue(value: boolean) {
+  isDropdown.value = value;
+}
+
+function updateSelectValue(option: Option | undefined) {
+  selectOption.value = option;
+}
 </script>
 
 <style lang="less" scoped>
 .categories {
-  .content(40px, 32px, @grey-gradation--white);
+  position: relative;
+  .content(40px, 40px, @grey-gradation--white);
   width: 100%;
   height: 100%;
 
   &__wrapper {
     .flex-properties(flex, initial, space-between);
+  }
+
+  &__select {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 100%;
+    max-width: 174px;
   }
 
   & > :not(&__wrapper:last-of-type) {

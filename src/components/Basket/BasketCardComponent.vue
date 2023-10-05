@@ -25,7 +25,6 @@
         <AddRemoveButtonComponent
           :variant="ECAddRemoveButtonType.remove"
           class="quantity-controller__btn quantity-controller__btn--increment"
-          @click="console.log()"
         />
         <span class="quantity-controller__total">{{ total }}</span>
         <AddRemoveButtonComponent

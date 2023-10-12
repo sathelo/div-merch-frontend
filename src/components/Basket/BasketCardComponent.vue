@@ -41,7 +41,7 @@ import { ref } from "vue";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 import AddRemoveComponent from "@/components/ui/AddRemoveComponent/AddRemoveComponent.vue";
-import HeartIco from "/icons/heart.svg";
+import HeartSmallIco from "/icons/heart-small.svg";
 import BasketIco from "/icons/basket.svg";
 
 import { formattedPriceToRub } from "@/utils/formattedText";
@@ -61,7 +61,7 @@ const total = ref(2);
 
 const buttons = ref([
   {
-    ico: HeartIco,
+    ico: HeartSmallIco,
   },
   {
     ico: BasketIco,
@@ -112,6 +112,10 @@ const buttons = ref([
       &:not(:last-child) {
         margin-right: 16px;
       }
+    }
+
+    &__ico {
+      display: block;
     }
   }
 

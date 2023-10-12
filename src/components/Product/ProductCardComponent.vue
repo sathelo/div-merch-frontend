@@ -14,6 +14,11 @@
     <div class="card__data">
       <div class="card__info info">
         <h2 class="info__header">{{ data.info.title }}</h2>
+        <ButtonComponent :variant="ECButtonType.round" class="info__btn btn">
+          <template #icon>
+            <img :src="HeartBigIco" alt="favorites" class="btn__ico" />
+          </template>
+        </ButtonComponent>
         <p class="info__type">{{ data.info.type }}</p>
         <ProductCardInfoColorsComponent
           :colors="data.info.colors"
@@ -46,12 +51,17 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
+import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 import ProductCardGalleryComponent from "@/components/Product/ProductCardGalleryComponent.vue";
 import ProductCardInfoColorsComponent from "@/components/Product/ProductCardInfoColorsComponent.vue";
 import ProductCardInfoSizesComponent from "@/components/Product/ProductCardInfoSizesComponent.vue";
 import ProductCardInfoTotalComponent from "@/components/Product/ProductCardInfoTotalComponent.vue";
 import ProductCardDescriptionComponent from "@/components/Product/ProductCardDescriptionComponent.vue";
 import ProductCardCharacteristicsComponent from "@/components/Product/ProductCardCharacteristicsComponent.vue";
+
+import HeartBigIco from "/icons/heart-big.svg";
+
+import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
 import { TProductCard } from "@/components/Product/ProductCardComponent.types";
 
@@ -93,12 +103,23 @@ function chooseImage(id: number) {
 
   .info {
     .content(32px, 24px);
+    position: relative;
     border: 1px solid @grey-gradation--100;
 
     &__header {
       .text-h2;
       color: @grey-gradation--black;
       margin-bottom: 24px;
+    }
+
+    .btn {
+      position: absolute;
+      top: 32px;
+      right: 32px;
+
+      &__ico {
+        display: block;
+      }
     }
 
     &__type {

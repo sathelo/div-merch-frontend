@@ -4,7 +4,7 @@ import type { Actions } from "@/data/header/action.types";
 
 export const actions: Actions = [
   {
-    iconUrl: "/icons/heart.svg",
+    iconUrl: "/icons/heart-small.svg",
     namePath: Routes.favorites,
     name: "heart",
   },

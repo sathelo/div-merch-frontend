@@ -4,7 +4,7 @@
 
 - add pinia (убрать data перенос все в стор)
 - add stylelint + setting
-- add babel + setting
+- решить проблему с buttons
 
 ## таски на будущее
 

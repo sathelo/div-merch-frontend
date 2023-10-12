@@ -70,6 +70,12 @@ function isBasket(name: Action["name"]): boolean {
 
   .item {
     position: relative;
+
+    .btn {
+      &__ico {
+        display: block;
+      }
+    }
   }
 
   .counter {

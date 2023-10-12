@@ -2,11 +2,15 @@
 
 ## таски на сегодня
 
+- add pinia (убрать data перенос все в стор)
+- add stylelint + setting
+- add babel + setting
+
 ## таски на будущее
-- выбрать хранилище данных (store) - pinia/vuex
+
 - сделать масштабирование
 - сделать пагинацию для карточек (compose)
-- хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий 
+- хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий
 - для ui-component 'Dropdown' сделать state: error
 - вынести ползунок диапазонов в ui-component Range sliders
 - переписать ползунки диапазонов и отказаться от либы Element Plus
@@ -18,9 +22,10 @@
 
 ## Project setup
 
-```
+```bash
 npm install
 npm run prepare
+npx husky add .husky/pre-commit "npm test"
 ```
 
 ## Compiles and hot-reloads for development

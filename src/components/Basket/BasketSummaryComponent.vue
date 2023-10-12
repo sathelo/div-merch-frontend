@@ -56,8 +56,10 @@ const promoValue = ref("");
 <style lang="less" scoped>
 .summary {
   .content(32px, 24px);
-  border: 1px solid @grey-gradation--100;
+  position: sticky;
+  top: 0;
   height: 100%;
+  border: 1px solid @grey-gradation--100;
 
   & > *:not(:last-child) {
     &::after {

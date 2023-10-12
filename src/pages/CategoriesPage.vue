@@ -1,7 +1,7 @@
 <template>
   <div class="categories">
-    <div class="categories__wrapper">
-      <CategoriesBreadcrumbsComponent
+    <div class="categories__header">
+      <BreadcrumbsComponent
         :breadcrumbs="breadcrumbs"
         class="categories__breadcrumbs"
       />
@@ -15,7 +15,7 @@
         @update-select-value="updateSelectValue"
       />
     </div>
-    <div class="categories__wrapper">
+    <div class="categories__body">
       <CategoriesSettingsComponent class="categories__settings" />
       <CategoriesContentComponent
         :products="products"
@@ -32,7 +32,7 @@ import { products } from "@/data/home/products";
 import { breadcrumbs } from "@/data/home/breadcrumbs";
 import { selectionOptions } from "@/data/home/selectionOptions";
 
-import CategoriesBreadcrumbsComponent from "@/components/Categories/CategoriesBreadcrumbsComponent.vue";
+import BreadcrumbsComponent from "@/components/ui/BreadcrumbsComponent/BreadcrumbsComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
 import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
@@ -58,7 +58,8 @@ function updateSelectValue(option: Option | undefined) {
   width: 100%;
   height: 100%;
 
-  &__wrapper {
+  &__header,
+  &__body {
     .flex-properties(flex, initial, space-between);
   }
 

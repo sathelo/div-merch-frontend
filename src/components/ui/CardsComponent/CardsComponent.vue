@@ -1,12 +1,12 @@
 <template>
-  <div class="new-goods">
-    <div class="new-goods__title">Новые поступления</div>
-    <div class="new-goods-cards">
+  <div class="cards">
+    <div class="cards__title"><slot /></div>
+    <div class="cards__wrapper">
       <CardComponent
         v-for="(product, productIndex) in products"
         :key="productIndex"
         :info-product="product"
-        class="new-goods-cards__card"
+        class="cards__card"
       />
     </div>
   </div>
@@ -25,14 +25,14 @@ defineProps<IProps>();
 </script>
 
 <style lang="less" scoped>
-.new-goods {
+.cards {
   &__title {
     .text-h2;
     color: @grey-gradation--black;
     margin-bottom: 32px;
   }
 
-  &-cards {
+  &__wrapper {
     .flex-properties(flex);
     flex-wrap: wrap;
 

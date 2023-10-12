@@ -7,5 +7,6 @@ export enum Routes {
   favorites = "favorites",
   search = "search",
   profile = "profile",
+  product = "product",
   basket = "basket",
 }

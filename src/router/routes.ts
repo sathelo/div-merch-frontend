@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.vue";
 import HomePage from "@/pages/HomePage.vue";
 import CategoriesPage from "@/pages/CategoriesPage.vue";
 import BasketPage from "@/pages/BasketPage.vue";
+import ProductPage from "@/pages/ProductPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 import { Routes } from "@/router/routes.enums";
@@ -36,6 +37,11 @@ const routes = [
         path: "categories",
         name: Routes.categories,
         component: CategoriesPage,
+      },
+      {
+        path: "product",
+        name: Routes.product,
+        component: ProductPage,
       },
       {
         path: "basket",

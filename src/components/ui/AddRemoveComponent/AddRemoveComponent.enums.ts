@@ -1,4 +1,4 @@
-export enum ECAddRemoveButtonType {
+export enum ECAddRemoveType {
   add = "add",
   remove = "remove",
 }

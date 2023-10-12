@@ -6,7 +6,9 @@
       class="home__popular-categories"
     />
     <ClothesComponent :clothes="clothes" class="home__clothes" />
-    <NewGoodsComponent :products="products" class="home__new-goods" />
+    <CardsComponent :products="products" class="home__new-goods home__cards">
+      Новые поступления
+    </CardsComponent>
   </div>
 </template>
 
@@ -19,7 +21,7 @@ import { products } from "@/data/home/products";
 import PreviewComponent from "@/components/Home/HomePreviewComponent.vue";
 import PopularCategoriesComponent from "@/components/Home/HomePopularCategoriesComponent.vue";
 import ClothesComponent from "@/components/Home/HomeClothesComponent.vue";
-import NewGoodsComponent from "@/components/Home/HomeNewGoodsComponent.vue";
+import CardsComponent from "@/components/ui/CardsComponent/CardsComponent.vue";
 </script>
 
 <style lang="less" scoped>

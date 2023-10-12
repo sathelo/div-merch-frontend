@@ -10,16 +10,16 @@ import { computed } from "vue";
 import PlusIco from "/icons/plus.svg";
 import MinusIco from "/icons/minus.svg";
 
-import { ECAddRemoveButtonType } from "./AddRemoveButtonComponent.enums";
+import { ECAddRemoveType } from "./AddRemoveComponent.enums";
 
-import { ICAddRemoveButtonProps } from "./AddRemoveButtonComponent.types";
+import { ICAddRemoveProps } from "./AddRemoveComponent.types";
 
-const props = withDefaults(defineProps<ICAddRemoveButtonProps>(), {
-  variant: ECAddRemoveButtonType.add,
+const props = withDefaults(defineProps<ICAddRemoveProps>(), {
+  variant: ECAddRemoveType.add,
 });
 
 const ico = computed(() => {
-  return props.variant === ECAddRemoveButtonType.add ? PlusIco : MinusIco;
+  return props.variant === ECAddRemoveType.add ? PlusIco : MinusIco;
 });
 </script>
 

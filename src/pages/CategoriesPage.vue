@@ -9,7 +9,7 @@
         :model-value="isDropdown"
         :select-value="selectOption"
         :select-value-id="0"
-        :options="selectionOptions"
+        :options="selectOptions"
         class="categories__select"
         @update-model-value="updateModelValue"
         @update-select-value="updateSelectValue"
@@ -26,21 +26,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
-import { products } from "@/data/home/products";
-import { breadcrumbs } from "@/data/home/breadcrumbs";
-import { selectionOptions } from "@/data/home/selectionOptions";
+import { ref, computed } from "vue";
+import { useStore } from "@/store/store";
 
 import BreadcrumbsComponent from "@/components/ui/BreadcrumbsComponent/BreadcrumbsComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
 import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
 
-import type { Option } from "@/components/ui/DropdownComponent/DropdownComponent.types";
+import { Option } from "@/components/ui/DropdownComponent/DropdownComponent.types";
+
+const store = useStore();
 
 const isDropdown = ref(false);
 const selectOption = ref<Option>();
+
+const breadcrumbs = computed(() => store.$state.breadcrumbs);
+const selectOptions = computed(() => store.$state.selectOptions);
+const products = computed(() => store.$state.products);
 
 function updateModelValue(value: boolean) {
   isDropdown.value = value;

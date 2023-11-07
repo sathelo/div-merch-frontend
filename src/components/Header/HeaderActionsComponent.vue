@@ -12,12 +12,7 @@
           @click="navigateToRoute(action.namePath)"
         >
           <template #icon>
-            <img
-              class="btn__ico"
-              :class="`btn__ico--${getName(action.name)}`"
-              :src="action.iconUrl"
-              :alt="`${getName(action.name)}`"
-            />
+            <img class="btn__ico" :src="action.iconUrl" alt="ico" />
           </template>
         </ButtonComponent>
         <div
@@ -41,21 +36,17 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Actions, Action } from "@/data/header/action.types";
+import { TAction, TActions } from "@/store/initialData/header/action.types";
 
 interface IProps {
-  actions: Actions;
+  actions: TActions;
 }
 
 defineProps<IProps>();
 
 const counter = ref(0);
 
-function getName(name: Action["name"]): Action["name"] {
-  return name ?? "";
-}
-
-function isBasket(name: Action["name"]): boolean {
+function isBasket(name: TAction["name"]) {
   return name === "basket";
 }
 </script>
@@ -70,6 +61,12 @@ function isBasket(name: Action["name"]): boolean {
 
   .item {
     position: relative;
+
+    .btn {
+      &__ico {
+        display: block;
+      }
+    }
   }
 
   .counter {

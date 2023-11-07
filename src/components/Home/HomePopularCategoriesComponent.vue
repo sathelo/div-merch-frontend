@@ -42,12 +42,12 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Categories } from "@/data/home/categories.types";
+import { TCategories } from "@/store/initialData/home/categories.types";
 
 import "swiper/css";
 
 interface IProps {
-  categories: Categories;
+  categories: TCategories;
 }
 
 defineProps<IProps>();
@@ -82,6 +82,9 @@ defineProps<IProps>();
       cursor: pointer;
 
       &__photo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
         margin-bottom: 24px;
       }
 

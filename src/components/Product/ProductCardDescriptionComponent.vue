@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import type { TProductCardDescriptions } from "@/components/Product/ProductCardDescriptionComponent.types";
+import { TProductCardDescriptions } from "@/components/Product/ProductCardDescriptionComponent.types";
 
 interface IProps {
   descriptions?: TProductCardDescriptions;

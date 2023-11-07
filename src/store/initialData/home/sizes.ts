@@ -1,8 +1,6 @@
-import { ref } from "vue";
+import { TSizes } from "@/store/initialData/home/sizes.types";
 
-import { Sizes } from "@/data/home/sizes.types.ts";
-
-export const sizes = ref<Sizes>([
+export const initialSizes: TSizes = [
   { label: "S", isChecked: false },
   { label: "M", isChecked: false },
   { label: "L", isChecked: false },
@@ -10,4 +8,4 @@ export const sizes = ref<Sizes>([
   { label: "2XL", isChecked: false },
   { label: "XXL", isChecked: false },
   { label: "3XL", isChecked: false },
-]);
+];

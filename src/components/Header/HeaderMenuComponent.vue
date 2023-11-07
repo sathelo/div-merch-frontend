@@ -21,10 +21,10 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Menu } from "@/data/header/menu.types";
+import { TMenu } from "@/store/initialData/header/menu.types";
 
 interface IProps {
-  menu: Menu;
+  menu: TMenu;
 }
 
 defineProps<IProps>();

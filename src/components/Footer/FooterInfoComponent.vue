@@ -30,15 +30,18 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Info, DataInfoWithoutTextBlock } from "@/data/footer/info.types";
+import {
+  TFooter,
+  TDataFooterWithoutTextBlock,
+} from "@/store/initialData/footer/footer.types";
 
 interface IProps {
-  info: Info;
+  info: TFooter;
 }
 
 defineProps<IProps>();
 
-function isBtn(args?: DataInfoWithoutTextBlock): boolean {
+function isBtn(args?: TDataFooterWithoutTextBlock): boolean {
   return !(args?.href || args?.target || args?.namePath);
 }
 </script>

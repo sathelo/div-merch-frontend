@@ -1,6 +1,6 @@
-import type { Slides } from "@/data/home/slides.types";
+import { TSlide, TSlides } from "@/store/initialData/home/slides.types";
 
-const defaultSlide = {
+const defaultSlide: TSlide = {
   img: "/preview/1.png",
   info: {
     title: "Новая коллекция «дизайнер с душой».",
@@ -14,7 +14,7 @@ const defaultSlide = {
   },
 };
 
-export const slides: Slides = [
+export const initialSlides: TSlides = [
   {
     ...defaultSlide,
   },

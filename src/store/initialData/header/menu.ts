@@ -1,8 +1,8 @@
 import { Routes } from "@/router/routes.enums";
 
-import type { Menu } from "@/data/header/menu.types";
+import { TMenu } from "@/store/initialData/header/menu.types";
 
-export const menu: Menu = [
+export const initialMenu: TMenu = [
   {
     title: "Главная",
     namePath: Routes.home,

@@ -1,6 +1,6 @@
-import type { Clothes } from "@/data/home/clothes.types";
+import { TClothes } from "@/store/initialData/home/clothes.types";
 
-export const clothes: Clothes = [
+export const initialClothes: TClothes = [
   {
     img: "/images/male-cloth.png",
     title: "Мужское",

@@ -23,10 +23,10 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Breadcrumbs } from "@/data/home/breadcrumbs.types";
+import { TBreadcrumbs } from "@/store/initialData/home/breadcrumbs.types";
 
 interface IProps {
-  breadcrumbs: Breadcrumbs;
+  breadcrumbs: TBreadcrumbs;
 }
 
 defineProps<IProps>();

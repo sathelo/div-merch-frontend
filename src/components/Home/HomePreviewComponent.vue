@@ -92,13 +92,13 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import type { Slides } from "@/data/home/slides.types";
+import { TSlides } from "@/store/initialData/home/slides.types";
 
 import "swiper/css";
 import "swiper/css/autoplay";
 
 interface IProps {
-  slides: Slides;
+  slides: TSlides;
 }
 
 defineProps<IProps>();

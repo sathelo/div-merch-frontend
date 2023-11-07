@@ -1,8 +1,8 @@
 import { Routes } from "@/router/routes.enums";
 
-import type { Breadcrumbs } from "@/data/home/breadcrumbs.types.ts";
+import { TBreadcrumbs } from "@/store/initialData/home/breadcrumbs.types";
 
-export const breadcrumbs: Breadcrumbs = [
+export const initialBreadcrumbs: TBreadcrumbs = [
   {
     name: "notFound",
     path: Routes.notFound,

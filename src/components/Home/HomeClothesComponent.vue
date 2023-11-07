@@ -18,10 +18,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Clothes } from "@/data/home/clothes.types";
+import { TClothes } from "@/store/initialData/home/clothes.types";
 
 interface IProps {
-  clothes: Clothes;
+  clothes: TClothes;
 }
 
 defineProps<IProps>();

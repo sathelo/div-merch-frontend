@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TProductCardGallery } from "@/components/Product/ProductCardGalleryComponent.types";
+import { TProductCardGallery } from "@/components/Product/ProductCardGalleryComponent.types";
 
 interface IProps {
   images: TProductCardGallery;

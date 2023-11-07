@@ -3,7 +3,7 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <ColorPickerComponent
-        v-for="(color, colorIndex) in colors"
+        v-for="(color, colorIndex) in store.$state.colors"
         :key="colorIndex"
         v-model="color.isChecked"
         :type="color.type"
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { colors } from "@/data/home/colors";
+import { useStore } from "@/store/store";
 
 import ColorPickerComponent from "@/components/ui/ColorPickerComponent/ColorPickerComponent.vue";
 
@@ -24,6 +24,8 @@ interface IProps {
 }
 
 defineProps<IProps>();
+
+const store = useStore();
 </script>
 
 <style lang="less" scoped>

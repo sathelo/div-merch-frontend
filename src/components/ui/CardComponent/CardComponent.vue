@@ -1,14 +1,14 @@
 <template>
   <div class="card">
-    <img :src="infoProduct.img" :alt="infoProduct.type" class="card__image" />
+    <img :src="image" :alt="info.type" class="card__image" />
     <p class="card__type">
-      {{ infoProduct.type }}
+      {{ info.type }}
     </p>
     <p class="card__title">
-      {{ infoProduct.title }}
+      {{ info.title }}
     </p>
     <p class="card__price">
-      {{ formattedPriceToRub(infoProduct.price) }}
+      {{ formattedPriceToRub(info.price) }}
     </p>
   </div>
 </template>
@@ -16,13 +16,13 @@
 <script setup lang="ts">
 import { formattedPriceToRub } from "@/utils/formattedText";
 
-import { ICCardProps } from "./CardComponent.types";
+import { TCCard } from "@/components/ui/CardComponent/CardComponent.types";
 
-withDefaults(defineProps<ICCardProps>(), {
-  infoProduct: () => ({
-    img: "/products/t-shirt.png",
-    type: "Футболка",
+withDefaults(defineProps<TCCard>(), {
+  image: "/products/t-shirt.png",
+  info: () => ({
     title: "Recombinate",
+    type: "Футболка",
     price: 3400,
   }),
 });
@@ -37,6 +37,9 @@ withDefaults(defineProps<ICCardProps>(), {
   cursor: pointer;
 
   &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     margin-bottom: 12px;
   }
 

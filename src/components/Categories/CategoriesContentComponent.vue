@@ -4,7 +4,12 @@
       <CardComponent
         v-for="(product, productIndex) in products"
         :key="productIndex"
-        :info-product="product"
+        :image="getImageForCard(product)"
+        :info="{
+          title: product.info.title,
+          type: product.info.type,
+          price: product.info.total.price,
+        }"
         class="cards__card"
       />
     </div>
@@ -14,10 +19,12 @@
 <script setup lang="ts">
 import CardComponent from "@/components/ui/CardComponent/CardComponent.vue";
 
-import type { Cards } from "@/components/ui/CardComponent/CardComponent.types";
+import { getImageForCard } from "@/utils/imageForCard";
+
+import { TProducts } from "@/store/initialData/home/products.types";
 
 interface IProps {
-  products: Cards;
+  products: TProducts;
 }
 
 defineProps<IProps>();
@@ -33,7 +40,7 @@ defineProps<IProps>();
     width: inherit;
 
     &__card {
-      flex-basis: calc(100% / 3);
+      width: calc(100% / 3);
     }
   }
 }

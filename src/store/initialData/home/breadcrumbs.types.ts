@@ -5,5 +5,6 @@ interface IBreadcrumb {
   path: NamePath;
 }
 
-export type Breadcrumb = IBreadcrumb;
-export type Breadcrumbs = Breadcrumb[];
+type TBreadcrumb = IBreadcrumb;
+
+export type TBreadcrumbs = TBreadcrumb[];

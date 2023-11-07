@@ -1,16 +1,14 @@
-import { ref } from "vue";
-
 import { EColorPickerType } from "@/components/ui/ColorPickerComponent/ColorPickerComponent.enums";
 
-import { ICColorWithoutStyle } from "@/data/home/colors.types";
-import type { ICColors } from "@/data/home/colors.types";
+import { IColorWithoutStyle } from "@/store/initialData/home/colors.types";
+import { TColors } from "@/store/initialData/home/colors.types";
 
-const colorWithoutStyle: ICColorWithoutStyle = {
+const colorWithoutStyle: IColorWithoutStyle = {
   type: EColorPickerType.low,
   isChecked: false,
 };
 
-export const colors = ref<ICColors>([
+export const initialColors: TColors = [
   {
     ...colorWithoutStyle,
     bg: "#501599",
@@ -103,4 +101,4 @@ export const colors = ref<ICColors>([
     ...colorWithoutStyle,
     bg: "#000000",
   },
-]);
+];

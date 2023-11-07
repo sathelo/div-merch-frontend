@@ -3,16 +3,29 @@
     <BasketCardComponent
       v-for="(product, productIndex) in products"
       :key="productIndex"
-      :product="product"
+      :image="getImageForCard(product)"
+      :info="{
+        type: product.info.type,
+        title: product.info.title,
+        price: product.info.total.price,
+      }"
       class="cards__card"
     />
   </section>
 </template>
 
 <script setup lang="ts">
-import { products } from "@/data/home/products";
-
 import BasketCardComponent from "@/components/Basket/BasketCardComponent.vue";
+
+import { getImageForCard } from "@/utils/imageForCard";
+
+import { TProducts } from "@/store/initialData/home/products.types";
+
+interface IProps {
+  products: TProducts;
+}
+
+defineProps<IProps>();
 </script>
 
 <style lang="less" scoped>

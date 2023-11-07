@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import type { TProductCardCharacteristics } from "@/components/Product/ProductCardCharacteristicsComponent.types";
+import { TProductCardCharacteristics } from "@/components/Product/ProductCardCharacteristicsComponent.types";
 
 interface IProps {
   characteristics?: TProductCardCharacteristics;

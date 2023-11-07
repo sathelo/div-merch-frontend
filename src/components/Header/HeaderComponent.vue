@@ -3,40 +3,26 @@
     <a class="header__logo logo" @click="navigateToRoute(Routes.home)">
       <img class="logo__image" :src="DivMerchUrlLogo" alt="div.merch" />
     </a>
-    <HeaderMenuComponent class="header__menu" :menu="menu" />
+    <HeaderMenuComponent class="header__menu" :menu="store.$state.menu" />
     <HeaderActionsComponent
       class="header__actions"
-      :actions="filteredActions"
+      :actions="store.$state.actions"
     />
   </header>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { navigateToRoute } from "@/router/routes.ts";
-
-import { menu } from "@/data/header/menu";
-import { actions } from "@/data/header/action";
-
-import DivMerchUrlLogo from "/logos/div-merch.svg";
+import { useStore } from "@/store/store";
 
 import HeaderMenuComponent from "@/components/Header/HeaderMenuComponent.vue";
 import HeaderActionsComponent from "@/components/Header/HeaderActionsComponent.vue";
 
+import DivMerchUrlLogo from "/logos/div-merch.svg";
+
 import { Routes } from "@/router/routes.enums";
 
-const filteredActions = computed(() => {
-  const reg = /(icons\/)(\w+).svg/;
-  const res = actions.map((action) => {
-    const match = action.iconUrl.match(reg);
-    const iconName = match ? match[2] : undefined;
-    return {
-      ...action,
-      name: iconName,
-    };
-  });
-  return res;
-});
+const store = useStore();
 </script>
 
 <style lang="less" scoped>

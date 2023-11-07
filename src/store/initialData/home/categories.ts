@@ -1,6 +1,6 @@
-import type { Categories } from "@/data/home/categories.types";
+import { TCategories } from "@/store/initialData/home/categories.types";
 
-export const categories: Categories = [
+export const initialCategories: TCategories = [
   {
     title: "Носки",
     img: "/categories/1.png",

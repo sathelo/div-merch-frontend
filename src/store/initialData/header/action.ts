@@ -1,8 +1,8 @@
 import { Routes } from "@/router/routes.enums";
 
-import type { Actions } from "@/data/header/action.types";
+import { TActions } from "@/store/initialData/header/action.types";
 
-export const actions: Actions = [
+export const initialActions: TActions = [
   {
     iconUrl: "/icons/heart-small.svg",
     namePath: Routes.favorites,

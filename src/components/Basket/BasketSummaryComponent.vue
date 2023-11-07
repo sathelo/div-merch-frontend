@@ -2,8 +2,8 @@
   <section class="summary">
     <div class="summary__discount discount">
       <p class="discount__title">Сумма заказа</p>
-      <span class="discount__price">{{ formattedPriceToRub(total) }}</span>
-      <p class="discount__subtitle">за&nbsp;4&nbsp;товара</p>
+      <span class="discount__price">{{ totalPrice }}</span>
+      <p class="discount__subtitle">за&nbsp;{{ totalProduct }}&nbsp;товара</p>
       <div class="discount__wrapper">
         <InputComponent
           v-model="promoValue"
@@ -23,7 +23,7 @@
 
     <div class="summary__total total">
       <h2 class="total__title">Итого к&nbsp;оплате</h2>
-      <span class="total__price">{{ formattedPriceToRub(total) }}</span>
+      <span class="total__price">{{ totalPrice }}</span>
       <p class="total__subtitle">Без учета возможной стоимости доставки</p>
       <ButtonComponent :variant="ECButtonType.primary" class="total__checkout">
         Оформить заказ
@@ -38,14 +38,11 @@ import { ref } from "vue";
 import InputComponent from "@/components/ui/InputComponent/InputComponent.vue";
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
-import { formattedPriceToRub } from "@/utils/formattedText";
-
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import { TPrice } from "@/utils/formattedText.types";
-
 interface IProps {
-  total: TPrice;
+  totalProduct: number;
+  totalPrice: number;
 }
 
 defineProps<IProps>();

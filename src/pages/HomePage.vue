@@ -13,15 +13,22 @@
 </template>
 
 <script setup lang="ts">
-import { slides } from "@/data/home/slides";
-import { categories } from "@/data/home/categories";
-import { clothes } from "@/data/home/clothes";
-import { products } from "@/data/home/products";
+import { computed } from "vue";
+
+import { useStore } from "@/store/store";
 
 import PreviewComponent from "@/components/Home/HomePreviewComponent.vue";
 import PopularCategoriesComponent from "@/components/Home/HomePopularCategoriesComponent.vue";
 import ClothesComponent from "@/components/Home/HomeClothesComponent.vue";
 import CardsComponent from "@/components/ui/CardsComponent/CardsComponent.vue";
+
+const store = useStore();
+const { paginationProducts } = store;
+
+const slides = computed(() => store.$state.slides);
+const categories = computed(() => store.$state.categories);
+const clothes = computed(() => store.$state.clothes);
+const products = computed(() => paginationProducts(0, 8));
 </script>
 
 <style lang="less" scoped>

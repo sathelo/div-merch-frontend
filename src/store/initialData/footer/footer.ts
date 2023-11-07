@@ -1,6 +1,6 @@
-import type { Info } from "@/data/footer/info.types";
+import { TFooter } from "@/store/initialData/footer/footer.types";
 
-export const info: Info = [
+export const initialFooter: TFooter = [
   {
     title: "Онлайн магазин",
     items: [

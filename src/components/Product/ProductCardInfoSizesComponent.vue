@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
-import type { TProductCardInfoSizes } from "@/components/Product/ProductCardInfoSizesComponent.types";
+import { TProductCardInfoSizes } from "@/components/Product/ProductCardInfoSizesComponent.types";
 
 interface IProps {
   sizes: TProductCardInfoSizes;

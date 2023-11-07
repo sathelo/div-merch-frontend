@@ -1,16 +1,18 @@
 <template>
   <footer class="footer">
-    <FooterInfoComponent class="footer__info" :info="info" />
+    <FooterInfoComponent class="footer__info" :info="store.$state.footer" />
     <span class="footer__line" />
     <FooterMetaComponent class="footer__meta" />
   </footer>
 </template>
 
 <script setup lang="ts">
-import { info } from "@/data/footer/info";
+import { useStore } from "@/store/store";
 
 import FooterInfoComponent from "@/components/Footer/FooterInfoComponent.vue";
 import FooterMetaComponent from "@/components/Footer/FooterMetaComponent.vue";
+
+const store = useStore();
 </script>
 
 <style lang="less" scoped>

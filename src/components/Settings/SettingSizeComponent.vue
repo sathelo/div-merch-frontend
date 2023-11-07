@@ -3,7 +3,7 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <ChispComponent
-        v-for="(size, sizeIndex) in sizes"
+        v-for="(size, sizeIndex) in store.$state.sizes"
         :key="sizeIndex"
         v-model="size.isChecked"
         class="setting__chisp"
@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { sizes } from "@/data/home/sizes";
+import { useStore } from "@/store/store";
 
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
@@ -24,6 +24,8 @@ interface IProps {
 }
 
 defineProps<IProps>();
+
+const store = useStore();
 </script>
 
 <style lang="less" scoped>

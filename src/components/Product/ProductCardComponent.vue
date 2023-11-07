@@ -63,10 +63,10 @@ import HeartBigIco from "/icons/heart-big.svg";
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import { TProductCard } from "@/components/Product/ProductCardComponent.types";
+import { TProduct } from "@/store/initialData/home/products.types";
 
 interface IProps {
-  data: TProductCard;
+  data: TProduct;
 }
 
 const props = defineProps<IProps>();

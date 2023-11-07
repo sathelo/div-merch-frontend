@@ -1,4 +1,4 @@
-export type Slide = {
+export type TSlide = {
   img: string;
   info: {
     title: string;
@@ -12,4 +12,4 @@ export type Slide = {
   };
 };
 
-export type Slides = Slide[];
+export type TSlides = TSlide[];

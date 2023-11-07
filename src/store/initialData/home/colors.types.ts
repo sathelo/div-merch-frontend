@@ -1,12 +1,12 @@
 import { EColorPickerType } from "@/components/ui/ColorPickerComponent/ColorPickerComponent.enums";
 
-export interface ICColorWithoutStyle {
+export interface IColorWithoutStyle {
   isChecked?: boolean;
   type?: EColorPickerType;
 }
 
-export interface ICColor extends ICColorWithoutStyle {
+interface IColor extends IColorWithoutStyle {
   bg?: string;
 }
 
-export type ICColors = ICColor[];
+export type TColors = IColor[];

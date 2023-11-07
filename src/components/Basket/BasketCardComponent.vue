@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-    <img class="card__photo" :src="product.img" :alt="product.img" />
+    <img class="card__photo" :src="image" :alt="info.type" />
 
     <div class="card__info">
-      <p class="card__title">{{ product.title }}</p>
-      <p class="card__type">{{ product.type }}</p>
+      <p class="card__title">{{ info.title }}</p>
+      <p class="card__type">{{ info.type }}</p>
       <div class="card__settings settings">
         <ButtonComponent
           v-for="(button, buttonIndex) in buttons"
@@ -20,7 +20,7 @@
     </div>
 
     <div class="card__total">
-      <p class="card__price">{{ formattedPriceToRub(product.price) }}</p>
+      <p class="card__price">{{ formattedPriceToRub(info.price) }}</p>
       <div class="card__quantity-controller quantity-controller">
         <AddRemoveComponent
           :variant="ECAddRemoveType.remove"
@@ -49,11 +49,9 @@ import { formattedPriceToRub } from "@/utils/formattedText";
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 import { ECAddRemoveType } from "@/components/ui/AddRemoveComponent/AddRemoveComponent.enums";
 
-import type { Card } from "@/components/ui/CardComponent/CardComponent.types";
+import { TCCard } from "@/components/ui/CardComponent/CardComponent.types";
 
-interface IProps {
-  product: Card;
-}
+type IProps = TCCard;
 
 defineProps<IProps>();
 

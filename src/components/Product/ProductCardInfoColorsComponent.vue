@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import ColorPickerComponent from "@/components/ui/ColorPickerComponent/ColorPickerComponent.vue";
 
-import type { TProductCardInfoColors } from "@/components/Product/ProductCardInfoColorsComponent.types";
+import { TProductCardInfoColors } from "@/components/Product/ProductCardInfoColorsComponent.types";
 
 interface IProps {
   colors: TProductCardInfoColors;

@@ -2,19 +2,28 @@
   <div class="basket">
     <h2 class="basket__title">Корзина</h2>
     <div class="basket__wrapper">
-      <BasketCardsComponent class="basket__cards" />
-      <BasketSummaryComponent :total="total" class="basket__summary" />
+      <BasketCardsComponent :products="products" class="basket__cards" />
+      <BasketSummaryComponent
+        :total-product="totalProduct"
+        :total-price="totalPrice"
+        class="basket__summary"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
+import { useStore } from "@/store/store";
 
 import BasketCardsComponent from "@/components/Basket/BasketCardsComponent.vue";
 import BasketSummaryComponent from "@/components/Basket/BasketSummaryComponent.vue";
 
-const total = ref(18450);
+const store = useStore();
+
+const products = computed(() => store.$state.products);
+const totalProduct = computed(() => 4);
+const totalPrice = computed(() => 18450);
 </script>
 
 <style lang="less" scoped>
@@ -32,6 +41,7 @@ const total = ref(18450);
   &__wrapper {
     .flex-properties(flex);
     position: relative;
+    width: 100%;
   }
 
   &__cards {

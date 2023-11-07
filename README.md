@@ -1,22 +1,19 @@
 # TODO
 
 ## таски на сегодня
-
-- add pinia (убрать data перенос все в стор)
 - add stylelint + setting
 - решить проблему с buttons
-
-## таски на будущее
-
-- сделать масштабирование
+- сделать масштабирование (plugin pxtorem)
 - сделать пагинацию для карточек (compose)
 - хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий
+
+## таски на будущее
+- sharing посмотреть его работу
+- deploy gh-pages with autopull brach gh-pages with master
 - для ui-component 'Dropdown' сделать state: error
 - вынести ползунок диапазонов в ui-component Range sliders
 - переписать ползунки диапазонов и отказаться от либы Element Plus
 - настроить сертификат (https)
-- sharing посмотреть его работу
-- deploy gh-pages with autopull brach gh-pages with master
 
 # div-merch-frontend
 

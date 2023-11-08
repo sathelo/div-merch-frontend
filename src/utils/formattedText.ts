@@ -1,4 +1,4 @@
-import { TPrice } from "@/utils/formattedText.types";
+type TPrice = number | string;
 
 export function formattedPriceToRub(value: TPrice): string {
   const formattedPrice =

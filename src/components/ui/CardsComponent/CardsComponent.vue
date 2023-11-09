@@ -12,23 +12,31 @@
           price: product.info.total.price,
         }"
         class="cards__card"
+        @click="redirectToProduct(product.id)"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import router from "@/router/routes";
+import { Routes } from "@/router/routes.enums";
+
 import CardComponent from "@/components/ui/CardComponent/CardComponent.vue";
 
 import { getImageForCard } from "@/utils/imageForCard";
 
-import { TProducts } from "@/store/initialData/home/products.types";
+import { TProducts, TProduct } from "@/store/initialData/home/products.types";
 
 interface IProps {
   products: TProducts;
 }
 
 defineProps<IProps>();
+
+function redirectToProduct(hashProduct: TProduct["id"]) {
+  router.push({ name: Routes.product, params: { id: hashProduct } });
+}
 </script>
 
 <style lang="less" scoped>

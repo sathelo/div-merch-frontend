@@ -19,6 +19,7 @@
           v-for="(category, categoryIndex) in categories"
           :key="categoryIndex"
           class="popular-categories-cards__card card"
+          @click="redirectToCategories(category.query)"
         >
           <img :src="category.img" :alt="category.title" class="card__photo" />
           <p class="card__title">
@@ -29,6 +30,7 @@
       <ButtonComponent
         class="popular-categories__btn"
         :variant="ECButtonType.secondary"
+        @click="router.push({ name: Routes.categories })"
       >
         Все категории
       </ButtonComponent>
@@ -37,12 +39,18 @@
 </template>
 
 <script setup lang="ts">
+import router from "@/router/routes";
+
 import { Swiper, SwiperSlide } from "swiper/vue";
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
+import { Routes } from "@/router/routes.enums";
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import { TCategories } from "@/store/initialData/home/categories.types";
+import {
+  TCategories,
+  TCategory,
+} from "@/store/initialData/home/categories.types";
 
 import "swiper/css";
 
@@ -51,6 +59,10 @@ interface IProps {
 }
 
 defineProps<IProps>();
+
+function redirectToCategories(query: TCategory["query"]) {
+  router.push({ name: Routes.categories, query: query });
+}
 </script>
 
 <style lang="less" scoped>

@@ -1,10 +1,10 @@
 <template>
-  <div class="product">
+  <div v-if="product" class="product">
     <BreadcrumbsComponent
-      :breadcrumbs="store.$state.breadcrumbs"
+      :breadcrumbs="breadcrumbs"
       class="product__breadcrumbs"
     />
-    <ProductCardComponent :data="product" class="product__card" />
+    <ProductCardComponent :product="product" class="product__card" />
     <CardsComponent :products="paginationProducts(0, 4)" class="product__cards">
       Похожие товары
     </CardsComponent>
@@ -15,23 +15,31 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted, computed, ref } from "vue";
+import { useRoute } from "vue-router";
+
 import { useStore } from "@/store/store";
 
 import BreadcrumbsComponent from "@/components/ui/BreadcrumbsComponent/BreadcrumbsComponent.vue";
 import CardsComponent from "@/components/ui/CardsComponent/CardsComponent.vue";
 import ProductCardComponent from "@/components/Product/ProductCardComponent.vue";
 
-import { TProduct, TProducts } from "@/store/initialData/home/products.types";
+import { TProduct } from "@/store/initialData/home/products.types";
 
 const store = useStore();
 const { paginationProducts } = store;
 
-interface IProps {
-  product: TProduct;
-  products: TProducts;
-}
+const product = ref<TProduct>();
 
-defineProps<IProps>();
+const breadcrumbs = computed(() => store.$state.breadcrumbs);
+
+onMounted(() => {
+  const route = useRoute();
+  const id = route.params.id;
+  product.value = store.$state.products.find((p) =>
+    Array.isArray(id) ? id[0] === p.id : id === p.id,
+  );
+});
 </script>
 
 <style scoped lang="less">

@@ -6,6 +6,7 @@
         :key="clothIndex"
         class="clothing-cards__card card"
         :style="{ backgroundImage: `url(${cloth.img})` }"
+        @click="redirectToCategories(cloth.query)"
       >
         <div class="card__btn btn">
           <div class="btn__text">
@@ -18,13 +19,20 @@
 </template>
 
 <script setup lang="ts">
-import { TClothes } from "@/store/initialData/home/clothes.types";
+import router from "@/router/routes";
+import { Routes } from "@/router/routes.enums";
+
+import { TClothes, TCloth } from "@/store/initialData/home/clothes.types";
 
 interface IProps {
   clothes: TClothes;
 }
 
 defineProps<IProps>();
+
+function redirectToCategories(query: TCloth["query"]) {
+  router.push({ name: Routes.categories, query: query });
+}
 </script>
 
 <style lang="less" scoped>

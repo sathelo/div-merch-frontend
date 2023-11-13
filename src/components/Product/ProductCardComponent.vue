@@ -2,7 +2,7 @@
   <div class="card">
     <ProductCardGalleryComponent
       class="card__gallery"
-      :images="data.images"
+      :images="product.images"
       :current-image-id="currentImageId"
       @choose-image="chooseImage"
     />
@@ -13,35 +13,35 @@
 
     <div class="card__data">
       <div class="card__info info">
-        <h2 class="info__header">{{ data.info.title }}</h2>
+        <h2 class="info__header">{{ product.info.title }}</h2>
         <ButtonComponent :variant="ECButtonType.round" class="info__btn btn">
           <template #icon>
             <img :src="HeartBigIco" alt="favorites" class="btn__ico" />
           </template>
         </ButtonComponent>
-        <p class="info__type">{{ data.info.type }}</p>
+        <p class="info__type">{{ product.info.type }}</p>
         <ProductCardInfoColorsComponent
-          :colors="data.info.colors"
+          :colors="product.info.colors"
           class="info__colors"
         />
         <ProductCardInfoSizesComponent
-          :sizes="data.info.sizes"
+          :sizes="product.info.sizes"
           class="info__size"
         />
         <span class="info__line" />
         <ProductCardInfoTotalComponent
-          :total="data.info.total"
+          :total="product.info.total"
           class="info__total"
         />
       </div>
 
       <ProductCardDescriptionComponent
-        :descriptions="data.info.descriptions"
+        :descriptions="product.info.descriptions"
         class="card__description"
       />
 
       <ProductCardCharacteristicsComponent
-        :characteristics="data.info.characteristics"
+        :characteristics="product.info.characteristics"
         class="card__characteristics"
       />
     </div>
@@ -66,7 +66,7 @@ import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.en
 import { TProduct } from "@/store/initialData/home/products.types";
 
 interface IProps {
-  data: TProduct;
+  product: TProduct;
 }
 
 const props = defineProps<IProps>();
@@ -74,9 +74,9 @@ const props = defineProps<IProps>();
 const currentImageId = ref(0);
 
 const currentImage = computed(() =>
-  typeof props.data.images === "string"
-    ? props.data.images
-    : props.data.images[currentImageId.value],
+  Array.isArray(props.product.images)
+    ? props.product.images[currentImageId.value]
+    : props.product.images,
 );
 
 function chooseImage(id: number) {

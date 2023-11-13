@@ -6,7 +6,7 @@ import { TProductCardDescriptions } from "@/components/Product/ProductCardDescri
 import { TProductCardCharacteristics } from "@/components/Product/ProductCardCharacteristicsComponent.types";
 
 export type TProduct = {
-  id: number;
+  id: string;
   images: TProductCardGallery;
   info: {
     title: string;

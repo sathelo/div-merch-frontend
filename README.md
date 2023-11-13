@@ -1,6 +1,7 @@
 # TODO
 
 ## таски на сегодня
+
 - add stylelint + setting
 - решить проблему с buttons
 - сделать масштабирование (plugin pxtorem)
@@ -8,6 +9,7 @@
 - хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий
 
 ## таски на будущее
+
 - sharing посмотреть его работу
 - deploy gh-pages with autopull brach gh-pages with master
 - для ui-component 'Dropdown' сделать state: error

@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
 import { initialActions } from "@/store/initialData/header/action";
@@ -19,11 +19,14 @@ import { TBreadcrumbs } from "@/store/initialData/home/breadcrumbs.types";
 import { TCategories } from "@/store/initialData/home/categories.types";
 import { TClothes } from "@/store/initialData/home/clothes.types";
 import { TColors } from "@/store/initialData/home/colors.types";
-import { TProducts } from "@/store/initialData/home/products.types";
+import { TProduct, TProducts } from "@/store/initialData/home/products.types";
 import { TOptions } from "@/store/initialData/home/selectOptions.types";
 import { TSizes } from "@/store/initialData/home/sizes.types";
 import { TSlides } from "@/store/initialData/home/slides.types";
 import { TFooter } from "@/store/initialData/footer/footer.types";
+
+import { TBaskets } from "@/store/initialData/basket/basket.types";
+import { EActionBasketForProduct } from "@/store/initialData/basket/basket.enums";
 
 export const useStore = defineStore("store", () => {
   /* STATE */
@@ -44,15 +47,75 @@ export const useStore = defineStore("store", () => {
   /* data footer */
   const footer = ref<TFooter>(initialFooter);
 
+  /* data basket */
+  const basket = ref<TBaskets>([]);
+
+  /* ACTIONS */
+  function addToBasket(product: TProduct) {
+    const existingProductIndex = basket.value.findIndex(
+      (item) => item.product === product,
+    );
+    if (existingProductIndex !== -1)
+      basket.value[existingProductIndex].countDuplicateProduct++;
+    else {
+      basket.value.push({ product, countDuplicateProduct: 1 });
+    }
+  }
+
+  function changeQuantityProductInBasket(
+    action: EActionBasketForProduct,
+    id: TProduct["id"],
+  ) {
+    const productIndex = basket.value.findIndex(
+      (product) => product.product.id === id,
+    );
+    if (productIndex !== -1)
+      switch (action) {
+        case EActionBasketForProduct.increment:
+          basket.value[productIndex].countDuplicateProduct++;
+          break;
+        case EActionBasketForProduct.decrement:
+          if (basket.value[productIndex].countDuplicateProduct > 1)
+            basket.value[productIndex].countDuplicateProduct--;
+          else {
+            basket.value.splice(productIndex, 1);
+          }
+          break;
+        default:
+          break;
+      }
+  }
+
   /* GETTERS */
   function paginationProducts(start?: number, end?: number) {
     return products.value.slice(start, end);
   }
 
+  const cartCounter = computed(() => {
+    return basket.value.reduce((currentSum, currentProduct) => {
+      if (currentProduct.countDuplicateProduct)
+        return currentSum + currentProduct.countDuplicateProduct;
+      return currentSum + 1;
+    }, 0);
+  });
+
+  const totalCostProducts = computed(() => {
+    return basket.value.reduce((currentSum, currentProduct) => {
+      const currentProductPrice = Number(
+        currentProduct.product.info.total.price,
+      );
+      if (currentProduct.countDuplicateProduct)
+        return (
+          currentSum +
+          currentProductPrice * currentProduct.countDuplicateProduct
+        );
+      return currentSum + currentProductPrice;
+    }, 0);
+  });
+
   return {
     actions,
     menu,
-
     breadcrumbs,
     categories,
     clothes,
@@ -61,9 +124,14 @@ export const useStore = defineStore("store", () => {
     selectOptions,
     sizes,
     slides,
-
     footer,
+    basket,
+
+    addToBasket,
+    changeQuantityProductInBasket,
 
     paginationProducts,
+    cartCounter,
+    totalCostProducts,
   };
 });

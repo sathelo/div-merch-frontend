@@ -3,26 +3,31 @@
     <BasketCardComponent
       v-for="(product, productIndex) in products"
       :key="productIndex"
-      :image="getImageForCard(product)"
-      :info="{
-        type: product.info.type,
-        title: product.info.title,
-        price: product.info.total.price,
+      :product="{
+        id: product.product.id,
+        images: getImageForCard(product.product),
+        info: {
+          title: product.product.info.title,
+          type: product.product.info.type,
+          total: {
+            price: product.product.info.total.price,
+          },
+        },
       }"
+      :count-duplicate-product="product.countDuplicateProduct"
       class="cards__card"
     />
   </section>
 </template>
-
 <script setup lang="ts">
 import BasketCardComponent from "@/components/Basket/BasketCardComponent.vue";
 
 import { getImageForCard } from "@/utils/imageForCard";
 
-import { TProducts } from "@/store/initialData/home/products.types";
+import { TBaskets } from "@/store/initialData/basket/basket.types";
 
 interface IProps {
-  products: TProducts;
+  products: TBaskets;
 }
 
 defineProps<IProps>();

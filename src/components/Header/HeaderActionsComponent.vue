@@ -16,11 +16,11 @@
           </template>
         </ButtonComponent>
         <div
-          v-if="isBasket(action.name) && counter"
+          v-if="isBasket(action.name) && cartCounter"
           class="item__counter counter"
         >
           <p class="counter__text">
-            {{ counter }}
+            {{ cartCounter }}
           </p>
         </div>
       </li>
@@ -29,7 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed } from "vue";
+import { useStore } from "@/store/store";
 import { navigateToRoute } from "@/router/routes";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
@@ -44,7 +45,9 @@ interface IProps {
 
 defineProps<IProps>();
 
-const counter = ref(0);
+const store = useStore();
+
+const cartCounter = computed(() => store.$state.cartCounter);
 
 function isBasket(name: TAction["name"]) {
   return name === "basket";

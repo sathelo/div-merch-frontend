@@ -3,7 +3,7 @@
     <div class="summary__discount discount">
       <p class="discount__title">Сумма заказа</p>
       <span class="discount__price">{{ totalPrice }}</span>
-      <p class="discount__subtitle">за&nbsp;{{ totalProduct }}&nbsp;товара</p>
+      <p class="discount__subtitle">за&nbsp;{{ totalProducts }}&nbsp;товара</p>
       <div class="discount__wrapper">
         <InputComponent
           v-model="promoValue"
@@ -41,7 +41,7 @@ import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
 interface IProps {
-  totalProduct: number;
+  totalProducts: number;
   totalPrice: number;
 }
 

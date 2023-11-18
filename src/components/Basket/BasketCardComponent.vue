@@ -1,10 +1,10 @@
 <template>
   <div class="card">
-    <img class="card__photo" :src="image" :alt="info.type" />
+    <img class="card__photo" :src="product.images" :alt="product.info.type" />
 
     <div class="card__info">
-      <p class="card__title">{{ info.title }}</p>
-      <p class="card__type">{{ info.type }}</p>
+      <p class="card__title">{{ product.info.title }}</p>
+      <p class="card__type">{{ product.info.type }}</p>
       <div class="card__settings settings">
         <ButtonComponent
           v-for="(button, buttonIndex) in buttons"
@@ -20,16 +20,30 @@
     </div>
 
     <div class="card__total">
-      <p class="card__price">{{ formattedPriceToRub(info.price) }}</p>
+      <p class="card__price">{{ fullPrice }}</p>
       <div class="card__quantity-controller quantity-controller">
         <AddRemoveComponent
           :variant="ECAddRemoveType.remove"
-          class="quantity-controller__btn quantity-controller__btn--increment"
+          class="quantity-controller__btn quantity-controller__btn--decrement"
+          @click="
+            changeQuantityProductInBasket(
+              EActionBasketForProduct.decrement,
+              product.id,
+            )
+          "
         />
-        <span class="quantity-controller__total">{{ total }}</span>
+        <span class="quantity-controller__total">{{
+          props.countDuplicateProduct
+        }}</span>
         <AddRemoveComponent
           :variant="ECAddRemoveType.add"
           class="quantity-controller__btn quantity-controller__btn--increment"
+          @click="
+            changeQuantityProductInBasket(
+              EActionBasketForProduct.increment,
+              product.id,
+            )
+          "
         />
       </div>
     </div>
@@ -37,25 +51,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "@/store/store";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 import AddRemoveComponent from "@/components/ui/AddRemoveComponent/AddRemoveComponent.vue";
 import HeartSmallIco from "/icons/heart-small.svg";
 import BasketIco from "/icons/basket.svg";
 
-import { formattedPriceToRub } from "@/utils/formattedText";
-
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 import { ECAddRemoveType } from "@/components/ui/AddRemoveComponent/AddRemoveComponent.enums";
+import { EActionBasketForProduct } from "@/store/initialData/basket/basket.enums";
 
-import { TCCard } from "@/components/ui/CardComponent/CardComponent.types";
+import { TBasketCard } from "@/store/initialData/basket/basket.types";
 
-type IProps = TCCard;
+type IProps = TBasketCard;
 
-defineProps<IProps>();
-
-const total = ref(2);
+const store = useStore();
+const { changeQuantityProductInBasket } = store;
+const props = defineProps<IProps>();
 
 const buttons = ref([
   {
@@ -65,6 +79,10 @@ const buttons = ref([
     ico: BasketIco,
   },
 ]);
+
+const fullPrice = computed(() => {
+  return Number(props.product.info.total.price) * props.countDuplicateProduct;
+});
 </script>
 
 <style lang="less" scoped>

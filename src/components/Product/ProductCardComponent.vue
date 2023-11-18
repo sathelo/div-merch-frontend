@@ -29,10 +29,7 @@
           class="info__size"
         />
         <span class="info__line" />
-        <ProductCardInfoTotalComponent
-          :total="product.info.total"
-          class="info__total"
-        />
+        <ProductCardInfoTotalComponent :product="product" class="info__total" />
       </div>
 
       <ProductCardDescriptionComponent

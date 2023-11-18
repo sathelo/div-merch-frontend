@@ -1,11 +1,17 @@
 <template>
   <div class="total">
-    <span class="total__price">{{ formattedPriceToRub(total.price) }}</span>
-    <span v-if="total.discount" class="total__discount">{{
-      formattedDiscount(total.discount)
+    <span class="total__price">
+      {{ formattedPriceToRub(product.info.total.price) }}
+    </span>
+    <span v-if="product.info.total.discount" class="total__discount">{{
+      formattedDiscount(product.info.total.discount)
     }}</span>
 
-    <ButtonComponent :variant="ECButtonType.primary" class="total__btn">
+    <ButtonComponent
+      :variant="ECButtonType.primary"
+      class="total__btn"
+      @click="addToBasket(product)"
+    >
       <template #icon>
         <img :src="ShopIco" alt="basket" />
       </template>
@@ -15,6 +21,8 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from "@/store/store";
+
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
 import ShopIco from "/icons/shop.svg";
@@ -24,13 +32,16 @@ import { formattedDiscount } from "@/utils/formattedDiscount";
 
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
 
-import { IProductCardInfoTotal } from "@/components/Product/ProductCardInfoTotalComponent.types";
+import { TProduct } from "@/store/initialData/home/products.types";
 
 interface IProps {
-  total: IProductCardInfoTotal;
+  product: TProduct;
 }
 
 defineProps<IProps>();
+
+const store = useStore();
+const { addToBasket } = store;
 </script>
 
 <style lang="less" scoped>

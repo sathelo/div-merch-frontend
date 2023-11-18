@@ -1,11 +1,12 @@
 <template>
   <div class="basket">
     <h2 class="basket__title">Корзина</h2>
-    <div class="basket__wrapper">
+    <div v-if="!products.length" class="basket__not-found">Корзина пустая</div>
+    <div v-else class="basket__wrapper">
       <BasketCardsComponent :products="products" class="basket__cards" />
       <BasketSummaryComponent
-        :total-product="totalProduct"
-        :total-price="totalPrice"
+        :total-products="cartCounter"
+        :total-price="totalCostProducts"
         class="basket__summary"
       />
     </div>
@@ -13,17 +14,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { useStore } from "@/store/store";
+import { computed } from "vue";
 
 import BasketCardsComponent from "@/components/Basket/BasketCardsComponent.vue";
 import BasketSummaryComponent from "@/components/Basket/BasketSummaryComponent.vue";
 
 const store = useStore();
 
-const products = computed(() => store.$state.products);
-const totalProduct = computed(() => 4);
-const totalPrice = computed(() => 18450);
+const products = computed(() => store.$state.basket);
+const cartCounter = computed(() => store.cartCounter);
+const totalCostProducts = computed(() => store.totalCostProducts);
 </script>
 
 <style lang="less" scoped>
@@ -42,14 +43,6 @@ const totalPrice = computed(() => 18450);
     .flex-properties(flex);
     position: relative;
     width: 100%;
-  }
-
-  &__cards {
-    width: 70%;
-  }
-
-  &__summary {
-    width: 30%;
   }
 }
 </style>

@@ -5,6 +5,7 @@
       v-model="isChecked"
       type="checkbox"
       class="chisp__checked"
+      :value="id"
       :disabled="isDisabled"
     />
     <label class="chisp__label" :for="uniqueId">
@@ -13,7 +14,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends boolean | unknown[]">
 import { computed, ref } from "vue";
 
 import { getUniqueId } from "@/utils/uniqueId";
@@ -21,11 +22,11 @@ import { getUniqueId } from "@/utils/uniqueId";
 import { ICChispProps } from "./ChispComponent.types";
 
 interface IEmits {
-  (e: "update:modelValue", v: boolean): void;
-  (e: "change", v: boolean): void;
+  (e: "update:modelValue", v: T): void;
+  (e: "change", v: T): void;
 }
 
-const props = withDefaults(defineProps<ICChispProps>(), {
+const props = withDefaults(defineProps<ICChispProps<T>>(), {
   disabled: false,
 });
 const emits = defineEmits<IEmits>();
@@ -36,7 +37,7 @@ const isDisabled = computed(() => {
   return props.disabled ? true : false;
 });
 
-const isCheckedLocal = ref(false);
+const isCheckedLocal = ref<T>(false);
 
 const isChecked = computed({
   get: () => props.modelValue ?? isCheckedLocal.value,

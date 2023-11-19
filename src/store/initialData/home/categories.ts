@@ -1,36 +1,36 @@
-import { EQueriesCategory } from "@/store/initialData/home/categories.enums";
+import { EQueriesCategory } from "@/utils/query/useCategoriesRouteQuery";
 
 import { TCategories } from "@/store/initialData/home/categories.types";
 
 export const initialCategories: TCategories = [
   {
-    title: "Носки",
+    title: "Анораки",
     img: "/categories/1.png",
+    query: { category: EQueriesCategory.anoraks },
+  },
+  {
+    title: "Свитшоты",
+    img: "/categories/2.png",
+    query: { category: EQueriesCategory.sweatshirts },
+  },
+  {
+    title: "Брюки",
+    img: "/categories/3.png",
+    query: { category: EQueriesCategory.trousers },
+  },
+  {
+    title: "Носки",
+    img: "/categories/4.png",
     query: { category: EQueriesCategory.socks },
   },
   {
-    title: "Толстовки",
-    img: "/categories/2.png",
-    query: { category: EQueriesCategory.hoodies },
-  },
-  {
-    title: "Куртки",
-    img: "/categories/3.png",
-    query: { category: EQueriesCategory.jackets },
-  },
-  {
-    title: "Трусы",
-    img: "/categories/4.png",
-    query: { category: EQueriesCategory.underpants },
-  },
-  {
-    title: "Футболки",
+    title: "Ветровки",
     img: "/categories/5.png",
-    query: { category: EQueriesCategory.tShirts },
+    query: { category: EQueriesCategory.windbreakers },
   },
   {
-    title: "Украшения",
+    title: "Браслеты",
     img: "/categories/6.png",
-    query: { category: EQueriesCategory.decorations },
+    query: { category: EQueriesCategory.bracelets },
   },
 ];

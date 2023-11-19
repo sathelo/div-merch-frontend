@@ -1,11 +1,13 @@
+import { EQueriesSizes } from "@/utils/query/useSizesRouteQuery";
+
 import { TSizes } from "@/store/initialData/home/sizes.types";
 
 export const initialSizes: TSizes = [
-  { label: "S", isChecked: false },
-  { label: "M", isChecked: false },
-  { label: "L", isChecked: false },
-  { label: "XL", isChecked: false },
-  { label: "2XL", isChecked: false },
-  { label: "XXL", isChecked: false },
-  { label: "3XL", isChecked: false },
+  { label: "S", type: EQueriesSizes.s },
+  { label: "M", type: EQueriesSizes.m },
+  { label: "L", type: EQueriesSizes.l },
+  { label: "XL", type: EQueriesSizes.xl },
+  { label: "2XL", type: EQueriesSizes.twoxl },
+  { label: "XXL", type: EQueriesSizes.xxl },
+  { label: "3XL", type: EQueriesSizes.threexl },
 ];

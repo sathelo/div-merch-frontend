@@ -44,3 +44,5 @@ npm run dev
 - [Less](https://lesscss.org/)
 - [Swiper](https://swiperjs.com/)
 - [Element Plus](https://element-plus.org/)
+- [VueUse](https://vueuse.org/)
+- [VueUseRouteQuery](https://github.com/Djaler/vue-use-route-query)

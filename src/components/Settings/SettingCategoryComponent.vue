@@ -4,8 +4,9 @@
     <div class="setting__wrapper">
       <CheckboxComponent
         v-for="(checkbox, checkboxIndex) in checkboxes"
+        :id="checkbox.type"
         :key="checkboxIndex"
-        :is-checked="checkbox.isChecked"
+        v-model="categories"
         class="setting__checkbox"
       >
         {{ checkbox.label }}
@@ -16,6 +17,10 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import {
+  EQueriesCategory,
+  useCategoriesRouteQuery,
+} from "@/utils/query/useCategoriesRouteQuery";
 
 import CheckboxComponent from "@/components/ui/CheckboxComponent/CheckboxComponent.vue";
 
@@ -25,14 +30,16 @@ interface IProps {
 
 defineProps<IProps>();
 
+const categories = useCategoriesRouteQuery();
+
 const checkboxes = ref([
-  { label: "Анораки", isChecked: false },
-  { label: "Свитшоты", isChecked: false },
-  { label: "Брюки", isChecked: false },
-  { label: "Носки", isChecked: false },
-  { label: "Ветровки", isChecked: false },
-  { label: "Браслеты", isChecked: false },
-  { label: "Брелоки", isChecked: false },
+  { label: "Анораки", type: EQueriesCategory.anoraks },
+  { label: "Свитшоты", type: EQueriesCategory.sweatshirts },
+  { label: "Брюки", type: EQueriesCategory.trousers },
+  { label: "Носки", type: EQueriesCategory.socks },
+  { label: "Ветровки", type: EQueriesCategory.windbreakers },
+  { label: "Браслеты", type: EQueriesCategory.bracelets },
+  { label: "Брелоки", type: EQueriesCategory.keychains },
 ]);
 </script>
 

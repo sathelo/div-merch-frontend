@@ -18,7 +18,7 @@
       :show-tooltip="false"
       class="setting__slider"
       style="--el-slider-height: 2px"
-      @input="updatePrices($event)"
+      @input="updatePrices($event as [number, number])"
     />
   </section>
 </template>
@@ -28,18 +28,16 @@ import { computed, ref } from "vue";
 
 import { ElSlider } from "element-plus";
 
-import type { Arrayable } from "element-plus/lib/utils/typescript.js";
-
 import "element-plus/dist/index.css";
 
 interface IProps {
   title: string;
-  prices: number[];
+  prices: [number, number];
   maxPrice: number;
 }
 
 interface IEmits {
-  (e: "updatePrices", prices: number[]): void;
+  (e: "updatePrices", prices: [number, number]): void;
 }
 
 const props = defineProps<IProps>();
@@ -76,13 +74,10 @@ const beforePrice = computed({
   },
 });
 
-const localPrices = ref([...props.prices]);
+const localPrices = ref<[number, number]>([...props.prices]);
 
-function updatePrices<T extends Arrayable<number>>(newPrices?: T): void {
-  emits(
-    "updatePrices",
-    Array.isArray(newPrices) ? newPrices : localPrices.value,
-  );
+function updatePrices(newPrices?: [number, number]): void {
+  emits("updatePrices", newPrices ? newPrices : localPrices.value);
 }
 </script>
 

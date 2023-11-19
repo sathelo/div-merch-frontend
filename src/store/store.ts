@@ -1,5 +1,6 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { useLocalStorage } from "@vueuse/core";
 
 import { initialActions } from "@/store/initialData/header/action";
 import { initialMenu } from "@/store/initialData/header/menu";
@@ -48,7 +49,7 @@ export const useStore = defineStore("store", () => {
   const footer = ref<TFooter>(initialFooter);
 
   /* data basket */
-  const basket = ref<TBaskets>([]);
+  const basket = useLocalStorage<TBaskets>("basket", []);
 
   /* ACTIONS */
   function addToBasket(product: TProduct) {

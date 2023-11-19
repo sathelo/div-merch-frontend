@@ -15,7 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref } from "vue";
+import { usePriceRouteQuery } from "@/utils/query/usePriceRouteQuery";
 
 import SettingPriceComponent from "@/components/Settings/SettingPriceComponent.vue";
 import SettingFloorComponent from "@/components/Settings/SettingFloorComponent.vue";
@@ -24,16 +25,11 @@ import SettingSizeComponent from "@/components/Settings/SettingSizeComponent.vue
 import SettingColorComponent from "@/components/Settings/SettingColorComponent.vue";
 
 const maxPrice = ref(480000);
-const defaultPrices = ref([0, 240000]);
+const defaultPrices: [number, number] = [0, 240000];
 
-const prices = computed({
-  get: () => defaultPrices.value,
-  set: (newPrices) => {
-    defaultPrices.value = newPrices;
-  },
-});
+const prices = usePriceRouteQuery(defaultPrices);
 
-function updatePrices(newPrices: number[]): void {
+function updatePrices(newPrices: [number, number]): void {
   prices.value = newPrices;
 }
 </script>

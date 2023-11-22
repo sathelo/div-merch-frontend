@@ -47,7 +47,7 @@ defineProps<IProps>();
 
 const store = useStore();
 
-const cartCounter = computed(() => store.$state.cartCounter);
+const cartCounter = computed(() => store.cartCounter);
 
 function isBasket(name: TAction["name"]) {
   return name === "basket";

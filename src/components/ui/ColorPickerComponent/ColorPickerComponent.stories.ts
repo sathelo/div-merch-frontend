@@ -38,7 +38,7 @@ const meta: ComponentMeta = {
       description: "Событие, изменение состояния выбора цвета",
     },
   },
-  render: (args: ICColorProps) => ({
+  render: (args: ICColorProps<boolean | unknown[]>) => ({
     components: { ColorPickerComponent },
     setup() {
       return { args };

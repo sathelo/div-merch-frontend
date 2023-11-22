@@ -4,7 +4,6 @@ import { useLocalStorage } from "@vueuse/core";
 
 import { initialActions } from "@/store/initialData/header/action";
 import { initialMenu } from "@/store/initialData/header/menu";
-import { initialBreadcrumbs } from "@/store/initialData/home/breadcrumbs";
 import { initialCategories } from "@/store/initialData/home/categories";
 import { initialClothes } from "@/store/initialData/home/clothes";
 import { initialColors } from "@/store/initialData/home/colors";
@@ -16,7 +15,6 @@ import { initialFooter } from "@/store/initialData/footer/footer";
 
 import { TActions } from "@/store/initialData/header/action.types";
 import { TMenu } from "@/store/initialData/header/menu.types";
-import { TBreadcrumbs } from "@/store/initialData/home/breadcrumbs.types";
 import { TCategories } from "@/store/initialData/home/categories.types";
 import { TClothes } from "@/store/initialData/home/clothes.types";
 import { TColors } from "@/store/initialData/home/colors.types";
@@ -36,7 +34,6 @@ export const useStore = defineStore("store", () => {
   const menu = ref<TMenu>(initialMenu);
 
   /* data main */
-  const breadcrumbs = ref<TBreadcrumbs>(initialBreadcrumbs);
   const categories = ref<TCategories>(initialCategories);
   const clothes = ref<TClothes>(initialClothes);
   const colors = ref<TColors>(initialColors);
@@ -117,7 +114,6 @@ export const useStore = defineStore("store", () => {
   return {
     actions,
     menu,
-    breadcrumbs,
     categories,
     clothes,
     colors,

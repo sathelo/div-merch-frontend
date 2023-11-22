@@ -1,10 +1,7 @@
 <template>
   <div class="categories">
     <div class="categories__header">
-      <BreadcrumbsComponent
-        :breadcrumbs="breadcrumbs"
-        class="categories__breadcrumbs"
-      />
+      <BreadcrumbsComponent class="categories__breadcrumbs" />
       <DropdownComponent
         :model-value="isDropdown"
         :select-value="selectOption"
@@ -41,7 +38,6 @@ const store = useStore();
 const isDropdown = ref(false);
 const selectOption = ref<Option>();
 
-const breadcrumbs = computed(() => store.$state.breadcrumbs);
 const selectOptions = computed(() => store.$state.selectOptions);
 const products = computed(() => store.$state.products);
 

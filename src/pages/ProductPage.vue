@@ -1,9 +1,6 @@
 <template>
   <div v-if="product" class="product">
-    <BreadcrumbsComponent
-      :breadcrumbs="breadcrumbs"
-      class="product__breadcrumbs"
-    />
+    <BreadcrumbsComponent class="product__breadcrumbs" />
     <ProductCardComponent :product="product" class="product__card" />
     <CardsComponent :products="paginationProducts(0, 4)" class="product__cards">
       Похожие товары
@@ -15,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, computed, ref } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 
 import { useStore } from "@/store/store";
@@ -30,8 +27,6 @@ const store = useStore();
 const { paginationProducts } = store;
 
 const product = ref<TProduct>();
-
-const breadcrumbs = computed(() => store.$state.breadcrumbs);
 
 onMounted(() => {
   const route = useRoute();

@@ -1,8 +1,11 @@
+import { ETagButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
+
 import { NamePath } from "@/router/routes.types";
 
 interface IBreadcrumb {
-  name: string;
-  path: NamePath;
+  tag?: ETagButton;
+  name?: string;
+  path?: NamePath;
 }
 
 type TBreadcrumb = IBreadcrumb;

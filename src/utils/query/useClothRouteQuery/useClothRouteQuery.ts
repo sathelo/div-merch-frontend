@@ -2,16 +2,22 @@ import { useRouteQuery } from "vue-use-route-query";
 
 import { EQueriesCloth } from "./useClothRouteQuery.types";
 
-export function useClothRouteQuery(cloth: EQueriesCloth) {
-  return useRouteQuery<boolean>(
+export function useClothRouteQuery() {
+  return useRouteQuery<Array<EQueriesCloth>>(
     "cloth",
-    false,
+    [],
     {
       fromQuery(value) {
-        return value === cloth;
+        return value
+          .split(",")
+          .filter((v) =>
+            [EQueriesCloth.male, EQueriesCloth.female].includes(
+              v as EQueriesCloth,
+            ),
+          ) as Array<EQueriesCloth>;
       },
       toQuery(value) {
-        return value ? cloth : undefined;
+        return value?.length ? value.join(",") : undefined;
       },
     },
     undefined,

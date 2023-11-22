@@ -4,6 +4,7 @@
     <div class="setting__wrapper">
       <CheckboxComponent
         v-for="(checkbox, checkboxIndex) in checkboxes"
+        :id="checkbox.id"
         :key="checkboxIndex"
         v-model="checkbox.isChecked"
         class="setting__checkbox"
@@ -30,12 +31,11 @@ interface IProps {
 
 defineProps<IProps>();
 
-const male = useClothRouteQuery(EQueriesCloth.male);
-const female = useClothRouteQuery(EQueriesCloth.female);
+const cloth = useClothRouteQuery();
 
 const checkboxes = ref([
-  { label: "Мужской", isChecked: male },
-  { label: "Женский", isChecked: female },
+  { label: "Мужской", isChecked: cloth, id: EQueriesCloth.male },
+  { label: "Женский", isChecked: cloth, id: EQueriesCloth.female },
 ]);
 </script>
 

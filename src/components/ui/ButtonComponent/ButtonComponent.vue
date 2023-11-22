@@ -1,10 +1,17 @@
 <template>
-  <button type="button" :class="classes" :disabled="isDisabled">
+  <component
+    :is="tag"
+    :href="ETagButton.a === tag && href ? href : null"
+    :target="ETagButton.a === tag && target ? target : null"
+    type="button"
+    :class="classes"
+    :disabled="isDisabled"
+  >
     <div v-if="$slots.icon" class="btn__ico">
       <slot name="icon" />
     </div>
     <slot />
-  </button>
+  </component>
 </template>
 
 <script setup lang="ts">
@@ -12,11 +19,13 @@ import { computed } from "vue";
 
 import { ECButtonType } from "./ButtonComponent.enums";
 
-import { ICButtonProps } from "./ButtonComponent.types";
+import { ETagButton, ICButtonProps } from "./ButtonComponent.types";
 
 const props = withDefaults(defineProps<ICButtonProps>(), {
+  tag: ETagButton.btn,
   disabled: false,
   variant: ECButtonType.primary,
+  target: "_self",
 });
 
 const classes = computed(() => ({

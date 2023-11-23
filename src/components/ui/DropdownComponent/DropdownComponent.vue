@@ -1,5 +1,9 @@
 <template>
-  <div class="select" :class="{ 'select--active': isSelect && !isDisabled }">
+  <div
+    ref="select"
+    class="select"
+    :class="{ 'select--active': isSelect && !isDisabled }"
+  >
     <button
       :disabled="isDisabled"
       class="select__label"
@@ -27,6 +31,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from "vue";
+import { onClickOutside } from "@vueuse/core";
 
 import ArrowBottomIco from "/icons/arrow-bottom.svg";
 
@@ -50,8 +55,14 @@ const props = withDefaults(defineProps<ICDropdownProps>(), {
 });
 const emits = defineEmits<IEmits>();
 
+const select = ref(null);
 const isSelectLocal = ref(false);
 const selectOptionLocal = ref<Option>();
+
+onClickOutside(select, () => {
+  isSelectLocal.value = !isSelectLocal.value;
+  emits("updateModelValue", isSelectLocal.value);
+});
 
 const isDisabled = computed(() => {
   return props.disabled ? true : false;

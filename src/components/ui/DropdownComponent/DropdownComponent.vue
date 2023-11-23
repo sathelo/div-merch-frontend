@@ -61,7 +61,7 @@ const selectOptionLocal = ref<Option>();
 
 onClickOutside(select, () => {
   isSelectLocal.value = !isSelectLocal.value;
-  emits("updateModelValue", isSelectLocal.value);
+  emits("updateModelValue", false);
 });
 
 const isDisabled = computed(() => {

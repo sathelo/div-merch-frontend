@@ -57,10 +57,21 @@ const meta: ComponentMeta = {
     },
   },
   decorators: [DropdownDecoratorWithLimitedWidth],
-  render: (args: ICDropdownProps) => ({
+  render: () => ({
     components: { DropdownComponent },
     setup() {
-      return { args };
+      return {
+        args: {
+          options: [
+            { value: "Option 1", id: "Option 1" },
+            { value: "Option 2", id: "Option 2" },
+            { value: "Option 3", id: "Option 3" },
+            { value: "Option 4", id: "Option 4" },
+            { value: "Option 5", id: "Option 5" },
+            { value: "Option 6", id: "Option 6" },
+          ],
+        },
+      };
     },
     template: `
     <DropdownComponent 

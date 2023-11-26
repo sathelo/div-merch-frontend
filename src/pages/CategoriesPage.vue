@@ -3,13 +3,10 @@
     <div class="categories__header">
       <BreadcrumbsComponent class="categories__breadcrumbs" />
       <DropdownComponent
-        :model-value="isDropdown"
-        :select-value="selectOption"
-        :select-value-id="0"
+        v-model="isDropdown"
+        v-model:select-value="queriesSelectOptions"
         :options="selectOptions"
         class="categories__select"
-        @update-model-value="updateModelValue"
-        @update-select-value="updateSelectValue"
       />
     </div>
     <div class="categories__body">
@@ -25,29 +22,26 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useStore } from "@/store/store";
+import {
+  EQueriesSortType,
+  useSortTypeRouteQuery,
+} from "@/utils/query/useSortTypeRouteQuery";
 
 import BreadcrumbsComponent from "@/components/ui/BreadcrumbsComponent/BreadcrumbsComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
 import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
 
-import { Option } from "@/components/ui/DropdownComponent/DropdownComponent.types";
-
 const store = useStore();
 
 const isDropdown = ref(false);
-const selectOption = ref<Option>();
 
 const selectOptions = computed(() => store.$state.selectOptions);
 const products = computed(() => store.$state.products);
 
-function updateModelValue(value: boolean) {
-  isDropdown.value = value;
-}
-
-function updateSelectValue(option: Option | undefined) {
-  selectOption.value = option;
-}
+const queriesSelectOptions = useSortTypeRouteQuery(
+  EQueriesSortType.newItemsFirst,
+);
 </script>
 
 <style lang="less" scoped>

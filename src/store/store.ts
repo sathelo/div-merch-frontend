@@ -15,13 +15,7 @@ import { initialFooter } from "@/store/initialData/footer/footer";
 
 import { TActions } from "@/store/initialData/header/action.types";
 import { TMenu } from "@/store/initialData/header/menu.types";
-import { TCategories } from "@/store/initialData/home/categories.types";
-import { TClothes } from "@/store/initialData/home/clothes.types";
-import { TColors } from "@/store/initialData/home/colors.types";
-import { TProduct, TProducts } from "@/store/initialData/home/products.types";
-import { TOptions } from "@/store/initialData/home/selectOptions.types";
-import { TSizes } from "@/store/initialData/home/sizes.types";
-import { TSlides } from "@/store/initialData/home/slides.types";
+import { TProduct } from "@/store/initialData/home/products.types";
 import { TFooter } from "@/store/initialData/footer/footer.types";
 
 import { TBaskets } from "@/store/initialData/basket/basket.types";
@@ -34,13 +28,13 @@ export const useStore = defineStore("store", () => {
   const menu = ref<TMenu>(initialMenu);
 
   /* data main */
-  const categories = ref<TCategories>(initialCategories);
-  const clothes = ref<TClothes>(initialClothes);
-  const colors = ref<TColors>(initialColors);
-  const products = ref<TProducts>(initialProducts);
-  const selectOptions = ref<TOptions>(initialSelectOptions);
-  const sizes = ref<TSizes>(initialSizes);
-  const slides = ref<TSlides>(initialSlides);
+  const categories = ref(initialCategories);
+  const clothes = ref(initialClothes);
+  const colors = ref(initialColors);
+  const products = ref(initialProducts);
+  const selectOptions = ref(initialSelectOptions);
+  const sizes = ref(initialSizes);
+  const slides = ref(initialSlides);
 
   /* data footer */
   const footer = ref<TFooter>(initialFooter);

@@ -29,39 +29,31 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T">
 import { computed, ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
 import ArrowBottomIco from "/icons/arrow-bottom.svg";
 
-import { ICDropdownProps, Option } from "./DropdownComponent.types";
+import { ICDropdownProps, TOption } from "./DropdownComponent.types";
 
 interface IEmits {
-  (e: "updateModelValue", v: boolean): void;
-  (e: "updateSelectValue", v: Option | undefined): void;
+  (e: "update:modelValue", v: boolean): void;
+  (e: "update:selectValue", v: T): void;
 }
 
-const props = withDefaults(defineProps<ICDropdownProps>(), {
+const props = withDefaults(defineProps<ICDropdownProps<T>>(), {
   disabled: false,
-  options: () => [
-    { value: "Option 1" },
-    { value: "Option 2" },
-    { value: "Option 3" },
-    { value: "Option 4" },
-    { value: "Option 5" },
-    { value: "Option 6" },
-  ],
 });
 const emits = defineEmits<IEmits>();
 
 const select = ref(null);
 const isSelectLocal = ref(false);
-const selectOptionLocal = ref<Option>();
+const selectOptionLocal = ref<T>();
 
 onClickOutside(select, () => {
   isSelectLocal.value = !isSelectLocal.value;
-  emits("updateModelValue", false);
+  emits("update:modelValue", false);
 });
 
 const isDisabled = computed(() => {
@@ -69,23 +61,23 @@ const isDisabled = computed(() => {
 });
 
 const isSelect = computed(() => props.modelValue ?? isSelectLocal.value);
-const selectOption = computed(() => {
-  if (props.selectValue) return props.selectValue;
-  if (props.options.length && props.selectValueId !== undefined)
-    return props.options[props.selectValueId];
-  return selectOptionLocal.value;
-});
+
+const selectOption = computed<TOption<T> | undefined>(() =>
+  props.options.find(
+    (option) => option.id === (props.selectValue ?? selectOptionLocal.value),
+  ),
+);
 
 function clickHandlerSelect() {
   isSelectLocal.value = !isSelectLocal.value;
-  emits("updateModelValue", isSelectLocal.value);
+  emits("update:modelValue", isSelectLocal.value);
 }
 
-function clickSelectOption(option: Option) {
-  selectOptionLocal.value = option;
+function clickSelectOption(option: TOption<T>) {
+  selectOptionLocal.value = option.id;
   isSelectLocal.value = !isSelectLocal.value;
-  emits("updateSelectValue", selectOptionLocal.value);
-  emits("updateModelValue", isSelectLocal.value);
+  emits("update:selectValue", selectOptionLocal.value);
+  emits("update:modelValue", isSelectLocal.value);
 }
 </script>
 

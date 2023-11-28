@@ -4,10 +4,10 @@
     <div class="setting__wrapper">
       <ColorPickerComponent
         v-for="(color, colorIndex) in colors"
-        :id="color.typeQuery"
+        :id="color.type"
         :key="colorIndex"
         v-model="queriesColors"
-        :type="color.type"
+        :type="color.contrastType"
         :bg="color.bg"
         class="setting__color"
       />

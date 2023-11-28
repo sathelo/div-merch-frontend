@@ -6,7 +6,7 @@
         v-for="(color, colorIndex) in colors"
         :key="colorIndex"
         v-model="color.isChecked"
-        :type="color.type"
+        :type="color.contrastType"
         :bg="color.bg"
         class="colors__color"
       />

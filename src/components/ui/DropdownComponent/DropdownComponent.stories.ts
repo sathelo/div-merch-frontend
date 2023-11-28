@@ -2,7 +2,6 @@ import DropdownComponent from "@/components/ui/DropdownComponent/DropdownCompone
 
 import { DropdownDecoratorWithLimitedWidth } from "@/components/ui/DropdownComponent/DropdownComponent.decorator";
 
-import { ICDropdownProps } from "@/components/ui/DropdownComponent/DropdownComponent.types";
 import type { Meta, StoryObj } from "@storybook/vue3";
 
 type ComponentMeta = Meta<typeof DropdownComponent>;

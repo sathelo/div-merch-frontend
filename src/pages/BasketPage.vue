@@ -1,7 +1,7 @@
 <template>
   <div class="basket">
     <h2 class="basket__title">Корзина</h2>
-    <div v-if="!products.length" class="basket__not-found">Корзина пустая</div>
+    <div v-if="!products.length" class="basket__not-found">Корзина пуста</div>
     <div v-else class="basket__wrapper">
       <BasketCardsComponent :products="products" class="basket__cards" />
       <BasketSummaryComponent
@@ -32,6 +32,10 @@ const totalCostProducts = computed(() => store.totalCostProducts);
   .content(40px, 40px, @grey-gradation--white);
   width: 100%;
   height: 100%;
+
+  &__not-found {
+    height: 100vh;
+  }
 
   &__title {
     .text-h2;

@@ -104,6 +104,7 @@ export const useStore = defineStore("store", () => {
         return products.value
           .filter(
             (p) =>
+              p !== product &&
               p.info.typeFloor === product?.info.typeFloor &&
               p.info.typeCategory === product?.info.typeCategory,
           )

@@ -1,8 +1,10 @@
 import { EColorPickerType } from "@/components/ui/ColorPickerComponent/ColorPickerComponent.enums";
+import { EQueriesColors } from "@/utils/query/useColorsRouteQuery";
 
 export interface IProductCardInfoColorWithoutStyle {
   isChecked?: boolean;
-  type?: EColorPickerType;
+  contrastType?: EColorPickerType;
+  type: EQueriesColors;
 }
 
 export interface IProductCardInfoColor

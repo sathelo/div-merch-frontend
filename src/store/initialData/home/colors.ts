@@ -1,104 +1,127 @@
+import { EQueriesColors } from "@/utils/query/useColorsRouteQuery";
 import { EColorPickerType } from "@/components/ui/ColorPickerComponent/ColorPickerComponent.enums";
 
-import { IColorWithoutStyle } from "@/store/initialData/home/colors.types";
+import { IColorWithoutStyleAndId } from "@/store/initialData/home/colors.types";
 import { TColors } from "@/store/initialData/home/colors.types";
 
-const colorWithoutStyle: IColorWithoutStyle = {
-  type: EColorPickerType.low,
-  isChecked: false,
+const colorWithoutStyleAndId: IColorWithoutStyleAndId = {
+  contrastType: EColorPickerType.low,
 };
 
 export const initialColors: TColors = [
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#501599",
+    type: EQueriesColors.COLOR1,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#87ABB7",
+    type: EQueriesColors.COLOR2,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#B0BFCF",
+    type: EQueriesColors.COLOR3,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#450F71",
+    type: EQueriesColors.COLOR4,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#34A0B5",
+    type: EQueriesColors.COLOR5,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#FA1A69",
+    type: EQueriesColors.COLOR6,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#5A9870",
+    type: EQueriesColors.COLOR7,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#9BB471",
+    type: EQueriesColors.COLOR8,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#246704",
+    type: EQueriesColors.COLOR9,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#3C872E",
+    type: EQueriesColors.COLOR10,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#91B372",
+    type: EQueriesColors.COLOR11,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#E5AA6D",
+    type: EQueriesColors.COLOR12,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#F06BB8",
+    type: EQueriesColors.COLOR13,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#D52BD3",
+    type: EQueriesColors.COLOR14,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#86811B",
+    type: EQueriesColors.COLOR15,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#3D9A79",
+    type: EQueriesColors.COLOR16,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#659722",
+    type: EQueriesColors.COLOR17,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#8EC8B5",
+    type: EQueriesColors.COLOR18,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#E8118F",
+    type: EQueriesColors.COLOR19,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#216DC1",
+    type: EQueriesColors.COLOR20,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#9CC171",
+    type: EQueriesColors.COLOR21,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#F7EDAB",
+    type: EQueriesColors.COLOR22,
   },
   {
-    ...colorWithoutStyle,
+    ...colorWithoutStyleAndId,
     bg: "#000000",
+    type: EQueriesColors.COLOR23,
   },
 ];

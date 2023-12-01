@@ -1,9 +1,9 @@
 import { ref, computed } from "vue";
 import { defineStore } from "pinia";
+import { useLocalStorage } from "@vueuse/core";
 
 import { initialActions } from "@/store/initialData/header/action";
 import { initialMenu } from "@/store/initialData/header/menu";
-import { initialBreadcrumbs } from "@/store/initialData/home/breadcrumbs";
 import { initialCategories } from "@/store/initialData/home/categories";
 import { initialClothes } from "@/store/initialData/home/clothes";
 import { initialColors } from "@/store/initialData/home/colors";
@@ -15,18 +15,14 @@ import { initialFooter } from "@/store/initialData/footer/footer";
 
 import { TActions } from "@/store/initialData/header/action.types";
 import { TMenu } from "@/store/initialData/header/menu.types";
-import { TBreadcrumbs } from "@/store/initialData/home/breadcrumbs.types";
-import { TCategories } from "@/store/initialData/home/categories.types";
-import { TClothes } from "@/store/initialData/home/clothes.types";
-import { TColors } from "@/store/initialData/home/colors.types";
-import { TProduct, TProducts } from "@/store/initialData/home/products.types";
-import { TOptions } from "@/store/initialData/home/selectOptions.types";
-import { TSizes } from "@/store/initialData/home/sizes.types";
-import { TSlides } from "@/store/initialData/home/slides.types";
+import { TProduct } from "@/store/initialData/home/products.types";
 import { TFooter } from "@/store/initialData/footer/footer.types";
-
 import { TBaskets } from "@/store/initialData/basket/basket.types";
+
 import { EActionBasketForProduct } from "@/store/initialData/basket/basket.enums";
+import { EQueriesSortType } from "@/utils/query/useSortTypeRouteQuery";
+import { EQueriesCategory } from "@/utils/query/useCategoriesRouteQuery";
+import { EPaginationSortType } from "@/types";
 
 export const useStore = defineStore("store", () => {
   /* STATE */
@@ -35,20 +31,19 @@ export const useStore = defineStore("store", () => {
   const menu = ref<TMenu>(initialMenu);
 
   /* data main */
-  const breadcrumbs = ref<TBreadcrumbs>(initialBreadcrumbs);
-  const categories = ref<TCategories>(initialCategories);
-  const clothes = ref<TClothes>(initialClothes);
-  const colors = ref<TColors>(initialColors);
-  const products = ref<TProducts>(initialProducts);
-  const selectOptions = ref<TOptions>(initialSelectOptions);
-  const sizes = ref<TSizes>(initialSizes);
-  const slides = ref<TSlides>(initialSlides);
+  const categories = ref(initialCategories);
+  const clothes = ref(initialClothes);
+  const colors = ref(initialColors);
+  const products = ref(initialProducts);
+  const selectOptions = ref(initialSelectOptions);
+  const sizes = ref(initialSizes);
+  const slides = ref(initialSlides);
 
   /* data footer */
   const footer = ref<TFooter>(initialFooter);
 
   /* data basket */
-  const basket = ref<TBaskets>([]);
+  const basket = useLocalStorage<TBaskets>("basket", []);
 
   /* ACTIONS */
   function addToBasket(product: TProduct) {
@@ -87,8 +82,35 @@ export const useStore = defineStore("store", () => {
   }
 
   /* GETTERS */
-  function paginationProducts(start?: number, end?: number) {
-    return products.value.slice(start, end);
+  function paginationProducts<
+    T extends EQueriesSortType | EQueriesCategory | EPaginationSortType,
+  >(start?: number, end?: number, typeSort?: T, product?: TProduct) {
+    const chunkProducts = products.value.slice(start, end);
+    if (!typeSort) return chunkProducts;
+    switch (typeSort) {
+      case EQueriesSortType.newItemsFirst:
+        return chunkProducts.reverse();
+      case EQueriesCategory.anoraks:
+      case EQueriesCategory.bracelets:
+      case EQueriesCategory.keychains:
+      case EQueriesCategory.socks:
+      case EQueriesCategory.sweatshirts:
+      case EQueriesCategory.trousers:
+      case EQueriesCategory.windbreakers:
+        return products.value
+          .filter((p) => typeSort === p.info.typeCategory && p !== product)
+          .slice(start, end);
+      case EPaginationSortType.similarProducts:
+        return products.value
+          .filter(
+            (p) =>
+              p.info.typeFloor === product?.info.typeFloor &&
+              p.info.typeCategory === product?.info.typeCategory,
+          )
+          .slice(start, end);
+      default:
+        return chunkProducts;
+    }
   }
 
   const cartCounter = computed(() => {
@@ -116,7 +138,6 @@ export const useStore = defineStore("store", () => {
   return {
     actions,
     menu,
-    breadcrumbs,
     categories,
     clothes,
     colors,

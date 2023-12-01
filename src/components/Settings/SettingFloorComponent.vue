@@ -4,8 +4,9 @@
     <div class="setting__wrapper">
       <CheckboxComponent
         v-for="(checkbox, checkboxIndex) in checkboxes"
+        :id="checkbox.id"
         :key="checkboxIndex"
-        :is-checked="checkbox.isChecked"
+        v-model="checkbox.isChecked"
         class="setting__checkbox"
       >
         {{ checkbox.label }}
@@ -19,15 +20,22 @@ import { ref } from "vue";
 
 import CheckboxComponent from "@/components/ui/CheckboxComponent/CheckboxComponent.vue";
 
+import {
+  useClothRouteQuery,
+  EQueriesCloth,
+} from "@/utils/query/useClothRouteQuery";
+
 interface IProps {
   title: string;
 }
 
 defineProps<IProps>();
 
+const cloth = useClothRouteQuery();
+
 const checkboxes = ref([
-  { label: "Мужской", isChecked: false },
-  { label: "Женский", isChecked: false },
+  { label: "Мужской", isChecked: cloth, id: EQueriesCloth.male },
+  { label: "Женский", isChecked: cloth, id: EQueriesCloth.female },
 ]);
 </script>
 

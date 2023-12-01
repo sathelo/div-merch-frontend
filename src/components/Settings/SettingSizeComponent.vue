@@ -3,9 +3,10 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <ChispComponent
-        v-for="(size, sizeIndex) in store.$state.sizes"
+        v-for="(size, sizeIndex) in sizes"
+        :id="size.type"
         :key="sizeIndex"
-        v-model="size.isChecked"
+        v-model="queriesSizes"
         class="setting__chisp"
       >
         {{ size.label }}
@@ -15,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useStore } from "@/store/store";
+import { useSizesRouteQuery } from "@/utils/query/useSizesRouteQuery";
 
 import ChispComponent from "@/components/ui/ChispComponent/ChispComponent.vue";
 
@@ -26,6 +29,9 @@ interface IProps {
 defineProps<IProps>();
 
 const store = useStore();
+const sizes = computed(() => store.$state.sizes);
+
+const queriesSizes = useSizesRouteQuery();
 </script>
 
 <style lang="less" scoped>

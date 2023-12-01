@@ -1,6 +1,8 @@
+import { EQueriesSizes } from "@/utils/query/useSizesRouteQuery";
+
 type TSize = {
+  type: EQueriesSizes;
   label: string;
-  isChecked: false;
 };
 
 export type TSizes = TSize[];

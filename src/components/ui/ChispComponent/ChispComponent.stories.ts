@@ -39,7 +39,7 @@ const meta: ComponentMeta = {
     },
   },
   decorators: [ChispDecoratorWithLimitedWidth],
-  render: (args: ICChispProps) => ({
+  render: (args: ICChispProps<boolean | unknown[]>) => ({
     components: { ChispComponent },
     setup() {
       return { args };

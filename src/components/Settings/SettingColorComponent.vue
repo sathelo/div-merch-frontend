@@ -3,10 +3,11 @@
     <h2 class="setting__title">{{ title }}</h2>
     <div class="setting__wrapper">
       <ColorPickerComponent
-        v-for="(color, colorIndex) in store.$state.colors"
+        v-for="(color, colorIndex) in colors"
+        :id="color.type"
         :key="colorIndex"
-        v-model="color.isChecked"
-        :type="color.type"
+        v-model="queriesColors"
+        :type="color.contrastType"
         :bg="color.bg"
         class="setting__color"
       />
@@ -15,7 +16,9 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useStore } from "@/store/store";
+import { useColorsRouteQuery } from "@/utils/query/useColorsRouteQuery";
 
 import ColorPickerComponent from "@/components/ui/ColorPickerComponent/ColorPickerComponent.vue";
 
@@ -26,6 +29,9 @@ interface IProps {
 defineProps<IProps>();
 
 const store = useStore();
+const colors = computed(() => store.$state.colors);
+
+const queriesColors = useColorsRouteQuery();
 </script>
 
 <style lang="less" scoped>

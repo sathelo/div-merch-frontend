@@ -6,11 +6,13 @@ export const initialClothes: TClothes = [
   {
     img: "/images/male-cloth.png",
     title: "Мужское",
+    originalTitle: EQueriesClothes.male,
     query: { cloth: EQueriesClothes.male },
   },
   {
     img: "/images/female-cloth.png",
     title: "Женское",
+    originalTitle: EQueriesClothes.female,
     query: { cloth: EQueriesClothes.female },
   },
 ];

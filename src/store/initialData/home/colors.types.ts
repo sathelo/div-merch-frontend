@@ -1,11 +1,12 @@
+import { EQueriesColors } from "@/utils/query/useColorsRouteQuery";
 import { EColorPickerType } from "@/components/ui/ColorPickerComponent/ColorPickerComponent.enums";
 
-export interface IColorWithoutStyle {
-  isChecked?: boolean;
-  type?: EColorPickerType;
+export interface IColorWithoutStyleAndId {
+  contrastType?: EColorPickerType;
 }
 
-interface IColor extends IColorWithoutStyle {
+interface IColor extends IColorWithoutStyleAndId {
+  type: EQueriesColors;
   bg?: string;
 }
 

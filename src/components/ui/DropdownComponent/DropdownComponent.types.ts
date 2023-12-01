@@ -1,13 +1,11 @@
-export type Option = {
+export type TOption<T> = {
   value: string;
+  id: T;
 };
 
-type Options = Option[];
-
-export interface ICDropdownProps {
+export interface ICDropdownProps<T> {
   modelValue?: boolean;
-  selectValue?: Option;
-  selectValueId?: number;
+  selectValue?: T;
   disabled?: boolean;
-  options?: Options;
+  options: TOption<T>[];
 }

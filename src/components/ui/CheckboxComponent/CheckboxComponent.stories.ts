@@ -36,7 +36,7 @@ const meta: ComponentMeta = {
       description: "Текст в флажке",
     },
   },
-  render: (args: ICCheckboxProps) => ({
+  render: (args: ICCheckboxProps<boolean | unknown[]>) => ({
     components: { CheckboxComponent },
     setup() {
       return { args };

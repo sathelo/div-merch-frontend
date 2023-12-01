@@ -6,7 +6,10 @@
       class="home__popular-categories"
     />
     <ClothesComponent :clothes="clothes" class="home__clothes" />
-    <CardsComponent :products="products" class="home__new-goods home__cards">
+    <CardsComponent
+      :products="productsSortedByNewItemsFirst"
+      class="home__new-goods home__cards"
+    >
       Новые поступления
     </CardsComponent>
   </div>
@@ -22,13 +25,17 @@ import PopularCategoriesComponent from "@/components/Home/HomePopularCategoriesC
 import ClothesComponent from "@/components/Home/HomeClothesComponent.vue";
 import CardsComponent from "@/components/ui/CardsComponent/CardsComponent.vue";
 
+import { EQueriesSortType } from "@/utils/query/useSortTypeRouteQuery";
+
 const store = useStore();
 const { paginationProducts } = store;
 
 const slides = computed(() => store.$state.slides);
 const categories = computed(() => store.$state.categories);
 const clothes = computed(() => store.$state.clothes);
-const products = computed(() => paginationProducts(0, 8));
+const productsSortedByNewItemsFirst = computed(() =>
+  paginationProducts(0, 8, EQueriesSortType.newItemsFirst),
+);
 </script>
 
 <style lang="less" scoped>

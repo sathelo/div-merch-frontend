@@ -1,10 +1,21 @@
-import { TOptions } from "@/store/initialData/home/selectOptions.types";
+import { EQueriesSortType } from "@/utils/query/useSortTypeRouteQuery/useSortTypeRouteQuery.types";
+import { TOption } from "@/components/ui/DropdownComponent/DropdownComponent.types";
 
-export const initialSelectOptions: TOptions = [
-  { value: "Option 1" },
-  { value: "Option 2" },
-  { value: "Option 3" },
-  { value: "Option 4" },
-  { value: "Option 5" },
-  { value: "Option 6" },
+export const initialSelectOptions: TOption<EQueriesSortType>[] = [
+  {
+    value: "Сначала новинки",
+    id: EQueriesSortType.newItemsFirst,
+  },
+  {
+    value: "Сначала старые",
+    id: EQueriesSortType.oldItemsFirst,
+  },
+  {
+    value: "По возрастанию цены",
+    id: EQueriesSortType.byPriceAsc,
+  },
+  {
+    value: "По убыванию цены",
+    id: EQueriesSortType.byPriceDesc,
+  },
 ];

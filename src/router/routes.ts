@@ -67,8 +67,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior() {
-    return { left: 0, top: 0, behavior: "instant" };
+  scrollBehavior(to) {
+    if (to.name === Routes.product) {
+      return {
+        top: 0,
+        behavior: "instant",
+      };
+    }
   },
 });
 

@@ -2,11 +2,11 @@
 
 ## таски на сегодня
 
-- add stylelint + setting
-- решить проблему с buttons
-- сделать масштабирование (plugin pxtorem)
-- сделать пагинацию для карточек (compose)
-- хранить в localStorage (sessionStorage) id товаров для basket, а также хранить выставленные значения из категорий
+- пагинацию в категориях
+- в странице товара (индивидуальный товар) в корзину добавлять именно схожие товары с checkbox
+- из корзины сделать возможность переходить на страницу товара (индивидуальный товар)
+- в странице товара продумать логику работы с checkbox (они должны выбираться по одному, а также )
+- решить проблему с buttons (стили)
 
 ## таски на будущее
 
@@ -44,3 +44,5 @@ npm run dev
 - [Less](https://lesscss.org/)
 - [Swiper](https://swiperjs.com/)
 - [Element Plus](https://element-plus.org/)
+- [VueUse](https://vueuse.org/)
+- [VueUseRouteQuery](https://github.com/Djaler/vue-use-route-query)

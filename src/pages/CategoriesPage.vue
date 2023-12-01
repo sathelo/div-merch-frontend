@@ -1,7 +1,11 @@
 <template>
   <div class="categories">
     <div class="categories__header">
-      <BreadcrumbsComponent class="categories__breadcrumbs" />
+      <BreadcrumbsComponent
+        :breadcrumbs="breadcrumbs"
+        class="categories__breadcrumbs"
+        @to-breadcrumb="toBreadcrumb"
+      />
       <DropdownComponent
         v-model="isDropdown"
         v-model:select-value="queriesSelectOptions"
@@ -27,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { useStore } from "@/store/store";
 import { watchDebounced } from "@vueuse/core";
 import { useRouteQuery } from "vue-use-route-query";
@@ -35,16 +39,23 @@ import {
   EQueriesSortType,
   useSortTypeRouteQuery,
 } from "@/utils/query/useSortTypeRouteQuery";
+import router from "@/router/routes.ts";
 
 import BreadcrumbsComponent from "@/components/ui/BreadcrumbsComponent/BreadcrumbsComponent.vue";
 import CategoriesSettingsComponent from "@/components/Categories/CategoriesSettingsComponent.vue";
 import CategoriesContentComponent from "@/components/Categories/CategoriesContentComponent.vue";
 import DropdownComponent from "@/components/ui/DropdownComponent/DropdownComponent.vue";
 
+import { translateTextEngToRu } from "@/utils/translateTextEngToRu";
+
+import { ETagButton } from "@/components/ui/ButtonComponent/ButtonComponent.types";
 import { TProducts } from "@/store/initialData/home/products.types";
-import { onMounted } from "vue";
+import { TBreadcrumbs } from "@/store/initialData/home/breadcrumbs.types";
 
 const store = useStore();
+const menu = store.$state.menu;
+const clothes = store.$state.clothes;
+const categories = store.$state.categories;
 
 const isDropdown = ref(false);
 
@@ -54,12 +65,15 @@ const filteredProducts = ref<TProducts>([]);
 
 const price = useRouteQuery("price", "");
 const cloth = useRouteQuery("cloth", "");
-const categories = useRouteQuery("category", "");
+const category = useRouteQuery("category", "");
 const sizes = useRouteQuery("sizes", "");
 const colors = useRouteQuery("colors", "");
 const queriesSelectOptions = useSortTypeRouteQuery(
   EQueriesSortType.newItemsFirst,
 );
+
+const currentRouteName = router.currentRoute.value.name;
+const currentRouteParams = router.currentRoute.value.params;
 
 onMounted(() => {
   filteredProducts.value = getFilteredProducts();
@@ -73,6 +87,48 @@ watchDebounced(
   { debounce: 1000, maxWait: 5000 },
 );
 
+const breadcrumbs = computed((): TBreadcrumbs => {
+  const res: TBreadcrumbs = [];
+
+  if (currentRouteName)
+    res.push({
+      tag: ETagButton.a,
+      name: translateTextEngToRu(String(currentRouteName), menu),
+      path: String(currentRouteName) + "?",
+    });
+  if (cloth.value.length)
+    res.push({
+      tag: ETagButton.a,
+      name: translateTextEngToRu(cloth.value, clothes),
+      path: `cloth=${cloth.value}`,
+    });
+  if (category.value.length)
+    res.push({
+      tag: ETagButton.a,
+      name: translateTextEngToRu(category.value, categories),
+      path: `category=${category.value}`,
+    });
+  if (currentRouteParams.id)
+    res.push({
+      tag: ETagButton.a,
+      name: `${Object.keys(currentRouteParams)[0]}`,
+    });
+
+  return res;
+});
+
+function toBreadcrumb(breadcrumbIndex: number) {
+  const breadcrumb = breadcrumbs.value[breadcrumbIndex];
+  breadcrumb.path && breadcrumbIndex !== breadcrumbs.value.length - 1
+    ? router.replace(
+        breadcrumbs.value
+          .slice(0, breadcrumbIndex + 1)
+          .map((b) => b.path)
+          .join(""),
+      )
+    : "";
+}
+
 function getFilteredProducts() {
   const filteredBySettings = products.value.filter((product) => {
     return (
@@ -81,8 +137,8 @@ function getFilteredProducts() {
           product.info.total.price <= price.value.split(",")[1])) &&
       (!cloth.value ||
         cloth.value.split(",").includes(product.info.typeFloor)) &&
-      (!categories.value ||
-        categories.value.split(",").includes(product.info.typeCategory)) &&
+      (!category.value ||
+        category.value.split(",").includes(product.info.typeCategory)) &&
       (!sizes.value ||
         product.info.sizes.some((product) =>
           sizes.value.split(",").includes(product.type),

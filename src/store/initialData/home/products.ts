@@ -50,15 +50,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -107,15 +107,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -164,15 +164,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -221,15 +221,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -278,15 +278,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -335,15 +335,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -404,15 +404,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -473,15 +473,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -542,15 +542,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -611,15 +611,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -680,15 +680,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -749,15 +749,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -818,15 +818,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -887,15 +887,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -956,15 +956,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],
@@ -1025,15 +1025,15 @@ export const initialProducts: TProducts = [
           value: "Зеленый",
         },
         {
-          key: "Цвет",
-          value: "Зеленый",
+          key: "Сезон",
+          value: "Лето",
         },
         {
-          key: "Цвет",
+          key: "Тип",
           value: "Классические",
         },
         {
-          key: "Цвет",
+          key: "Состав",
           value: "полиамид 17%, хлопок 80%, эластан 3%",
         },
       ],

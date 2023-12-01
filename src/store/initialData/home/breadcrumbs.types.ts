@@ -8,6 +8,6 @@ interface IBreadcrumb {
   path?: NamePath;
 }
 
-type TBreadcrumb = IBreadcrumb;
+export type TBreadcrumb = IBreadcrumb;
 
 export type TBreadcrumbs = TBreadcrumb[];

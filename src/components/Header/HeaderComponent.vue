@@ -3,15 +3,14 @@
     <a class="header__logo logo" @click="navigateToRoute(Routes.home)">
       <img class="logo__image" :src="DivMerchUrlLogo" alt="div.merch" />
     </a>
-    <HeaderMenuComponent class="header__menu" :menu="store.$state.menu" />
-    <HeaderActionsComponent
-      class="header__actions"
-      :actions="store.$state.actions"
-    />
+    <HeaderMenuComponent class="header__menu" :menu="menu" />
+    <HeaderActionsComponent class="header__actions" :actions="actions" />
   </header>
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
+
 import { navigateToRoute } from "@/router/routes.ts";
 import { useStore } from "@/store/store";
 
@@ -23,6 +22,8 @@ import DivMerchUrlLogo from "/logos/div-merch.svg";
 import { Routes } from "@/router/routes.enums";
 
 const store = useStore();
+const menu = computed(() => store.$state.menu);
+const actions = computed(() => store.$state.actions);
 </script>
 
 <style lang="less" scoped>

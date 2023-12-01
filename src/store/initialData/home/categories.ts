@@ -39,4 +39,10 @@ export const initialCategories: TCategories = [
     img: "/categories/6.png",
     query: { category: EQueriesCategory.bracelets },
   },
+  {
+    title: "Брелоки",
+    originalTitle: EQueriesCategory.keychains,
+    img: "/categories/1.png",
+    query: { category: EQueriesCategory.keychains },
+  },
 ];

@@ -17,9 +17,12 @@ import { TActions } from "@/store/initialData/header/action.types";
 import { TMenu } from "@/store/initialData/header/menu.types";
 import { TProduct } from "@/store/initialData/home/products.types";
 import { TFooter } from "@/store/initialData/footer/footer.types";
-
 import { TBaskets } from "@/store/initialData/basket/basket.types";
+
 import { EActionBasketForProduct } from "@/store/initialData/basket/basket.enums";
+import { EQueriesSortType } from "@/utils/query/useSortTypeRouteQuery";
+import { EQueriesCategory } from "@/utils/query/useCategoriesRouteQuery";
+import { EPaginationSortType } from "@/types";
 
 export const useStore = defineStore("store", () => {
   /* STATE */
@@ -79,8 +82,35 @@ export const useStore = defineStore("store", () => {
   }
 
   /* GETTERS */
-  function paginationProducts(start?: number, end?: number) {
-    return products.value.slice(start, end);
+  function paginationProducts<
+    T extends EQueriesSortType | EQueriesCategory | EPaginationSortType,
+  >(start?: number, end?: number, typeSort?: T, product?: TProduct) {
+    const chunkProducts = products.value.slice(start, end);
+    if (!typeSort) return chunkProducts;
+    switch (typeSort) {
+      case EQueriesSortType.newItemsFirst:
+        return chunkProducts.reverse();
+      case EQueriesCategory.anoraks:
+      case EQueriesCategory.bracelets:
+      case EQueriesCategory.keychains:
+      case EQueriesCategory.socks:
+      case EQueriesCategory.sweatshirts:
+      case EQueriesCategory.trousers:
+      case EQueriesCategory.windbreakers:
+        return products.value
+          .filter((p) => typeSort === p.info.typeCategory && p !== product)
+          .slice(start, end);
+      case EPaginationSortType.similarProducts:
+        return products.value
+          .filter(
+            (p) =>
+              p.info.typeFloor === product?.info.typeFloor &&
+              p.info.typeCategory === product?.info.typeCategory,
+          )
+          .slice(start, end);
+      default:
+        return chunkProducts;
+    }
   }
 
   const cartCounter = computed(() => {

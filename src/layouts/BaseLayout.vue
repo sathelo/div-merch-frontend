@@ -1,5 +1,5 @@
 <template>
-  <section class="base-layout">
+  <section class="base-layout container">
     <HeaderComponent />
     <router-view />
     <FooterComponent />

@@ -24,6 +24,8 @@ declare module "vue" {
     ChispComponent: (typeof import("./src/components/ui/ChispComponent/ChispComponent.vue"))["default"];
     ColorPickerComponent: (typeof import("./src/components/ui/ColorPickerComponent/ColorPickerComponent.vue"))["default"];
     DropdownComponent: (typeof import("./src/components/ui/DropdownComponent/DropdownComponent.vue"))["default"];
+    ElPagination: (typeof import("element-plus/es"))["ElPagination"];
+    ElTable: (typeof import("element-plus/es"))["ElTable"];
     FooterComponent: (typeof import("./src/components/Footer/FooterComponent.vue"))["default"];
     FooterInfoComponent: (typeof import("./src/components/Footer/FooterInfoComponent.vue"))["default"];
     FooterMetaComponent: (typeof import("./src/components/Footer/FooterMetaComponent.vue"))["default"];

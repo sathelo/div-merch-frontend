@@ -55,6 +55,7 @@ const promoValue = ref("");
   .content(32px, 24px);
   position: sticky;
   top: 0;
+  flex-shrink: 0;
   height: 100%;
   border: 1px solid @grey-gradation--100;
 

@@ -9,6 +9,7 @@
         <ButtonComponent
           :variant="ECButtonType.round"
           class="item__btn btn"
+          :class="{ 'btn--basket': isBasket(action.namePath) }"
           @click="navigateToRoute(action.namePath)"
         >
           <template #icon>
@@ -16,7 +17,11 @@
           </template>
         </ButtonComponent>
         <div
-          v-if="isBasket(action.name) && cartCounter"
+          v-if="
+            isBasket(action.namePath) &&
+            cartCounter &&
+            isRouteBasket(action.namePath)
+          "
           class="item__counter counter"
         >
           <p class="counter__text">
@@ -31,12 +36,13 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useStore } from "@/store/store";
+import { useRoute } from "vue-router";
 import { navigateToRoute } from "@/router/routes";
 
 import ButtonComponent from "@/components/ui/ButtonComponent/ButtonComponent.vue";
 
+import { Routes } from "@/router/routes.enums";
 import { ECButtonType } from "@/components/ui/ButtonComponent/ButtonComponent.enums";
-
 import { TAction, TActions } from "@/store/initialData/header/action.types";
 
 interface IProps {
@@ -45,12 +51,18 @@ interface IProps {
 
 defineProps<IProps>();
 
+const route = useRoute();
+
 const store = useStore();
 
 const cartCounter = computed(() => store.cartCounter);
 
-function isBasket(name: TAction["name"]) {
-  return name === "basket";
+function isBasket(name: TAction["namePath"]) {
+  return name === Routes.basket;
+}
+
+function isRouteBasket(name: TAction["namePath"]) {
+  return name !== route.name;
 }
 </script>
 
@@ -68,6 +80,10 @@ function isBasket(name: TAction["name"]) {
     .btn {
       &__ico {
         display: block;
+      }
+
+      &--basket {
+        background: @grey-gradation--white;
       }
     }
   }

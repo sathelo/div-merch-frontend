@@ -36,6 +36,8 @@ defineProps<IProps>();
 <style lang="less" scoped>
 .cards {
   .content(48px, 24px);
+  flex-shrink: 1;
+  width: 100%;
   border: 1px solid @grey-gradation--100;
 
   & > *:not(:last-child) {

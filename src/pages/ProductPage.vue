@@ -7,7 +7,7 @@
     />
     <ProductCardComponent :product="product" class="product__card" />
     <CardsComponent
-      v-if="productsSortedBySimilarProducts"
+      v-if="productsSortedBySimilarProducts.length"
       :products="productsSortedBySimilarProducts"
       class="product__cards"
     >

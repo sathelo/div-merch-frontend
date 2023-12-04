@@ -15,16 +15,17 @@
     </div>
     <div class="categories__body">
       <CategoriesSettingsComponent class="categories__settings" />
-      <span
-        v-if="!filteredProducts.length"
-        class="categories__content-not-found"
-      >
+      <span v-if="!totalProducts" class="categories__content-not-found">
         Упс! По данным запросам мы ничего не нашли подходящего.
       </span>
       <CategoriesContentComponent
         v-else
-        :products="filteredProducts"
+        :products="paginatedProducts"
+        :current-page="currentPage"
+        :page-size="pageSize"
+        :total-products="totalProducts"
         class="categories__content"
+        @change-current-page="changeCurrentPage"
       />
     </div>
   </div>
@@ -57,10 +58,14 @@ const menu = store.$state.menu;
 const clothes = store.$state.clothes;
 const categories = store.$state.categories;
 
+const currentPage = ref(1);
+const pageSize = 15;
+
 const isDropdown = ref(false);
 
 const selectOptions = computed(() => store.$state.selectOptions);
 const products = computed(() => store.$state.products);
+const totalProducts = computed(() => filteredProducts.value.length);
 const filteredProducts = ref<TProducts>([]);
 
 const price = useRouteQuery("price", "");
@@ -68,6 +73,7 @@ const cloth = useRouteQuery("cloth", "");
 const category = useRouteQuery("category", "");
 const sizes = useRouteQuery("sizes", "");
 const colors = useRouteQuery("colors", "");
+const page = useRouteQuery("page", "");
 const queriesSelectOptions = useSortTypeRouteQuery(
   EQueriesSortType.newItemsFirst,
 );
@@ -86,6 +92,14 @@ watchDebounced(
   },
   { debounce: 1000, maxWait: 5000 },
 );
+
+const paginatedProducts = computed(() => {
+  // eslint-disable-next-line vue/no-side-effects-in-computed-properties
+  if (page.value) currentPage.value = Number(page.value);
+  const startIndex = (currentPage.value - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  return filteredProducts.value.slice(startIndex, endIndex);
+});
 
 const breadcrumbs = computed((): TBreadcrumbs => {
   const res: TBreadcrumbs = [];
@@ -167,6 +181,11 @@ function getFilteredProducts() {
         );
     }
   }
+}
+
+function changeCurrentPage(newCurrentPage: number) {
+  currentPage.value = newCurrentPage;
+  page.value = String(currentPage.value);
 }
 </script>
 
